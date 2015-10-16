@@ -1,0 +1,62 @@
+<?php
+//Solucion cajero
+class Cajero{
+	
+      //Variables privadas
+	    private $_billetes=array(0=>100,1=>50,2=>20,3=>10);
+	    private $_entrega=array();
+	    private $_cantidad;
+	    //constructor obtieneValor inicial
+	    function __construct($setcant=0){
+		      if($setcant!=0)
+			        $this->_cantidad=$setcant;
+		      else
+	            $this->_cantidad=$this->obtiene('cantidad');//preparado para obtener por get o por post o en caso de bd
+		      if($this->_cantidad==-1)
+			        $this->_cantidad=0;
+	        $this->valida();//La validacion checa que sea un numero divisible
+		      $this->darMoney($this->_cantidad,0);//asigna dineros
+		      $this->muestraBilletes();//imprime billetes
+	    }
+
+        protected function muestraBilletes(){
+                foreach($this->_entrega as $key => $cantidad){
+                       if($cantidad!=0)
+                       echo "$cantidad Billetes de {$this->_billetes[$key]}\n";
+                }
+                return 0;
+        }
+	
+	      protected function darMoney($cantidad,$denominacion){
+		            $numbilletes=floor($cantidad/$this->_billetes[$denominacion]);
+                $this->_entrega[$denominacion]=$numbilletes;
+	              $resta=$cantidad-($numbilletes*$this->_billetes[$denominacion]);
+		            if($resta==0)
+			              return 0;
+		            else 
+			              $this->darMoney($resta,++$denominacion);
+	       } 
+	       protected function valida(){
+		          if($this->_cantidad%10!=0){
+		               echo"Valor imposible de regresar favor introducir un numero multiplo de 10";
+			             exit;
+		          }
+		          return 1;	
+	        } 
+	
+	
+	
+	       protected function obtiene($val='cantidad'){
+	            if(isset($_GET["$cantidad"]))
+			             return $_GET["$cantidad"];
+		          if(isset($_POST["$cantidad"]))
+			             return $_POST["$cantidad"];
+		          return-1;//Solo para caso especial si no podriamos usar un if comprimido
+	        }
+	
+	
+}
+
+new Cajero(80);
+
+?>
