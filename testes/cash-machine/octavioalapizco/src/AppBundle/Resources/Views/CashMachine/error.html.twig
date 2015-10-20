@@ -1,0 +1,16 @@
+<form action="{{ path('index') }} " METHOD="POST" >
+
+<label>La Cantidad ${{ cantidad }} no puede ser entregada </label> <br/>
+<label>{{ msg_error }} </label>
+<br /><br />
+<label>Billetes Disponibles:</label>
+<ul>
+	<li>$10</li>
+	<li>$20</li>
+	<li>$50</li>
+	<li>$100</li>
+</ul>
+
+	
+	<input type="submit" value="Intentar de Nuevo" />
+</form>

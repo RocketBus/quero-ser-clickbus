@@ -1,0 +1,12 @@
+<form action="{{ path('index') }} " METHOD="POST" >
+
+<h3>Dinero Entregado: ${{ cantidad|number_format(2, '.', ',') }}</h3>
+<label>Desgloce:</label>
+<ul>
+	{% for denominacion in billetes %}
+        <li> ${{ denominacion.denominacion|number_format(2, '.', ',') }} X {{ denominacion.cantidad }}</li>
+    {% endfor %}
+</ul>
+<label>Gracias por su preferencia</label>
+	<input type="submit" value="Continuar" />
+</form>

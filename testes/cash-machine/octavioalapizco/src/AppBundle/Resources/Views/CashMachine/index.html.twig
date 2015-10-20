@@ -1,0 +1,15 @@
+<h3>Bienvenido a su cajero Automático</h3>
+<form name="cash_machine" METHOD="POST" action="{{ path('entregar_dinero') }}" >
+	<label>Escriba la cantidad deseada:</label>
+	<input type="number" required min=10 step=10 autofocus name="cantidad_solicitada" / >
+	
+	<input type="submit" value="Aceptar" />
+</form>
+
+<label>Billetes Disponibles:</label>
+<ul>
+	<li>$10</li>
+	<li>$20</li>
+	<li>$50</li>
+	<li>$100</li>
+</ul>

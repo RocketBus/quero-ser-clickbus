@@ -1,0 +1,11 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+index:
+    path:      /
+    defaults:  { _controller: AppBundle:CashMachine:index }
+
+entregar_dinero:
+    path:      /entregar_dinero
+    defaults:  { _controller: AppBundle:CashMachine:entregarDinero }
