@@ -26,7 +26,7 @@ class CashMachineController extends Controller
 		
 		try{
 			$billetes=$cashMachine->getBilletes($cantidad);
-			return $this->render('AppBundle:CashMachine:entregar_dinero.html.twig',array('cantidad'=>$cantidad,'billetes'=>$billetes));
+			return $this->render('AppBundle:CashMachine:dinero_entregado.html.twig',array('cantidad'=>$cantidad,'billetes'=>$billetes));
 		}catch(\Exception $e){
 			return $this->render('AppBundle:CashMachine:error.html.twig',array('cantidad'=>$cantidad,'msg_error'=>$e->getMessage()));
 		}
