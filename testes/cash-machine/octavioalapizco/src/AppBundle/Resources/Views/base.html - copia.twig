@@ -24,8 +24,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-	{% block styles %}
-	{% endblock %}
   </head>
 
   <body>
@@ -36,38 +34,25 @@
 
         <div class="cover-container">
 
-          <div class="inner cover " style=" ">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Cash Machine Alpha</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                 
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+          <div class="inner cover ">
 			<div class="row">
-				<div id="pnlPantalla" class="col-md-6" style="background-color: #333;padding: 20px; border-radius: 16px;">
+				<div class="col-md-6">
 					{% block content %} {% endblock %}
 				</div>
-				<div id="pnlBotones" class="col-md-5 pull-right" style="display:table;  ">
-					<div class="row" style="display:table-cell; vertical-align: middle;">
-						<div style="border:1px solid #333; border-radius: 16px; padding:20px">
-							<div class="col-xs-9" style="text-align:center" id="pnlTecladoNumerico">
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="1" /> 
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="2" />
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="3" />
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="4" /> 
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="5" />
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="6" />
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="7" /> 
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="8" />
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="9" />
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="" /> 
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="0" />
-								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="" />
-							</div>
-							<div class="col-xs-3 ">
-								<div class="row">
-								<input id="btnAceptar" class="col-xs-12 btn btn-success" style="" type="button" value="Aceptar" /> 
-								<input id="btnAceptar" class="col-xs-12  btn btn-warning" style="" type="button" value="Cancelar" /> 
-								</div>
-							</div>
-							<div style="clear:both;">
-
-						</div>	
-					</div>
+				<div class="col-md-6">
+					{% block botones %} {% endblock %}
+					
 				</div>
 			</div>
 			
@@ -95,9 +80,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
   {% block javascripts %}
-	<script type="text/javascript">
-		$('#pnlBotones').height( $('#pnlPantalla').height() ) ;
-	</script>
+
   {% endblock %}
 
 </body></html>

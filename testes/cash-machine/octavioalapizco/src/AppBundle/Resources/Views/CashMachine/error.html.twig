@@ -29,14 +29,19 @@
 {% endblock %}
 
 
-{% block botones %} <input id="btnContinuar" class="btn btn-success" style="" type="button" value="Intentar de Nuevo" /> {% endblock %}
-	 
 {% block javascripts %}
+	{{ parent() }}
+	 
+
 <script type="text/javascript">
+
 $( document ).ready( function(){
-	$('#btnContinuar').click(function(){
+	
+	$('#btnAceptar').click(function(){
 		$('form[name="frmError"]').submit();
 	});
+	
 } );
 </script>
 {% endblock %}
+	 
