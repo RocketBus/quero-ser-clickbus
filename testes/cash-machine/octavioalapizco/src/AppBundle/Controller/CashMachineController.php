@@ -10,12 +10,9 @@ use AppBundle\Logica\CashMachineLogic;
 
 class CashMachineController extends Controller
 {
-    /**
-     * @Route("/app/example", name="homepage")
-     */
+    
     public function indexAction()
     {
-		// echo floor(2.999); // 9
         return $this->render('AppBundle:CashMachine:index.html.twig');
     }
 	

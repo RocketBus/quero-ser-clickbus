@@ -1,6 +1,5 @@
 <?php
 namespace AppBundle\Logica;
-use AppBundle\Exception\InvalidArgumentException;
 use AppBundle\Exception\NotAvailableException;
 
 class CashMachineLogic{
