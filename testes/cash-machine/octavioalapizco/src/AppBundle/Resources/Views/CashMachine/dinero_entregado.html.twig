@@ -26,10 +26,13 @@
 <script type="text/javascript">
 
 $( document ).ready( function(){
-		$('#btnAceptar').click(function(){
+	$('#btnAceptar, #btnCancelar').click(function(){
 		
 		$('form[name="dinero_entregado"]').submit();
+		
+		
 	});
+	$('#pnlTecladoNumerico input[type="button"]').prop( "disabled", true );
 	
 } );
 </script>

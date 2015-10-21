@@ -5,9 +5,7 @@
 {% block styles %}
 {{ parent() }}
 <style type="text/css">
-	#pnlTecladoNumerico btn{
-		padding:0;
-	}
+	
 </style>
 {% endblock %}
 
@@ -47,6 +45,19 @@ $( document ).ready( function(){
 		$('form[name="cash_machine"]').submit();
 	});
 	
+	$('#btnCancelar').click(function(){
+		$('form[name="cash_machine"]').trigger("reset");
+	});
+	
+	$('#pnlTecladoNumerico input[type="button"]').click(function(){
+		var val=$(this).val();
+		console.log(val);
+		if (val!=""){
+			var cantidad= $('input[name="cantidad_solicitada"]').val();
+			$('input[name="cantidad_solicitada"]').val(cantidad.concat(val) );
+			
+		}
+	});
 } );
 </script>
 {% endblock %}

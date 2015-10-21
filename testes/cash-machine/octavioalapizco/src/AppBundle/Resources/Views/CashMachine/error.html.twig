@@ -37,9 +37,11 @@
 
 $( document ).ready( function(){
 	
-	$('#btnAceptar').click(function(){
+	$('#btnAceptar, #btnCancelar').click(function(){
 		$('form[name="frmError"]').submit();
 	});
+	
+	$('#pnlTecladoNumerico input[type="button"]').prop( "disabled", true );
 	
 } );
 </script>
