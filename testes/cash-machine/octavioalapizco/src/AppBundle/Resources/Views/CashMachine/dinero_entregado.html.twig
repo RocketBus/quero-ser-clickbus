@@ -1,3 +1,10 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}Bienvenido a su cajero Automático{% endblock %}
+
+
+{% block content %}
+<article style="text-align:left;">
 <form name="dinero_entregado" action="{{ path('index') }} " METHOD="POST" >
 
 <h3>Dinero Entregado: ${{ cantidad|number_format(2, '.', ',') }}</h3>
@@ -8,5 +15,20 @@
     {% endfor %}
 </ul>
 <label>Gracias por su preferencia</label>
-	<input type="submit"  value="Continuar" />
+	<input type="submit" style="display:none;"  value="Continuar" />
 </form>
+</article>
+{% endblock %}
+
+
+{% block botones %} <input id="btnContinuar" class="btn btn-success" style="" type="button" value="Continuar" /> {% endblock %}
+	 
+{% block javascripts %}
+<script type="text/javascript">
+$( document ).ready( function(){
+	$('#btnContinuar').click(function(){
+		$('form[name="dinero_entregado"]').submit();
+	});
+} );
+</script>
+{% endblock %}

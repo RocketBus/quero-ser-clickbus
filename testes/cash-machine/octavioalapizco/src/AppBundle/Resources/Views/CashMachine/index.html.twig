@@ -1,15 +1,38 @@
-<h3>Bienvenido a su cajero Automático</h3>
-<form name="cash_machine" METHOD="POST" action="{{ path('entregar_dinero') }}" >
-	<label>Escriba la cantidad deseada:</label>
-	<input type="number" required min=10 step=10 autofocus name="cantidad_solicitada" / >
-	
-	<input type="submit" value="Aceptar" />
-</form>
+{% extends 'AppBundle::base.html.twig' %}
 
-<label>Billetes Disponibles:</label>
-<ul>
-	<li>$10</li>
-	<li>$20</li>
-	<li>$50</li>
-	<li>$100</li>
-</ul>
+{% block title %}Bienvenido a su cajero Automático{% endblock %}
+
+
+{% block content %}
+<article style="text-align:left;">
+	<h3>Bienvenido.</h3>
+	<form name="cash_machine" METHOD="POST" action="{{ path('entregar_dinero') }}" >
+		<label>Escriba la cantidad deseada:</label>
+		<input type="number" style="color:#333;" required min=10 step=10 autofocus name="cantidad_solicitada" / >
+		
+		<input class="btn btn-success" style="display:none" type="submit" value="Aceptar" />
+		
+	</form>
+	<br/>
+	<label>Billetes Disponibles:</label>
+	<ul>
+		<li>$10</li>
+		<li>$20</li>
+		<li>$50</li>
+		<li>$100</li>
+	</ul>
+</article>
+
+{% endblock %}
+
+{% block botones %} <input id="btnAceptar" class="btn btn-success" style="" type="button" value="Aceptar" /> {% endblock %}
+	 
+{% block javascripts %}
+<script type="text/javascript">
+$( document ).ready( function(){
+	$('#btnAceptar').click(function(){
+		$('form[name="cash_machine"]').submit();
+	});
+} );
+</script>
+{% endblock %}

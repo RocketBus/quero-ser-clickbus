@@ -1,5 +1,5 @@
 <?php
-namespace AppBundle\Logica;
+namespace AppBundle\BusinessLogic;
 use AppBundle\Exception\NotAvailableException;
 
 class CashMachineLogic{

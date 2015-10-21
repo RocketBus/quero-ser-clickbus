@@ -1,16 +1,42 @@
-<form  name="frmError" action="{{ path('index') }} " METHOD="POST" >
+{% extends 'AppBundle::base.html.twig' %}
 
-<label>La Cantidad ${{ cantidad }} no puede ser entregada </label> <br/>
-<label>{{ msg_error }} </label>
-<br /><br />
-<label>Billetes Disponibles:</label>
-<ul>
-	<li>$10</li>
-	<li>$20</li>
-	<li>$50</li>
-	<li>$100</li>
-</ul>
+{% block title %}Bienvenido a su cajero Automático{% endblock %}
 
+
+{% block content %}
+<article style="text-align:left;">
+
+	<form  name="frmError" action="{{ path('index') }} " METHOD="POST" >
+
+	<div class="alert alert-warning" role="alert">
+		<label>La Cantidad ${{ cantidad }} no puede ser entregada </label> <br/>
+	<label>{{ msg_error }} </label>
+	</div>
 	
-	<input type="submit" value="Intentar de Nuevo" />
-</form>
+	<br /><br />
+	<label>Billetes Disponibles:</label>
+	<ul>
+		<li>$10</li>
+		<li>$20</li>
+		<li>$50</li>
+		<li>$100</li>
+	</ul>
+
+		
+		<input type="submit" style="display:none" value="Intentar de Nuevo" />
+	</form>
+</article>
+{% endblock %}
+
+
+{% block botones %} <input id="btnContinuar" class="btn btn-success" style="" type="button" value="Intentar de Nuevo" /> {% endblock %}
+	 
+{% block javascripts %}
+<script type="text/javascript">
+$( document ).ready( function(){
+	$('#btnContinuar').click(function(){
+		$('form[name="frmError"]').submit();
+	});
+} );
+</script>
+{% endblock %}
