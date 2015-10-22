@@ -3,6 +3,7 @@ namespace AppBundle\Tests\BusinessLogic;
 
 class CashMachineLogicTests extends \PHPUnit_Framework_TestCase{
 	public function testValidarCantidadNegativa(){
+		
 		$this->setExpectedException('InvalidArgumentException');
 		$cashMachine=new \AppBundle\BusinessLogic\CashMachineLogic();
 		$cashMachine->validar(-10);
@@ -19,6 +20,13 @@ class CashMachineLogicTests extends \PHPUnit_Framework_TestCase{
 		$cashMachine=new \AppBundle\BusinessLogic\CashMachineLogic();
 		$cashMachine->validar(8);
 	}
+	
+	public function testValidarCantidadDecimales(){
+		$this->setExpectedException('\AppBundle\Exception\NotAvailableException');
+		$cashMachine=new \AppBundle\BusinessLogic\CashMachineLogic();
+		$cashMachine->validar(10.5);
+	}
+	
 	
 	public function testValidarCantidad10(){		
 		$cashMachine=new \AppBundle\BusinessLogic\CashMachineLogic();

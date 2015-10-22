@@ -14,6 +14,8 @@ class CashMachineLogic{
 		
 		if ($cantidad<10) throw new NotAvailableException('La cantidad debe ser múltiplo de 10');
 		
+		if ($cantidad!==floor($cantidad)) throw new NotAvailableException('La Cantidad no debe contener decimales');
+		
 		$esMultiplo = ($cantidad%10)===0;
 		if (!$esMultiplo) throw new NotAvailableException('La cantidad debe ser múltiplo de 10');
 		return $esMultiplo;

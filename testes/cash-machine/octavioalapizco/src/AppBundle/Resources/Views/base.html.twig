@@ -46,12 +46,12 @@
 
           <div class="inner cover " style=" ">
 			<div class="row">
-				<div id="pnlPantalla" class="col-md-6" style="background-color: #333;padding: 20px; border-radius: 16px;">
+				<div id="pnlPantalla" class="col-md-6" style="background-color: #333;padding: 20px; border-radius: 16px; box-sizing: content-box;">
 					{% block content %} {% endblock %}
 				</div>
 				<div id="pnlBotones" class="col-md-5 pull-right" style="display:table;  ">
 					<div class="row" style="display:table-cell; vertical-align: middle;">
-						<div style="border:1px solid #333; border-radius: 16px; padding:20px">
+						<div id="pnlBotonesContent" style="border:1px solid #333; border-radius: 16px; padding:20px">
 							<div class="col-xs-8" style="text-align:center" id="pnlTecladoNumerico">
 								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="1" /> 
 								<input  class="col-xs-3" class="btn btn-success" style="" type="button" value="2" />
@@ -102,8 +102,11 @@
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{ asset('js/ie10-viewport-bug-workaround.js') }}"></script>
+	<script src="{{ asset('js/jquery.blockUI.js') }}"></script>
+	
   {% block javascripts %}
 	<script type="text/javascript">
+		$('#pnlPantalla').css('min-height',$('#pnlPantalla').height())  ;
 		$('#pnlBotones').height( $('#pnlPantalla').height() ) ;
 	</script>
   {% endblock %}
