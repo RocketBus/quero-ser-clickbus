@@ -10,7 +10,7 @@
         <h2>Selecciona la cantidad a retirar:</h2>
         <small>* Por el momento solo contamos con billetes <i class="fa fa-money"></i> de $100, $50, $20 y $10</small>
     </div>
-    <div id="calculator">
+    <div id="atm">
         <!-- Screen and clear key -->
         <div class="top">
             <span class="moneyLogo ignore">$</span>
@@ -36,69 +36,10 @@
 	   </div>
         <div id="response"></div>
     </div>
-    <script>
-        var keys = document.querySelectorAll('#calculator span');
-        
-        for(var i = 0; i < keys.length; i++) {
-            keys[i].onclick = function(e){
-                if(this.className.indexOf("ignore")>=0)return;
-                document.getElementById("response").innerHTML = "";
-                var input = document.querySelector('.screen');
-                var inputVal = input.innerHTML;
-                var btnVal = this.innerHTML;
-                if(this.className.indexOf("clear")>=0) {
-                    input.innerHTML = input.innerHTML.substring(0,input.innerHTML.length-1);
-                }
-                else if(this.className.indexOf("check")>=0){
-                    var requested = input.innerHTML;
-                    if(requested.length>0){
-                        requested = "/"+requested;
-                    }
-                    input.innerHTML = '';
-                    var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open( "GET", "/getMoney"+requested, false );
-                    xmlHttp.send( null );
-                    var response = JSON.parse(xmlHttp.response);
-                    console.log(response[0]);
-                    if(response.Error !== true){
-                        
-                        var res = "La máquina le entregará:<br>";
-                        var algunBillete = false;
-                        if(response[0]>0){
-                            algunBillete = true;
-                            res += response[0] + " billete(s) de $10<br>";
-                        }
-                        if(response[1]>0){
-                            algunBillete = true;
-                            res += response[1] + " billete(s) de $20<br>";
-                        }
-                        if(response[2]>0){
-                            algunBillete = true;
-                            res += response[2] + " billete(s) de $50<br>";
-                        }
-                        if(response[3]>0){
-                            algunBillete = true;
-                            res += response[3] + " billete(s) de $100<br>";
-                        }
-                        if(!algunBillete){
-                            res += " otra oportunidad para ingresar una cantidad, pues no ha ingresado ninguna";
-                        }
-                        document.getElementById('response').innerHTML = res;
-                    }
-                    else{
-                        document.getElementById('response').innerHTML = "El servidor encontró una Excepción '" 
-                            + response.Exception + "'<br>con el siguiente mensaje: " 
-                            + response.Message;
-                    }
-                }
-                else {
-                    input.innerHTML += btnVal;
-                }
-                e.preventDefault();
-            } 
-        }
-        </script>
-        {% endblock %}
+    {% endblock %}
+    {% block javascripts %}
+    <script src="{{asset('scripts/cashScript.js')}}"></script>
+    {% endblock %}
 
 
 
