@@ -11,6 +11,14 @@
         public function __toString() {
             return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
         }
+        public function toJson(){
+            return json_encode(
+                array(
+                    "Error"=>true,
+                    "Exception"=>"InvalidArgumentException", 
+                    "Message"=>$this->message
+                ));
+        }
         
     }
 

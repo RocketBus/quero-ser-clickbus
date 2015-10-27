@@ -13,32 +13,47 @@
 
     class MainController extends Controller
     {
+        
         /**
-        * @Route("/getMoney/{money}", defaults={"money" = null},name="showMeMoney")
+        * @Route("/", name="showMeCashMachine")
+        */
+        public function showCashMachine()
+        {
+            $number = $this->numberAction(180);
+            $html = $this->container->get('templating')->render('/cashmachine.html.twig',array('number'=>$number));
+            return new Response($html);
+        }
+        
+        /**
+        * @Route("/getMoney/{money}", defaults={"money" = null}, name="showMeTheMoney")
         */
         public function numberAction($money)
         {
             if($money == null) return new JsonResponse(array());
             ini_set('memory_limit', '-1');
+            $money = $money.'';
             try{
                 if(ctype_digit($money)){
                     $money = intval($money);
                 }
                 else{
-                    throw new InvalidArgumentException("El valor debe ser númerico y positivo");
+                    $ex = new InvalidArgumentException("El valor debe ser númerico y positivo");
+                    return new Response($ex->toJson());
                 }
             }
             catch(InvalidArgumentException $e){
-                throw new InvalidArgumentException("El valor debe ser númerico y positivo");
+                $ex = new InvalidArgumentException("El valor debe ser númerico y positivo");
+                return new Response($ex->toJson());
             }
             
-            if($money % 10 != 0)
-                throw new NoteUnavailableException("El valor debe ser múltiplo de 10");
+            if($money % 10 != 0){
+                $ex = new NoteUnavailableException("El valor debe ser múltiplo de 10");
+                return new Response($ex->toJson());
+            }
             
             $mon = new Money();
             $number = $mon->dameBilletes($money);
-            return new JsonResponse($number);
-            
+            return new JsonResponse($number);            
         }
     }
 ?>
