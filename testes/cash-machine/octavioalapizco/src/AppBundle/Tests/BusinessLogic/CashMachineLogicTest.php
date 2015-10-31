@@ -12,7 +12,7 @@ class CashMachineLogicTests extends \PHPUnit_Framework_TestCase{
 	public function testGenerarErrorConCantidadCero(){
 		$this->setExpectedException('InvalidArgumentException');
 		$cashMachine=new \AppBundle\BusinessLogic\CashMachineLogic();
-		$cashMachine->validar(-10);
+		$cashMachine->validar(0);
 	}
 	
 	public function testGenerarErrorConCantidadMenorA10(){
