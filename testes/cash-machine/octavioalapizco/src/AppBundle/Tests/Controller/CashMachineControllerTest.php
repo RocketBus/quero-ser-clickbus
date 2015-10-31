@@ -5,28 +5,17 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CashMachineControllerTest extends WebTestCase
 {
-    public function testIndexAction()
+    public function testExisteFormDeSolicitudEnIndex()
     {
         $client = static::createClient();
-
         $crawler = $client->request('GET', '/');
-
         $this->assertGreaterThan(
             0,
             $crawler->filter('form[name="cash_machine"]')->count()
         );
     }
 	
-	public function testEntregarDineroAction()
-    {
-        $client = static::createClient();
-
-        $crawler = $client->request('POST', '/entregar_dinero',array('cantidad_solicitada'=>150));
-		$numForms=$crawler->filter('form[name="dinero_entregado"]')->count();
-        $this->assertTrue(1===$numForms);
-    }
-	
-	public function testEntregarDineroNoParamsAction()
+	public function testMostrarErrorAlSolicitarDineroSinParametros()
     {
         $client = static::createClient();
 
@@ -35,7 +24,17 @@ class CashMachineControllerTest extends WebTestCase
         $this->assertTrue(1===$numForms);
     }
 	
-	public function testEntregarSubmit()
+	public function testEntregarDineroAlSolicitarConParametros()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('POST', '/entregar_dinero',array('cantidad_solicitada'=>150));
+		$numForms=$crawler->filter('form[name="dinero_entregado"]')->count();
+        $this->assertTrue(1===$numForms);
+    }
+	
+	
+	
+	public function testSimulaSubmitDe250()
     {
         $client = static::createClient();
 		$crawler = $client->request('GET', '/');
