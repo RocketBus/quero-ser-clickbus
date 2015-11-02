@@ -20,34 +20,27 @@ class CashMachineController extends Controller
     {
 		$cantidad = $request->request->get('cantidad_solicitada');
 		$esAjax = $request->request->get('esAjax');
-		
 		$cashMachine=new CashMachineLogic();
-		$method = $this->get('request')->getMethod();
 		
+		$datosRespuesta=array();
 		try{
 			$billetes=$cashMachine->getBilletes($cantidad);
-			if ( !empty($esAjax) ){
-				$response = new Response();
-				$response->setContent(json_encode(
-					array('success'=>true,'cantidad'=>number_format ($cantidad,0,'.',',') ,'billetes'=>$billetes)
-				));
-				$response->headers->set('Content-Type', 'application/json');
-				return $response;
-			}else{
-				return $this->render('AppBundle:CashMachine:dinero_entregado.html.twig',array('cantidad'=>$cantidad,'billetes'=>$billetes));
-			}
+			$datosRespuesta=array(
+				'success'=>true,
+				'cantidad'=>number_format ($cantidad,0,'.',','),
+				'billetes'=>$billetes
+			);
 		}catch(\Exception $e){
-			if ( !empty($esAjax) ){
-				
-				$response = new Response();
-				$response->setContent(json_encode(
-					array('success'=>false, 'msg_error'=>$e->getMessage(),'cantidad'=>$cantidad)
-				));
-				$response->headers->set('Content-Type', 'application/json');
-				return $response;
-			}else{
-				return $this->render('AppBundle:CashMachine:error.html.twig',array('cantidad'=>$cantidad,'msg_error'=>$e->getMessage()));
-			}
+			$datosRespuesta=array(
+				'success'=>false, 
+				'msg_error'=>$e->getMessage(),
+				'cantidad'=>$cantidad
+			);
 		}
+		
+		$response = new Response();
+		$response->setContent(json_encode($datosRespuesta));
+		$response->headers->set('Content-Type', 'application/json');
+		return $response;		
     }
 }

@@ -5,6 +5,13 @@
 {% block content %}
 <article id="pnlPantallaContent" style="text-align:left;">
 	<h3 style="margin:0; padding:0">Bienvenido.</h3><br/>
+	
+	{% if msg_error is defined %}
+	<div class="alert alert-warning" role="alert">
+		{{ msg_error }}
+	</div>
+	{% endif %}
+	
 	<form name="cash_machine" METHOD="POST" action="{{ path('entregar_dinero') }}" >
 		<label>Escriba la cantidad deseada:</label>
 		 <input class="form-control"  placeholder="escriba muliplos de 10" style="color:#333;" required min=10 step=10 autofocus name="cantidad_solicitada" />
@@ -35,7 +42,7 @@ $( document ).ready( function(){
 	var params={
 		entregar_url:"{{ path('entregar_dinero') }}"
 	};
-	cashMachines.init(params);
+	cashMachines.init(params); 
 } );
 </script>
 {% endblock %}

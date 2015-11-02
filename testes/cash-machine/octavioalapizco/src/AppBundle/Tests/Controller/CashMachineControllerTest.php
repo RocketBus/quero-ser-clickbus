@@ -19,17 +19,21 @@ class CashMachineControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/entregar_dinero');
-		$numForms=$crawler->filter('form[name="frmError"]')->count();
-        $this->assertTrue(1===$numForms);
+        $crawler = $client->request('POST', '/entregar_dinero');
+		$numErrores=$crawler->filter('div.alert-warning')->count();
+        $this->assertTrue(1===$numErrores);
     }
 	
 	public function testEntregarDineroAlSolicitarConParametros()
     {
         $client = static::createClient();
-        $crawler = $client->request('POST', '/entregar_dinero',array('cantidad_solicitada'=>150));
-		$numForms=$crawler->filter('form[name="dinero_entregado"]')->count();
-        $this->assertTrue(1===$numForms);
+        $client->request('POST', '/entregar_dinero',array('cantidad_solicitada'=>150));
+		
+		$response = $client->getResponse();
+		$this->assertSame(200, $client->getResponse()->getStatusCode()); // Test if response is OK
+		$this->assertSame('application/json', $response->headers->get('Content-Type')); // Test if Content-Type is valid application/json
+		$this->assertEquals('{"success":true}', $response->getContent()); // Test if company was inserted
+		$this->assertNotEmpty($client->getResponse()->getContent()); // Test that response is not empty
     }
 	
 	
@@ -41,8 +45,12 @@ class CashMachineControllerTest extends WebTestCase
 		$form = $crawler->selectButton('Aceptar')->form(array(
 			'cantidad_solicitada' => 250
 		));
-		$crawler = $client->submit($form);
-		$numForms=$crawler->filter('form[name="dinero_entregado"]')->count();
-        $this->assertTrue(1===$numForms);
+		$client->submit($form);
+		
+		$response = $client->getResponse();
+		$this->assertSame(200, $client->getResponse()->getStatusCode()); // Test if response is OK
+		$this->assertSame('application/json', $response->headers->get('Content-Type')); // Test if Content-Type is valid application/json
+		$this->assertEquals('{"success":true}', $response->getContent()); // Test if company was inserted
+		$this->assertNotEmpty($client->getResponse()->getContent()); // Test that response is not empty
     }
 }

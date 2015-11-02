@@ -9,3 +9,4 @@ index:
 entregar_dinero:
     path:      /entregar_dinero
     defaults:  { _controller: AppBundle:CashMachine:entregarDinero }
+    methods:  [POST]
