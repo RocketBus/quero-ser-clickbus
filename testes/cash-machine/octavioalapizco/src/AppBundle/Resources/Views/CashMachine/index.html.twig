@@ -1,0 +1,48 @@
+{% extends 'AppBundle::base.html.twig' %}
+{% block title %}Bienvenido a su cajero Automático{% endblock %}
+
+
+{% block content %}
+<article id="pnlPantallaContent" style="text-align:left;">
+	<h3 style="margin:0; padding:0">Bienvenido.</h3><br/>
+	
+	{% if msg_error is defined %}
+	<div class="alert alert-warning" role="alert">
+		{{ msg_error }}
+	</div>
+	{% endif %}
+	
+	<form name="cash_machine" METHOD="POST" action="{{ path('entregar_dinero') }}" >
+		<label>Escriba la cantidad deseada:</label>
+		 <input class="form-control"  placeholder="escriba muliplos de 10" style="color:#333;" required min=10 step=10 autofocus name="cantidad_solicitada" />
+		 <input class="btn btn-success" style="display:none" type="submit" value="Aceptar" />
+	</form>
+	<br/>
+	<div id="billetesDisponibles">
+		<label>Billetes Disponibles:</label>
+		<ul style="margin-bottom:0;">
+			<li>$10</li>
+			<li>$20</li>
+			<li>$50</li>
+			<li>$100</li>
+		</ul>
+	</div>
+</article>
+{% endblock %}
+
+
+	 
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('/bundles/app/js/cash_machine.js') }}"></script>
+<script type="text/javascript">
+
+$( document ).ready( function(){
+	var cashMachines=new CashMachine();
+	var params={
+		entregar_url:"{{ path('entregar_dinero') }}"
+	};
+	cashMachines.init(params); 
+} );
+</script>
+{% endblock %}
