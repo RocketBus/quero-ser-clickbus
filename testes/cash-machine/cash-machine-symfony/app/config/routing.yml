@@ -1,0 +1,4 @@
+cash_machine:
+    resource: "@CashMachineBundle/Resources/config/routing.php"
+    prefix:   /
+
