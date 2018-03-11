@@ -1,0 +1,31 @@
+
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+<div class="main-container">
+    <div class="main wrapper clearfix">
+    <h1>Por el momento estas son las cantidades disponibles:</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for note in notes %}
+            <tr>
+                <td>{{ note}}</td>
+               
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        
+    </div>
+   {{ form_start(form) }}
+        {{ form_widget(form) }}
+      {{ form_end(form) }}
+</div>                
+{% endblock %}
