@@ -1,0 +1,36 @@
+{% extends "CashMachineBundle:Default:layout.html.twig" %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <strong>Resultado:</strong>
+            <p>[
+            {% if bills is iterable %}
+            {% for bill,val in bills %}
+                {% set isLast = loop.last%}
+
+                        {% for billValue in range(1,val)%}
+                            {{bill}}.00
+                            {% if  not isLast or not loop.last%}
+                                ,
+                            {% endif %}
+                        {% endfor %}  
+                {% endfor %}
+            {% else %}
+                {{bills}}
+            {% endif %}
+            ]
+            </p>
+        </div>
+        <div class="col-lg-6">
+                {{ form_start(form) }}
+                
+                <div class="form-group">
+                {{ form_row(form.ammount,{'label':'Cantidad a retirar:','attr':{'class':'form-control ammountClass'}}) }}
+                </div>
+				<div class="form-group">
+               {{ form_row(form.submittButton,{'label':'Retirar:','attr':{'class':'btn btn-primary'}}) }}
+                <div>
+                {{ form_end(form) }}
+            </div>
+    </div>
+{% endblock %}
