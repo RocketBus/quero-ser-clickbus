@@ -1,0 +1,45 @@
+{# app/Resources/views/cashmachine.html.twig #}
+{% extends 'base.html.twig' %}
+{%block styles %}
+    <link rel="stylesheet" href="{{asset('styles/styles.css')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block body %}
+    <div class="titleCenter">
+        <h2>Selecciona la cantidad a retirar:</h2>
+        <small>* Por el momento solo contamos con billetes <i class="fa fa-money"></i> de $100, $50, $20 y $10</small>
+    </div>
+    <div id="atm">
+        <!-- Screen and clear key -->
+        <div class="top">
+            <span class="moneyLogo ignore">$</span>
+            <div class="screen"></div>
+        </div>
+	
+	   <div class="keys">
+           <!-- operators and other keys -->
+           <span>7</span>
+           <span>8</span>
+           <span>9</span>
+           <span>4</span>
+           <span>5</span>
+           <span>6</span>
+           <span>1</span>
+           <span>2</span>
+           <span>3</span>
+           <span>0</span>
+           <span class="eval check">
+               <i class="fa fa-check-circle fa-2x"></i>
+           </span>
+           <span class="clear"><i class="fa fa-arrow-left fa-2x"></i></span>
+	   </div>
+        <div id="response"></div>
+    </div>
+    {% endblock %}
+    {% block javascripts %}
+    <script src="{{asset('scripts/cashScript.js')}}"></script>
+    {% endblock %}
+
+
+
