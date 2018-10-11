@@ -1,0 +1,32 @@
+version: '2'
+services:
+  web:
+      image: rrcfesc/dockerfilesmagento2:latest
+      extra_hosts:
+       - "test.local.com:127.0.0.1"
+      expose:
+         - "9000"
+      ports:
+          - "80:80"
+          - "443:443"
+      volumes:
+          - ./:/var/www/html
+          - ~/.ssh:/home/magento/.ssh
+          - ./apache_config:/etc/apache2/sites-available/
+      environment:
+        PHP_XDEBUG_ENABLED: 1
+        XDEBUG_CONFIG: remote_host=192.168.1.107
+        PHP_IDE_CONFIG: "serverName=Backend"
+      links:
+          - mysql
+      container_name: ${PROJECT_NAME}_web
+  mysql:
+      image: mysql:5.7
+      volumes:
+      - ./database/data:/var/lib/mysql
+      ports:
+        - 3308:3306
+      environment:
+          - MYSQL_ROOT_PASSWORD=mysql
+          - MYSQL_DATABASE=${DB_NAME}
+      container_name: ${PROJECT_NAME}_db

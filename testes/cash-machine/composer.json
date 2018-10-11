@@ -1,0 +1,27 @@
+{
+  "name": "cashmachine",
+  "description": "Exercise ClickBus" ,
+  "license": "BS3-Clausule",
+  "authors": [
+    {
+      "name": "Ricardo Ruiz",
+      "email": "ricardojesus.ruizcruz@protonmail.com"
+    }
+  ],
+  "require":{
+    "php"   : ">=7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit"               : "7.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rioxygen\\ClickBus\\": "src"
+    }
+  },
+  "autoload-dev" : {
+    "psr-4" : {
+      "Rioxygen\\ClickBus\\" : "tests/src"
+    }
+  }
+}

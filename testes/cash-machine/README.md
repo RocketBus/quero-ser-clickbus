@@ -34,3 +34,26 @@ Exemplos:
 * 
   **Entrada:** NULL  
   **Resultado:** [Empty Set]
+
+# How to use
+## Requeriments
+
+    - Docker 17.06.1 or superior
+
+## How to test or/use
+
+```bash
+$ cp .env.dist .env
+$ cp docker-compose.yml.dist docker-compose.yml
+$ docker-compose up -d
+$ docker exec -it clickbus_web bash
+# su magento2
+$ php -v
+PHP 7.1.22 (cli) (built: Sep 15 2018 03:35:24) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.1.0, Copyright (c) 1998-2018 Zend Technologies
+    with Xdebug v2.6.1, Copyright (c) 2002-2018, by Derick Rethans
+$ composer update
+$ vendor/bin/phpunit --config build/phpunit.xml
+```
+

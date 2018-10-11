@@ -1,0 +1,8 @@
+.env
+database/*
+database
+docker-compose.yml
+.idea/*
+composer.lock
+vendor
+vendor/*
