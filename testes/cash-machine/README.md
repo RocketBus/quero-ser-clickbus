@@ -34,6 +34,8 @@ Exemplos:
 * 
   **Entrada:** NULL  
   **Resultado:** [Empty Set]
+  
+[![Build Status](https://travis-ci.org/rrcfesc/quero-ser-clickbus.svg?branch=master)](https://travis-ci.org/rrcfesc/quero-ser-clickbus)
 
 # How to use
 ## Requeriments
