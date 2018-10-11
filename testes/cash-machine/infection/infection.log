@@ -1,0 +1,142 @@
+Escaped mutants:
+================
+
+
+1) /var/www/html/src/Exception/UnavailableException.php:20    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+      */
+     public function __construct($message)
+     {
+-        parent::__construct($message);
++        
+     }
+ }
+
+
+2) /var/www/html/src/Machine.php:36    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+         if (max($this->cashout) < $cash) {
+             throw new UnavailableException("Note Unavailable Exception");
+         }
+-        if ($cash < 0) {
++        if ($cash < -1) {
+             throw new \InvalidArgumentException("NoteUnavailableException");
+         }
+         ksort($this->cashout);
+
+
+3) /var/www/html/src/Machine.php:36    [M] OneZeroInteger
+
+--- Original
++++ New
+@@ @@
+         if (max($this->cashout) < $cash) {
+             throw new UnavailableException("Note Unavailable Exception");
+         }
+-        if ($cash < 0) {
++        if ($cash < 1) {
+             throw new \InvalidArgumentException("NoteUnavailableException");
+         }
+         ksort($this->cashout);
+
+
+4) /var/www/html/src/Machine.php:36    [M] LessThan
+
+--- Original
++++ New
+@@ @@
+         if (max($this->cashout) < $cash) {
+             throw new UnavailableException("Note Unavailable Exception");
+         }
+-        if ($cash < 0) {
++        if ($cash <= 0) {
+             throw new \InvalidArgumentException("NoteUnavailableException");
+         }
+         ksort($this->cashout);
+
+
+5) /var/www/html/src/Machine.php:38    [M] FunctionCallRemoval
+
+--- Original
++++ New
+@@ @@
+         if ($cash < 0) {
+             throw new \InvalidArgumentException("NoteUnavailableException");
+         }
+-        ksort($this->cashout);
++        
+         foreach ($this->cashout as $value) {
+             do {
+                 if ($cash >= $value) {
+
+
+6) /var/www/html/src/Machine.php:43    [M] Assignment
+
+--- Original
++++ New
+@@ @@
+             do {
+                 if ($cash >= $value) {
+                     $response[] = floatval($value);
+-                    $cash -= $value;
++                    $cash = $value;
+                 }
+             } while ($cash > $value);
+         }
+
+
+7) /var/www/html/src/Machine.php:45    [M] GreaterThan
+
+--- Original
++++ New
+@@ @@
+                     $response[] = floatval($value);
+                     $cash -= $value;
+                 }
+-            } while ($cash > $value);
++            } while ($cash >= $value);
+         }
+         return $response;
+     }
+ }
+Timed Out mutants:
+==================
+
+
+1) /var/www/html/src/Machine.php:43    [M] MinusEqual
+
+--- Original
++++ New
+@@ @@
+             do {
+                 if ($cash >= $value) {
+                     $response[] = floatval($value);
+-                    $cash -= $value;
++                    $cash += $value;
+                 }
+             } while ($cash > $value);
+         }
+
+
+2) /var/www/html/src/Machine.php:45    [M] GreaterThanNegotiation
+
+--- Original
++++ New
+@@ @@
+                     $response[] = floatval($value);
+                     $cash -= $value;
+                 }
+-            } while ($cash > $value);
++            } while ($cash <= $value);
+         }
+         return $response;
+     }
+ }
+Not Covered mutants:
+====================

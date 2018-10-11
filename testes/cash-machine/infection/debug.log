@@ -1,0 +1,77 @@
+Total: 19
+Killed mutants:
+===============
+
+
+Mutator: LogicalNot
+Line 32
+
+Mutator: Throw_
+Line 33
+
+Mutator: LessThan
+Line 34
+
+Mutator: LessThanNegotiation
+Line 34
+
+Mutator: Throw_
+Line 35
+
+Mutator: LessThanNegotiation
+Line 36
+
+Mutator: Throw_
+Line 37
+
+Mutator: Foreach_
+Line 39
+
+Mutator: GreaterThanOrEqualTo
+Line 41
+
+Mutator: GreaterThanOrEqualToNegotiation
+Line 41
+
+Errors mutants:
+===============
+
+
+Escaped mutants:
+================
+
+
+Mutator: MethodCallRemoval
+Line 20
+
+Mutator: DecrementInteger
+Line 36
+
+Mutator: OneZeroInteger
+Line 36
+
+Mutator: LessThan
+Line 36
+
+Mutator: FunctionCallRemoval
+Line 38
+
+Mutator: Assignment
+Line 43
+
+Mutator: GreaterThan
+Line 45
+
+Timed Out mutants:
+==================
+
+
+Mutator: MinusEqual
+Line 43
+
+Mutator: GreaterThanNegotiation
+Line 45
+
+Not Covered mutants:
+====================
+

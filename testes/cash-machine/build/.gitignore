@@ -2,3 +2,7 @@ coverage
 coverage/*
 logs
 logs/*
+infection/*
+infection
+api
+api/*

@@ -30,7 +30,8 @@ final class MachineDispenserTest extends TestCase
     public function test30Example()
     {
         $machineDispenser = new Machine();
-        $this->assertTrue(is_array($machineDispenser->deliver(30.00)));
+        $response = $machineDispenser->deliver(30.00);
+        $this->assertTrue(is_array($response));
     }
     /**
      *
@@ -38,7 +39,9 @@ final class MachineDispenserTest extends TestCase
     public function test80Example()
     {
         $machineDispenser = new Machine();
-        $this->assertTrue(is_array($machineDispenser->deliver(80.00)));
+        $response = $machineDispenser->deliver(80.00);
+        $this->assertEquals($response, array(50.00,20.00,10.00));
+        $this->assertTrue(is_array($response));
     }
     /**
      *
@@ -46,7 +49,8 @@ final class MachineDispenserTest extends TestCase
     public function test100Example()
     {
         $machineDispenser = new Machine();
-        $this->assertTrue(is_array($machineDispenser->deliver(100.00)));
+        $response = $machineDispenser->deliver(100.00);
+        $this->assertTrue(is_array($response));
     }
     /**
      * @expectedException \Rioxygen\ClickBus\Exception\UnavailableException
@@ -64,6 +68,15 @@ final class MachineDispenserTest extends TestCase
     {
         $machineDispenser = new Machine();
         $machineDispenser->deliver(-130.00);
+        $this->expectExceptionObject(\InvalidArgumentException::class);
+    }
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testInvalidArgumentString()
+    {
+        $machineDispenser = new Machine();
+        $machineDispenser->deliver("asd");
         $this->expectExceptionObject(\InvalidArgumentException::class);
     }
     /**

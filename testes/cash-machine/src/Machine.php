@@ -20,20 +20,30 @@ class Machine implements MachineDispenser
      * Available type of convertions
      * @var array
      */
-    static $cashout = array(100.00,50,20,10);
+    private $cashout = array(100,50,20,10);
     /**
-     *
-     * @param float $cash
+     * @param null $cash
      * @return array
+     * @throws UnavailableException
      */
     public function deliver($cash = null) : array
     {
+        $response = array();
         if (!is_float($cash))
             throw new \InvalidArgumentException("No float given");
-        if (max(self::$cashout) < $cash)
+        if (max($this->cashout) < $cash)
             throw new UnavailableException("Note Unavailable Exception");
         if ($cash < 0)
             throw new \InvalidArgumentException("NoteUnavailableException");
-        return self::$cashout;
+        ksort($this->cashout);
+        foreach ($this->cashout as $value) {
+            do {
+                if ($cash >= $value) {
+                    $response[] = floatval($value);
+                    $cash -= $value;
+                }
+            } while($cash > $value);
+        }
+        return $response;
     }
 }
