@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace Rioxygen\ClickBus;
 
 use Rioxygen\ClickBus\BaseInterfaces\MachineDispenser;
+use Rioxygen\ClickBus\Exception\UnavailableException;
 
 /**
  * Class Machine
@@ -15,14 +16,24 @@ use Rioxygen\ClickBus\BaseInterfaces\MachineDispenser;
  */
 class Machine implements MachineDispenser
 {
-    static $cashout = array(100,50,20,10);
+    /**
+     * Available type of convertions
+     * @var array
+     */
+    static $cashout = array(100.00,50,20,10);
     /**
      *
-     * @param string $cash
-     * @return float
+     * @param float $cash
+     * @return array
      */
-    public function deliver($cash = null): float
+    public function deliver($cash = null) : array
     {
-        return 100.00;
+        if (!is_float($cash))
+            throw new \InvalidArgumentException("No float given");
+        if (max(self::$cashout) < $cash)
+            throw new UnavailableException("Note Unavailable Exception");
+        if ($cash < 0)
+            throw new \InvalidArgumentException("NoteUnavailableException");
+        return self::$cashout;
     }
 }

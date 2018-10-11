@@ -6,3 +6,4 @@ docker-compose.yml
 composer.lock
 vendor
 vendor/*
+infection.json

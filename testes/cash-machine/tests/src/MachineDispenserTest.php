@@ -24,9 +24,47 @@ final class MachineDispenserTest extends TestCase
     {
         //return void;
     }
-    public function testInit()
+    /**
+     *
+     */
+    public function test30Example()
     {
-        $this->assertTrue(true);
+        $machineDispenser = new Machine();
+        $this->assertTrue(is_array($machineDispenser->deliver(30.00)));
+    }
+    /**
+     *
+     */
+    public function test80Example()
+    {
+        $machineDispenser = new Machine();
+        $this->assertTrue(is_array($machineDispenser->deliver(80.00)));
+    }
+    /**
+     *
+     */
+    public function test100Example()
+    {
+        $machineDispenser = new Machine();
+        $this->assertTrue(is_array($machineDispenser->deliver(100.00)));
+    }
+    /**
+     * @expectedException \Rioxygen\ClickBus\Exception\UnavailableException
+     */
+    public function testUnavailable()
+    {
+        $machineDispenser = new Machine();
+        $machineDispenser->deliver(125.00);
+        $this->expectException(\Rioxygen\ClickBus\Exception\UnavailableException::class);
+    }
+    /**
+     * @expectedException \InvalidArgumentException
+     */
+    public function testInvalidArgument()
+    {
+        $machineDispenser = new Machine();
+        $machineDispenser->deliver(-130.00);
+        $this->expectExceptionObject(\InvalidArgumentException::class);
     }
     /**
      * TDD workflow

@@ -14,5 +14,5 @@ namespace Rioxygen\ClickBus\BaseInterfaces;
  */
 interface MachineDispenser
 {
-    public function deliver($cash = null) : float;
+    public function deliver($cash = null) : array;
 }
