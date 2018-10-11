@@ -71,6 +71,15 @@ final class MachineDispenserTest extends TestCase
         $this->expectExceptionObject(\InvalidArgumentException::class);
     }
     /**
+     * @expectedException \Rioxygen\ClickBus\Exception\UnavailableException
+     */
+    public function testInvalidBalance()
+    {
+        $machineDispenser = new Machine();
+        $machineDispenser->deliver(200000000000.00);
+        $this->expectExceptionObject(\Rioxygen\ClickBus\Exception\UnavailableException::class);
+    }
+    /**
      * @expectedException \InvalidArgumentException
      */
     public function testInvalidArgumentString()

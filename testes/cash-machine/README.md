@@ -58,4 +58,7 @@ Zend Engine v3.1.0, Copyright (c) 1998-2018 Zend Technologies
 $ composer update
 $ vendor/bin/phpunit --config build/phpunit.xml
 ```
+## Tests
+
+The tests are allowed in folder tests
 
