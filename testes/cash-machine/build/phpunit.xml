@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/|version|/phpunit.xsd"
+        backupGlobals="true"
+        backupStaticAttributes="false"
+        bootstrap="../tests/Bootstrap.php"
+        cacheTokens="false"
+        colors="false"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        forceCoversAnnotation="false"
+        printerClass="PHPUnit\TextUI\ResultPrinter"
+        processIsolation="false"
+        stopOnError="false"
+        stopOnFailure="false"
+        stopOnIncomplete="false"
+        stopOnSkipped="false"
+        stopOnRisky="false"
+        testSuiteLoaderClass="PHPUnit\Runner\StandardTestSuiteLoader"
+        timeoutForSmallTests="1"
+        timeoutForMediumTests="10"
+        timeoutForLargeTests="60"
+        verbose="false">
+    <testsuites>
+        <testsuite name="general">
+            <directory>../tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <blacklist>
+            <directory suffix=".php">../vendor</directory>
+        </blacklist>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../src</directory>
+        </whitelist>
+    </filter>
+    <!--logging>
+        <log type="coverage-html" target="coverage/"/>
+        <log type="coverage-clover" target="logs/clover.xml"/>
+        <log type="coverage-php" target="logs/coverage.cov"/>
+        <log type="coverage-crap4j" target="logs/crap4j.xml"/>
+        <log type="junit" target="logs/junit.xml" />
+    </logging-->
+    <logging>
+        <log type="coverage-html" target="coverage/" lowUpperBound="35"
+             highLowerBound="70"/>
+        <log type="coverage-clover" target="logs/clover.xml"/>
+        <log type="coverage-php" target="logs/coverage.serialized"/>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true"/>
+        <log type="junit" target="logs/logfile.xml"/>
+        <log type="testdox-html" target="logs//testdox.html"/>
+        <log type="testdox-text" target="logs/testdox.txt"/>
+    </logging>
+</phpunit>
