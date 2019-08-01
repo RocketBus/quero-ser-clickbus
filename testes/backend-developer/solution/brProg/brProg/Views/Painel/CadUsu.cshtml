@@ -1,0 +1,46 @@
+﻿@model brProg.Models.LoginViewModel
+@{
+    ViewBag.Title = "Cadastrar Usuario";
+    Layout = "~/Views/Shared/_LayoutAll.cshtml";
+}
+
+@Html.Partial("_NavBotoesPainel")
+
+@using (Html.BeginForm(new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <form role="form">
+        <div class="titulo">Cadastro de Usuário</div>
+        <div class="form-group">
+            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Nome do Usuario</label>
+            @Html.TextBoxFor(m => Model.Nome, new { @class = "form-control" })
+            <p class="erro-form"> @Html.ValidationMessageFor(a => Model.Nome)</p>
+        </div>
+        <div class="form-group">
+            <label for="usrname"><span class="glyphicon glyphicon-certificate"></span> Usuario</label>
+            @Html.TextBoxFor(m => Model.Usuario, new { @class = "form-control" })
+            <p class="erro-form"> @Html.ValidationMessageFor(a => Model.Usuario)</p>
+        </div>
+
+        <div class="form-group">
+            <label for="usrname"><span class="glyphicon glyphicon-certificate"></span> Tipo de Usuário</label>
+            <p>
+                @Html.RadioButtonFor(model => model.Permissoes, "F", false) Funcionário<br />
+                @Html.RadioButtonFor(model => model.Permissoes, "A", false) Administrador
+        </p><p class="erro-form"> @Html.ValidationMessageFor(a => Model.Permissoes)</p>
+        </div>
+
+        
+
+        <div class="form-group">
+            <label for="psw"><span class="glyphicon glyphicon-warning-sign"></span> Senha</label>
+            @Html.PasswordFor(m => Model.Senha, new { @class = "form-control" })
+            <p class="erro-form"> @Html.ValidationMessageFor(m => Model.Senha) </p>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-reflex-azul btn-block">Criar novo usuario</button>
+        <p class="erro-form">@ViewBag.Message</p>
+    </form>
+}

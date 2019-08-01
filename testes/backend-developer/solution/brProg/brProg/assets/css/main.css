@@ -1,0 +1,937 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+/* line 1, src/scss/master/_masterLogin.scss */
+.navbar-brand {
+  padding: 0px;
+}
+
+th, td{
+    font-family: "Lobster", sans-serif;
+}
+input{
+    font-family: "Lobster", sans-serif;
+}
+
+
+
+td{
+    font-size:15px;
+}
+
+.pPad{
+    font-size:22px;
+}
+
+.pPad-input{
+     font-size:20px;
+}
+
+label{
+    font-weight: 300 !important;
+}
+
+/* line 4, src/scss/master/_masterLogin.scss */
+.navbar-brand {
+    FONT-SIZE: 60PX;
+    font-family: "Lobster", sans-serif;
+    padding-top: 30px;
+    color: black;
+}
+
+/* line 11, src/scss/master/_masterLogin.scss */
+.menu-controller .navbar-brand {
+  height: 80px;
+}
+
+/* line 16, src/scss/master/_masterLogin.scss */
+.back-image {
+  background-image: url("../../assets/img/eoq.png");
+  background-size: cover;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 22, src/scss/master/_masterLogin.scss */
+  .menu-controller .navbar-header {
+    border-bottom: 1px solid #e6eef1;
+  }
+}
+
+/* line 29, src/scss/master/_masterLogin.scss */
+.menu-controller .navbar-toggle {
+  padding: 10px;
+  margin: 25px 15px 25px 0;
+}
+
+/* line 34, src/scss/master/_masterLogin.scss */
+.menu-controller .custom-nav {
+  background-color: #c7d9ef;
+}
+
+/* line 38, src/scss/master/_masterLogin.scss */
+.menu-controller .hamburger-inner {
+  background-color: #ef7a13;
+}
+
+/* line 40, src/scss/master/_masterLogin.scss */
+.menu-controller .hamburger-inner:after {
+  background-color: #ef7a13;
+}
+
+/* line 43, src/scss/master/_masterLogin.scss */
+.menu-controller .hamburger-inner:before {
+  background-color: #ef7a13;
+}
+
+/* line 49, src/scss/master/_masterLogin.scss */
+footer {
+  display: table;
+  width: 100%;
+}
+
+/* line 52, src/scss/master/_masterLogin.scss */
+footer .rodape {
+  text-transform: uppercase;
+  display: table-cell;
+  vertical-align: middle;
+  background-color: #434142;
+  color: #ef7a13;
+  height: 40px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 16px;
+}
+
+/* line 65, src/scss/master/_masterLogin.scss */
+#ModalLogin .header-login {
+  padding: 22px 50px;
+  background-color: #434142;
+  color: #ef7a13;
+  font-family: "Lobster", sans-serif;
+}
+
+/* line 70, src/scss/master/_masterLogin.scss */
+#ModalLogin .header-login .h4 {
+  font-size: 20px;
+}
+
+/* line 77, src/scss/master/_masterLogin.scss */
+.form-group label {
+  font-size: 20px;
+  font-family: "Lobster", sans-serif;
+}
+
+/* line 83, src/scss/master/_masterLogin.scss */
+.imagem-duvida-login-mobile {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto;
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 83, src/scss/master/_masterLogin.scss */
+  .imagem-duvida-login-mobile {
+    display: block;
+  }
+}
+
+/* line 95, src/scss/master/_masterLogin.scss */
+.imagem-duvida-login-desktop {
+  width: 100%;
+  max-width: 1000px;
+  display: block;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 95, src/scss/master/_masterLogin.scss */
+  .imagem-duvida-login-desktop {
+    display: none;
+  }
+}
+
+/* line 109, src/scss/master/_masterLogin.scss */
+.controle-ini {
+  height: 50px;
+}
+
+/* line 111, src/scss/master/_masterLogin.scss */
+.controle-ini .custom-nav {
+  background-color: #00adee;
+}
+
+/* line 115, src/scss/master/_masterLogin.scss */
+.controle-ini .btn {
+  padding: 6px;
+}
+
+/* line 118, src/scss/master/_masterLogin.scss */
+.controle-ini .btn-reflex-login {
+  margin-right: -16px;
+  float: right;
+  color: #ef7a13;
+  background-color: #434142;
+  overflow: hidden;
+  position: relative;
+  margin-top: 6px;
+  text-transform: uppercase;
+  margin-left: 10px;
+  border: 2px solid #000000;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+@media screen and (max-width: 767px) {
+  /* line 118, src/scss/master/_masterLogin.scss */
+  .controle-ini .btn-reflex-login {
+    margin-right: 5px;
+  }
+}
+
+/* line 134, src/scss/master/_masterLogin.scss */
+.controle-ini .btn-reflex-login:before {
+  content: "";
+  background: #434142;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: .6;
+  position: absolute;
+  top: -50px;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+  -webkit-transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: 9;
+}
+
+/* line 151, src/scss/master/_masterLogin.scss */
+.controle-ini .btn-reflex-login:hover, .controle-ini .btn-reflex-login:focus {
+  color: #ef7a13;
+  background-color: #fff;
+  border: 2px solid black;
+  border-radius: 0px;
+}
+
+/* line 158, src/scss/master/_masterLogin.scss */
+.controle-ini .btn-reflex-login:hover:before, .controle-ini .btn-reflex-login:focus:before {
+  left: 150%;
+  background-color: #fff;
+}
+
+/* line 1, src/scss/geral/_geral.scss */
+body {
+  font-family: 'Anton', arial;
+}
+
+/* line 5, src/scss/geral/_geral.scss */
+.erro-form {
+  color: #d015a1;
+  font-size: 18px;
+}
+
+/* line 10, src/scss/geral/_geral.scss */
+.row {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 15, src/scss/geral/_geral.scss */
+.modal-content {
+  border-radius: 0px;
+}
+
+/* line 19, src/scss/geral/_geral.scss */
+.welckome {
+  width: 100%;
+  height: 50px;
+  background-color: #00adee;
+}
+
+/* line 24, src/scss/geral/_geral.scss */
+.welckome .deslogar {
+  float: right;
+}
+
+/* line 29, src/scss/geral/_geral.scss */
+.form-control {
+  border-radius: 0px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+/* line 37, src/scss/geral/_geral.scss */
+.form-control:focus {
+  border-color: #f88cff;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px #ef7a13, 0 0 8px #f88cff;
+  box-shadow: inset 0 0px 0px black, 0 0 4px #f88cff;
+}
+
+/* line 45, src/scss/geral/_geral.scss */
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: none;
+  color: #ef7a13;
+  text-shadow: initial;
+  filter: none;
+  opacity: initial;
+}
+
+/* line 55, src/scss/geral/_geral.scss */
+button.close {
+  -webkit-appearance: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: solid 1px #ef7a13;
+  border-radius: 50%;
+  color: #ef7a13;
+  width: 35px;
+  height: 35px;
+}
+
+/* line 65, src/scss/geral/_geral.scss */
+button.close:hover, button.close:focus, button.close:active, button.close:visited {
+  color: #ef7a13;
+  border: solid 2px #ef7a13;
+  opacity: initial;
+}
+
+/* line 75, src/scss/geral/_geral.scss */
+.btn {
+  transition: color .1s ease;
+  font-family: sans-serif;
+  font-size: 16px;
+  border-radius: 0px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/* line 82, src/scss/geral/_geral.scss */
+.btn-reflex-login {
+  color: #ef7a13;
+  background-color: #434142;
+  overflow: hidden;
+  position: relative;
+  margin-top: 15px;
+  text-transform: uppercase;
+  margin-left: 10px;
+  border: 2px solid #434142;
+
+}
+
+@media screen and (max-width: 767px) {
+  /* line 82, src/scss/geral/_geral.scss */
+  .btn-reflex-login {
+    margin-left: 0px;
+  }
+}
+
+/* line 96, src/scss/geral/_geral.scss */
+.btn-reflex-login:before {
+  content: "";
+  background: #434142;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: .6;
+  position: absolute;
+  top: -50px;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+  -webkit-transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: 9;
+}
+
+/* line 113, src/scss/geral/_geral.scss */
+.btn-reflex-login:hover, .btn-reflex-login:focus {
+  color: #ef7a13;
+  background-color: #434142;
+  border: 2px solid #000000;
+  border-radius: 0px;
+}
+
+/* line 120, src/scss/geral/_geral.scss */
+.btn-reflex-login:hover:before, .btn-reflex-login:focus:before {
+  left: 150%;
+  background-color: #fff;
+}
+
+/* line 127, src/scss/geral/_geral.scss */
+.btn-reflex-azul {
+  color: #fff;
+  background-color: #00adee;
+  overflow: hidden;
+  position: relative;
+  text-transform: uppercase;
+}
+
+/* line 134, src/scss/geral/_geral.scss */
+.btn-reflex-azul:before {
+  content: "";
+  background: #fff;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: .6;
+  position: absolute;
+  top: -50px;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+  -webkit-transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: 9;
+}
+
+/* line 151, src/scss/geral/_geral.scss */
+.btn-reflex-azul:hover, .btn-reflex-azul:focus {
+  color: #ef7a13;
+  background-color: #434142;
+  border: 1px solid #434142;
+  border-radius: 0px;
+}
+
+/* line 158, src/scss/geral/_geral.scss */
+.btn-reflex-azul:hover:before, .btn-reflex-azul:focus:before {
+  left: 120%;
+  background-color: #fff;
+}
+
+/* line 165, src/scss/geral/_geral.scss */
+.btn-reflex-vermelho {
+  color: #fff;
+  background-color: #bf2626;
+  overflow: hidden;
+  position: relative;
+  text-transform: uppercase;
+}
+
+/* line 172, src/scss/geral/_geral.scss */
+.btn-reflex-vermelho:before {
+  content: "";
+  background: #fff;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: .6;
+  position: absolute;
+  top: -50px;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+  -webkit-transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: 9;
+}
+
+/* line 189, src/scss/geral/_geral.scss */
+.btn-reflex-vermelho:hover, .btn-reflex-vermelho:focus {
+  color: #ef7a13;
+  background-color: #434142;
+  border: 1px solid #434142;
+  border-radius: 0px;
+}
+
+/* line 196, src/scss/geral/_geral.scss */
+.btn-reflex-vermelho:hover:before, .btn-reflex-vermelho:focus:before {
+  left: 120%;
+  background-color: #fff;
+}
+
+/* line 203, src/scss/geral/_geral.scss */
+.nomeBarra {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  font-size: 37px;
+  font-family: "Lobster", sans-serif;
+}
+
+/* line 210, src/scss/geral/_geral.scss */
+.botao-ini {
+  width: auto;
+  height: auto;
+  display: inline-block;
+  float: right;
+}
+
+/* line 217, src/scss/geral/_geral.scss */
+.erro-form {
+  margin-top: 0px;
+}
+
+/* line 221, src/scss/geral/_geral.scss */
+.titulo {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  font-size: 35px;
+  margin-bottom: 15px;
+  font-family: "Lobster", sans-serif;
+}
+
+/* line 230, src/scss/geral/_geral.scss */
+.box-produto {
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+/* line 234, src/scss/geral/_geral.scss */
+.box-produto .prod-uni {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* line 238, src/scss/geral/_geral.scss */
+.box-produto .prod-uni .imagem-esq {
+  display: block;
+  max-width: 228px; 
+   margin: 0 auto;
+   height:155px;
+    text-align: center;
+    margin-bottom:15px;
+}
+
+@media screen and (max-width: 991px) {
+      .box-produto .prod-uni .imagem-esq {
+       height:130px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+      .box-produto .prod-uni .imagem-esq {
+       height:155px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+      .nomeBarra {
+       font-size:25px;
+       margin-top:10px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+      .nomeBarra {
+       font-size:19px;
+       margin-top:14px;
+    }
+}
+
+
+/* line 244, src/scss/geral/_geral.scss */
+.box-produto .prod-uni .imagem-esq img {
+  width: 100%;
+  max-width: 228px;
+  margin-bottom: 15px;
+  opacity: 0.5;
+  -moz-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+/* line 252, src/scss/geral/_geral.scss */
+.box-produto .prod-uni .imagem-esq img:hover {
+  opacity: 1;
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.02);
+}
+
+/* line 261, src/scss/geral/_geral.scss */
+.box-produto .prod-uni .dados-produto-controle {
+  border-top: 1px solid black;
+  padding-top: 10px;
+}
+
+/* line 264, src/scss/geral/_geral.scss */
+.box-produto .prod-uni .dados-produto-controle p {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+/* line 269, src/scss/geral/_geral.scss */
+.box-produto .prod-uni .dados-produto-controle a {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+/* line 278, src/scss/geral/_geral.scss */
+.control-prod input[type="text"] {
+  width: 70%;
+  display: inline-block;
+}
+
+@media screen and (max-width: 400px) {
+  /* line 278, src/scss/geral/_geral.scss */
+  .control-prod input[type="text"] {
+    width: 60%;
+  }
+}
+
+/* line 286, src/scss/geral/_geral.scss */
+.control-prod button {
+  width: 29%;
+  display: inline-block;
+}
+
+@media screen and (max-width: 400px) {
+  /* line 286, src/scss/geral/_geral.scss */
+  .control-prod button {
+    width: 38%;
+  }
+}
+
+/* line 295, src/scss/geral/_geral.scss */
+.nada-encontrado {
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+  color: #ef7a13;
+}
+
+/* line 302, src/scss/geral/_geral.scss */
+select {
+  width: 100%;
+  height: 34px;
+}
+
+/* line 307, src/scss/geral/_geral.scss */
+.control-merc {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+/* line 313, src/scss/geral/_geral.scss */
+.control-merc p {
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.control-merc .erro-form{
+    margin-top:10px;
+    text-align:center;
+}
+
+#errojq1{
+margin-top:10px;
+
+}
+
+.resumoCaixa{
+    display:block;
+    width:100%;
+    text-align:center;
+}
+
+.subTit{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.result{
+    color:#ef7a13;
+    font-size:32px;
+    display:inline-block;
+}
+
+@media screen and (max-width: 370px) {
+    .subTit{
+    font-size:25px;
+    margin-bottom:15px;
+}
+ .result{
+    color:#ef7a13;
+    font-size:27px;
+    display:inline-block;
+}
+}
+
+.linha{
+   border: 1px solid #ef7a13 ;
+}
+
+/* Basic reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* Better text styling */
+	font: bold 14px;
+}
+
+/* Finally adding some IE9 fallbacks for gradients to finish things up */
+
+/* A nice BG gradient */
+html {
+	height: 100%;
+	background: white;
+	background: radial-gradient(circle, #fff 20%, #ccc);
+	background-size: cover;
+}
+
+/* Using box shadows to create 3D effects */
+#calculator {
+	width: 325px;
+	height: auto;
+	
+	margin: 25px auto;
+	padding: 20px 20px 9px;
+	margin-top: 5px;
+	background: #9dd2ea;
+	background: linear-gradient(#657075, #ffb472);
+	border-radius: 3px;
+	box-shadow: 0px 4px #c3c3c3, 0px 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Top portion */
+.top span.clear {
+	float: left;
+}
+
+/* Inset shadow on the screen to create indent */
+.top .screen {
+	height: 40px;
+	width: 212px;
+	
+	float: right;
+	
+	padding: 0 10px;
+	
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+	box-shadow: inset 0px 4px rgba(0, 0, 0, 0.2);
+	
+	/* Typography */
+	font-size: 17px;
+	line-height: 40px;
+	color: white;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+	text-align: right;
+	letter-spacing: 1px;
+}
+
+/* Clear floats */
+.keys, .top {overflow: hidden;}
+
+/* Applying same to the keys */
+.keys span, .top span.clear {
+	float: left;
+	position: relative;
+	top: 0;
+	
+	cursor: pointer;
+	
+	width: 66px;
+	height: 36px;
+	
+	background: white;
+	border-radius: 3px;
+	box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
+	
+	margin: 0 7px 11px 0;
+	
+	color: #888;
+	line-height: 36px;
+	text-align: center;
+	
+	/* prevent selection of text inside keys */
+	user-select: none;
+	
+	/* Smoothing out hover and active states using css3 transitions */
+	transition: all 0.2s ease;
+}
+
+/* Remove right margins from operator keys */
+/* style different type of keys (operators/evaluate/clear) differently */
+.keys span.operator {
+	background: #FFF0F5;
+	margin-right: 0;
+}
+
+.keys span.eval {
+	    background: #9c9c9c;
+    box-shadow: 0px 4px #ffffff;
+    color: #ffffff;
+}
+
+.top span.clear {
+	background: #ff9fa8;
+	box-shadow: 0px 4px #ff7c87;
+	color: white;
+}
+
+/* Some hover effects */
+.keys span:hover {
+	    background: #434142;
+    box-shadow: 0px 4px #df7922;
+    color: #df7922;
+}
+
+.keys span.eval:hover {
+	background: #2a5404;
+    box-shadow: 0px 4px #585a44;
+    color: #ffffff;
+}
+
+.top span.clear:hover {
+	background: #f68991;
+	box-shadow: 0px 4px #d3545d;
+	color: white;
+}
+
+/* Simulating "pressed" effect on active state of the keys by removing the box-shadow and moving the keys down a bit */
+.keys span:active {
+	box-shadow: 0px 0px #6b54d3;
+	top: 4px;
+}
+
+.keys span.eval:active {
+	box-shadow: 0px 0px #717a33;
+	top: 4px;
+}
+
+.top span.clear:active {
+	top: 4px;
+	box-shadow: 0px 0px #d3545d;
+}
+
+@media screen and (max-width: 375px) {
+    
+
+	#calculator {
+    		width: 275px;
+margin-top: 5px;
+	}
+    .keys span, .top span.clear{
+width: 53px;
+	}
+.top .screen{
+	width:100%;
+	margin-bottom:10px;
+}
+}
+
+.input-group-addon{
+    border-radius: 0;
+    color: #d37a2b;
+    background-color: #434142;
+}
+
+.input-group-addon:hover{
+  background-color: white;
+}
+
+.bootstrap-datetimepicker-widget{
+  border-radius: 0px;
+  border-color: #d37a2b;
+  color: #d37a2b;
+  background-color: #434142;
+  font-size: 14px;
+}
+
+span .moth .active{
+  background-color: #d37a2b;
+}
+
+.bootstrap-datetimepicker-widget table thead tr:first-child th, .bootstrap-datetimepicker-widget table thead tr th {
+  font-weight: normal;
+}
+
+.bootstrap-datetimepicker-widget a[data-action]{
+  color: #d37a2b;
+}
+
+.bootstrap-datetimepicker-widget table td.active{
+  color: #d37a2b !important;
+  background-color: white !important;
+}
+
+.bootstrap-datetimepicker-widget table td.today{
+      border-bottom-color: #d37a2b;
+}
+
+.bootstrap-datetimepicker-widget table td span.active{
+  color: #d37a2b !important;
+  background-color: white !important;
+}
+
+.cor-orange-font{
+  color:#ef7a13;
+  font-size: 18px;
+}
+
+.slider {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* line 120, ../sass/pages/_home.scss */
+.slider #ex1Slider {
+  margin: 0 auto;
+  margin-top: 200px;
+}
+
+/* line 126, ../sass/pages/_home.scss */
+.slider-track {
+  background: #499bea !important;
+  background: -moz-linear-gradient(left, #499bea 0%, #6420e3 100%) !important;
+  background: -webkit-gradient(left top, right top, color-stop(0%, #499bea), color-stop(100%, #6420e3)) !important;
+  background: -webkit-linear-gradient(left, #499bea 0%, #6420e3 100%) !important;
+  background: -o-linear-gradient(left, #499bea 0%, #6420e3 100%) !important;
+  background: -ms-linear-gradient(left, #499bea 0%, #6420e3 100%) !important;
+  background: linear-gradient(to right, #499bea 0%, #6420e3 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#6420e3', GradientType=1) !important;
+}
+
+/* line 137, ../sass/pages/_home.scss */
+.slider-selection {
+  background-color: none !important;
+  width: 0% !important;
+}
+
+/* line 142, ../sass/pages/_home.scss */
+.slider-track-high {
+  background-color: none !important;
+  width: 0% !important;
+}
+
+.slider.slider-horizontal {
+    width: 100% !important;
+    height: 20px;
+}
+
+.tooltip.tooltip-main.top{
+    display:none;
+}
+
+button.impressora{
+    background-color:transparent !important;
+    border: 0px solid black;
+}
+
+button .img-impressora{
+    width:50px;
+    display: block;
+    text-align:center;
+}

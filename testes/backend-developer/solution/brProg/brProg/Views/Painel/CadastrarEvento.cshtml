@@ -1,0 +1,53 @@
+﻿@model brProg.Models.AgendaViewModel
+@{
+    ViewBag.Title = "Cadastrar novo Agendamento";
+    Layout = "~/Views/Shared/_LayoutAll.cshtml";
+}
+
+<script type="text/javascript">
+    window.onload = function () {
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    }
+</script>
+
+@Html.Partial("_NavBotoesPainel")
+@using (Html.BeginForm(new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <form role="form">
+        <div class="titulo">Cadastro de Agendamento</div>
+        <div class="form-group">
+            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Nome do Cliente:</label>
+            @Html.TextBoxFor(m => Model.NomeCliente, new { @class = "form-control" })
+            <p class="erro-form"> @Html.ValidationMessageFor(a => Model.NomeCliente)</p>
+        </div>
+        <div class="form-group">
+            <label for="psw"><span class="glyphicon	glyphicon glyphicon-th"></span> Data do agendamento: </label>
+            <div class='input-group date' id='datetimepicker1'>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                @Html.TextBoxFor(m => m.DataIni, new { @class = "form-control", @placeholder = "Clique para selecionar a Data e a Hora" })
+            </div>
+            <p class="erro-form" id="dataValidao"> @Html.ValidationMessageFor(m => m.DataIni)</p>
+        </div>
+        <div class="form-group">
+            <label for="psw"><span class="glyphicon glyphicon-earphone"></span> Telefone: </label>
+            @Html.TextBoxFor(m => Model.Telefone, new { @class = "form-control" })
+            <p class="erro-form"> @Html.ValidationMessageFor(m => Model.Telefone) </p>
+        </div>
+
+        <div class="form-group">
+            <label for="psw"><span class="glyphicon glyphicon-heart"></span> Descrição de Atividade: </label>
+            @Html.TextBoxFor(m => Model.Descricao, new { @class = "form-control" })
+            <p class="erro-form"> @Html.ValidationMessageFor(m => Model.Descricao) </p>
+        </div>
+
+        <button type="submit" class="btn btn-reflex-azul btn-block">Criar novo agendamento</button>
+        <p class="erro-form">@ViewBag.Message</p>
+    </form>
+}
+
+<script src="~/assets/js/datetimepicker.js"></script>

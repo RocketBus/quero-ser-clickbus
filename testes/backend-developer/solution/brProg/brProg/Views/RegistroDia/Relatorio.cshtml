@@ -1,0 +1,110 @@
+﻿@model brProg.Models.RelatorioViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAll.cshtml";
+    ViewBag.Title = "Relatórios";
+}
+<script type="text/javascript">
+    window.onload = function () {
+        $(function () {
+            $('#datetimepicker1, #datetimepicker2').datetimepicker()
+            
+        });
+    }
+</script>
+
+
+@using (Html.BeginForm(new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <form role="form">
+        <div class="titulo">Gerar Relatórios</div>
+
+        <div class="form-group">
+            <label for="psw"><span class="glyphicon	glyphicon glyphicon-th"></span> Data Inicial do Relatório</label>
+            <div class='input-group date cadastrar-venda' id='datetimepicker1'>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                @Html.TextBoxFor(m => m.DataInicial, new { @class = "form-control", @placeholder = "Clique para selecionar a Data Inicial" })
+            </div>
+            <p class="erro-form" id="dataValidao"> @Html.ValidationMessageFor(m => m.DataInicial)</p>
+        </div>
+
+        <div class="form-group">
+            <label for="psw"><span class="glyphicon	glyphicon glyphicon-th"></span> Data Final do Relatório </label>
+            <div class='input-group date cadastrar-venda' id='datetimepicker2'>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                @Html.TextBoxFor(m => m.DataFinal, new { @class = "form-control", @placeholder = "Clique para selecionar a Data Final" })
+            </div>
+            <p class="erro-form" id="dataValidao"> @Html.ValidationMessageFor(m => m.DataFinal)</p>
+        </div>
+
+        <div class="form-group">
+            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Funcionario</label>
+            <div class="form-group">
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Selecione o Funcionario",
+                        Value = "default",
+                        Selected = true
+                    });
+
+                    foreach (var item in Model.Logins)
+                    {
+
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = @item.Nome,
+                            Value = @item.Nome + ""
+                        });
+                    }
+                }
+                @Html.DropDownListFor(model => model.Funcionario, new SelectList(listItems, "Value", "Text"))
+            </div>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-reflex-azul btn-block">Gerar Relatório</button>
+        <p class="erro-form">@ViewBag.Message</p>
+    </form>
+}
+
+<br /><br />
+<div class="Container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Funcionario</th>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.Relatorios)
+            {
+                <tr>
+                    <td>@item.Funcionario</td>
+                    <td>@item.Data</td>
+                    <td>@item.Descricao</td>
+                    <td>@item.valor</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="valorTotal">Valor total: @Model.valotTotal</div>
+    <br />
+    <center>
+        <button class="impressora" onclick="window.print()"><img class="img-impressora" src="~/assets/img/impressora.png" /></button>
+    </center>
+</div>
+
+
