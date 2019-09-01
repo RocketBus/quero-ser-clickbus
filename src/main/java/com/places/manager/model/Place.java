@@ -2,12 +2,16 @@ package com.places.manager.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Place {
 	private String name;
 	private String slug;
 	private String city;
 	private String state;
+	@JsonIgnore
 	private LocalDateTime createdAt;
+	@JsonIgnore
 	private LocalDateTime updatedAt;
 
 	public String getName() {
