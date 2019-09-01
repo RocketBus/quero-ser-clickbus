@@ -7,4 +7,6 @@ import com.places.manager.model.Place;
 public interface PlacesRepository {
 
 	public List<Place> list();
+
+	public Boolean save(Place place);
 }

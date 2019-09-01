@@ -3,8 +3,11 @@ package com.places.manager.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,10 +23,14 @@ public class PlacesController {
 
 	@GetMapping
 	public ResponseEntity<List<Place>> listPlaces() {
-		
 		List<Place> places = placesService.listPlaces();
-		
 		return ResponseEntity.ok(places);
+	}
+	
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> salvar(@RequestBody Place place) {
+		placesService.savePlace(place);
+		return ResponseEntity.ok("Place Saved Successfully!");
 	}
 	
 }

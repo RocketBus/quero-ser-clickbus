@@ -10,4 +10,6 @@ import com.places.manager.model.Place;
 public interface PlacesService {
 
 	public List<Place> listPlaces();
+
+	Boolean savePlace(Place place);
 }
