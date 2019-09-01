@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.springframework.stereotype.Component;
 
@@ -48,7 +49,9 @@ public class PlacesDatabase {
 	public List<Place> selectAllPlaces(){
 		List<Place> returnedPlaces = new ArrayList<>();
 		
-		for (Place place : placesDatabase.values()) {
+		for (Entry<Integer, Place> placeTuple : placesDatabase.entrySet()) {
+			Place place = placeTuple.getValue();
+			place.setId(placeTuple.getKey());
 			returnedPlaces.add(place);
 		}
 		
