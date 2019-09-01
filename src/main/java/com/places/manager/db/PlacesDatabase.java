@@ -1,0 +1,64 @@
+package com.places.manager.db;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
+
+import com.places.manager.model.Place;
+
+@Component
+public class PlacesDatabase {
+	
+	private static Map<Integer, Place> placesDatabase = new HashMap<>();
+	private static Integer id = 0;
+	
+	static {
+		System.out.println("Initializing places database...");
+		
+		Place festival = new Place();
+		festival.setName("Sobbat Festival");
+		festival.setSlug("California St 06");
+		festival.setState("Ohio");
+		festival.setCity("Columbus");
+		festival.setCreatedAt(LocalDateTime.now());
+		
+		Place museum = new Place();
+		museum.setName("Robot Museum");
+		museum.setSlug("Tech St 25");
+		museum.setState("Arizona");
+		museum.setCity("Phoenix");
+		museum.setCreatedAt(LocalDateTime.now());
+		
+		Place hotel = new Place();
+		hotel.setName("Bates Hotel");
+		hotel.setSlug("Trinity St 25");
+		hotel.setState("Texas");
+		hotel.setCity("Houston");
+		hotel.setCreatedAt(LocalDateTime.now());
+		
+		placesDatabase.put(++id, festival);
+		placesDatabase.put(++id, museum);
+		placesDatabase.put(++id, hotel);
+	}
+	
+	public List<Place> selectAllPlaces(){
+		List<Place> returnedPlaces = new ArrayList<>();
+		
+		for (Place place : placesDatabase.values()) {
+			returnedPlaces.add(place);
+		}
+		
+		return returnedPlaces;
+	}
+	
+	public boolean insertPlace(Place newPlace) {
+		int sizeBeforeInsert = placesDatabase.size();
+		placesDatabase.put(++id, newPlace);
+		int sizeAfterInsert = placesDatabase.size();
+		return sizeBeforeInsert < sizeAfterInsert ? true : false; 
+	}
+}
