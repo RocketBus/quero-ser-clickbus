@@ -1,9 +1,22 @@
-# <img height="100" src="https://static.clickbus.com/live/ClickBus/logo-clickbus-purple-2018.svg">
+# Places Manager
 
-A ClickBus é a maior plataforma online de vendas de passagens rodoviárias no Brasil! Nossa missão é facilitar a conexão entre pessoas e seus destinos, e se você tem atitude de dono e vontade de fazer acontecer, traga pra gente toda sua bagagem e venha para nosso busão!
+### About this application:  
+This project was created with the purpose of manage a set of places by different ways.  
+It's a api with crud operations (list all, insert, update, delete, search by name)
 
-# Como se Candidatar
+### Pre requisites
+To start the project you will need some programs, among them:  
 
-Está afim de embarcar nessa? Mostre a sua bagagem pra gente aplicando em: 
+* JRE - Java Runtime 
+* Apache Maven
+* A Software to make the Http Request, (SoapUI or Postman)
 
-https://jobs.kenoby.com/clickbus
+### Start guide
+The following steps will help you to start the project and make requests to the api:  
+
+* Build the app - go to the root of the project and run the command mvn package through the terminal.
+* Start the application - after the build, go to the target folder and run the command java -jar placesmanager-0.0.1-SNAPSHOT.jar through the terminal.
+* The main path to access the endpoints is http://localhost:8080/placemanager/places - GET, POST, PUT and DELETE methods.
+
+
+
