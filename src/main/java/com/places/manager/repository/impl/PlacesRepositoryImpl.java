@@ -19,7 +19,7 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 		return db.selectAllPlaces();
 	}
 
-	public Boolean save(Place place) {
+	public Boolean create(Place place) {
 		return db.insertPlace(place);
 	}
 

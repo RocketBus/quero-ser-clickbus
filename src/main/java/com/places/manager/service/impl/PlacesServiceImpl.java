@@ -11,7 +11,7 @@ import com.places.manager.repository.PlacesRepository;
 import com.places.manager.service.PlacesService;
 
 @Service
-public class PlacesManagerServiceImpl implements PlacesService{
+public class PlacesServiceImpl implements PlacesService{
 	
 	@Autowired
 	PlacesRepository placesRepository;
@@ -23,9 +23,9 @@ public class PlacesManagerServiceImpl implements PlacesService{
 	}
 	
 	@Override
-	public Boolean savePlace(Place place) {
+	public Boolean createPlace(Place place) {
 		place.setCreatedAt(LocalDateTime.now());
-		Boolean saved = placesRepository.save(place);
+		Boolean saved = placesRepository.create(place);
 		return saved;
 	}
 

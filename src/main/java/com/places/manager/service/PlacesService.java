@@ -11,7 +11,7 @@ public interface PlacesService {
 
 	List<Place> listPlaces();
 
-	Boolean savePlace(Place place);
+	Boolean createPlace(Place place);
 	
 	Boolean editPlace(Place place);
 }
