@@ -1,6 +1,5 @@
 package com.places.manager.repository.impl;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,11 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 
 	public Boolean save(Place place) {
 		return db.insertPlace(place);
+	}
+
+	@Override
+	public Boolean edit(Place placeToBeEdited) {
+		return db.updatePlace(placeToBeEdited);
 	}
 
 }

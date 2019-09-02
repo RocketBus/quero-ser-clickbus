@@ -58,10 +58,18 @@ public class PlacesDatabase {
 		return returnedPlaces;
 	}
 	
-	public boolean insertPlace(Place newPlace) {
+	public Boolean insertPlace(Place newPlace) {
 		int sizeBeforeInsert = placesDatabase.size();
 		placesDatabase.put(++id, newPlace);
 		int sizeAfterInsert = placesDatabase.size();
 		return sizeBeforeInsert < sizeAfterInsert ? true : false; 
+	}
+	
+	public Boolean updatePlace(Place placeToBeEdited) {
+		if(placesDatabase.containsKey(placeToBeEdited.getId())) {
+			placesDatabase.put(placeToBeEdited.getId(), placeToBeEdited);
+			return true;
+		}
+		return false;
 	}
 }

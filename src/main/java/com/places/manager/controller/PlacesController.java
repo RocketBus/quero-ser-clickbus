@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,9 +29,15 @@ public class PlacesController {
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> createPlace(@RequestBody Place place) {
-		placesService.savePlace(place);
+	public ResponseEntity<String> createPlace(@RequestBody Place placeToBeCreated) {
+		placesService.savePlace(placeToBeCreated);
 		return ResponseEntity.ok("Place Saved Successfully!");
+	}
+	
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<String> editPlace(@RequestBody Place placeToBeEdited) {
+		placesService.editPlace(placeToBeEdited);
+		return ResponseEntity.ok("Place Edited Successfully!");
 	}
 	
 }

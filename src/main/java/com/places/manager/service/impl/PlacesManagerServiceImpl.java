@@ -29,4 +29,11 @@ public class PlacesManagerServiceImpl implements PlacesService{
 		return saved;
 	}
 
+	@Override
+	public Boolean editPlace(Place placeToBeEdited) {
+		placeToBeEdited.setUpdatedAt(LocalDateTime.now());
+		Boolean edited = placesRepository.edit(placeToBeEdited);
+		return edited;
+	}
+
 }

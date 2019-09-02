@@ -9,4 +9,6 @@ public interface PlacesRepository {
 	public List<Place> list();
 
 	public Boolean save(Place place);
+	
+	public Boolean edit(Place place);
 }
