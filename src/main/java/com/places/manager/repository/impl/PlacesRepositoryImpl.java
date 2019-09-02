@@ -30,7 +30,9 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 	}
 
 	public Boolean create(Place place) {
-		return db.insertPlace(place);
+		Integer rowsInserted = db.insertPlace(place);
+		Boolean result = rowsInserted > 0 ? true : false;
+		return result;
 	}
 
 	@Override
@@ -45,7 +47,9 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 			placeToBeSaved.setUpdatedAt(placeToBeEdited.getUpdatedAt());
 		}
 		
-		return db.updatePlace(placeToBeSaved);
+		Integer rowsUpdated = db.updatePlace(placeToBeSaved);
+		Boolean result = rowsUpdated > 0 ? true : false;
+		return result;
 	}
 
 }

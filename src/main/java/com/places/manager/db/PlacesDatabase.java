@@ -70,17 +70,26 @@ public class PlacesDatabase {
 		return returnedPlacesFilteredByName;
 	}	
 	
-	public Boolean insertPlace(Place newPlace) {
-		placesDatabase.put(++id, newPlace);
-		return true;
+	public Integer insertPlace(Place newPlace) {
+		Integer numberOfRowsInserted = 0;
+		
+		if(newPlace != null) {
+			placesDatabase.put(++id, newPlace);
+			numberOfRowsInserted = 1;
+		}
+		
+		return numberOfRowsInserted;
 	}
 	
-	public Boolean updatePlace(Place placeToBeEdited) {
-		if(placesDatabase.containsKey(placeToBeEdited.getId())) {
+	public Integer updatePlace(Place placeToBeEdited) {
+		Integer numberOfRowsAltered = 0;
+		
+		if(placeToBeEdited != null) {
 			placesDatabase.put(placeToBeEdited.getId(), placeToBeEdited);
-			return true;
+			numberOfRowsAltered = 1;
 		}
-		return false;
+		
+		return numberOfRowsAltered;
 	}
 	
 	public Place selectPlaceWhereIdEquals(Integer id){
