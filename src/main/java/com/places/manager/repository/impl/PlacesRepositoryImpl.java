@@ -42,6 +42,7 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 			placeToBeSaved.setSlug(placeToBeEdited.getSlug());
 			placeToBeSaved.setCity(placeToBeEdited.getCity());
 			placeToBeSaved.setState(placeToBeEdited.getState());
+			placeToBeSaved.setUpdatedAt(placeToBeEdited.getUpdatedAt());
 		}
 		
 		return db.updatePlace(placeToBeSaved);
