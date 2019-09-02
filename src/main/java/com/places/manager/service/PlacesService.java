@@ -9,7 +9,9 @@ import com.places.manager.model.Place;
 @Service
 public interface PlacesService {
 
-	public List<Place> listPlaces();
+	List<Place> listPlaces();
 
 	Boolean savePlace(Place place);
+	
+	Boolean editPlace(Place place);
 }
