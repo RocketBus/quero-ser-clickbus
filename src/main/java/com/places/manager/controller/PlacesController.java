@@ -28,7 +28,7 @@ public class PlacesController {
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> salvar(@RequestBody Place place) {
+	public ResponseEntity<String> createPlace(@RequestBody Place place) {
 		placesService.savePlace(place);
 		return ResponseEntity.ok("Place Saved Successfully!");
 	}
