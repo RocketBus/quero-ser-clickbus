@@ -2,8 +2,6 @@ package com.places.manager.model;
 
 import java.time.LocalDateTime;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 public class Place {
 	private Integer id;
 	private String name;
