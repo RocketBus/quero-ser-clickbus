@@ -10,9 +10,7 @@ public class Place {
 	private String slug;
 	private String city;
 	private String state;
-	@JsonIgnore
 	private LocalDateTime createdAt;
-	@JsonIgnore
 	private LocalDateTime updatedAt;
 	
 	public Integer getId() {
