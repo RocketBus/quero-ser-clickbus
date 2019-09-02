@@ -82,4 +82,8 @@ public class PlacesDatabase {
 		}
 		return false;
 	}
+	
+	public Place selectPlaceById(Integer id){
+		return placesDatabase.get(id);
+	}
 }
