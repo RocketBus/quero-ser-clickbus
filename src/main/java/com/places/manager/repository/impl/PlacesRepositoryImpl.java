@@ -16,12 +16,12 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 	PlacesDatabase db;
 	
 	public List<Place> list() {
-		return db.selectAllPlaces();
+		return db.selectAll();
 	}
 	
 	@Override
 	public List<Place> listByName(String placeName) {		
-		return db.selectAllPlacesFilterByName(placeName);
+		return db.selectAllPlacesWherePlaceNameLike(placeName);
 	}
 
 	public Boolean create(Place place) {

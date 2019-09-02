@@ -46,7 +46,7 @@ public class PlacesDatabase {
 		placesDatabase.put(++id, hotel);
 	}
 	
-	public List<Place> selectAllPlaces(){
+	public List<Place> selectAll(){
 		List<Place> returnedPlaces = new ArrayList<>();
 		
 		for (Entry<Integer, Place> placeTuple : placesDatabase.entrySet()) {
@@ -58,7 +58,7 @@ public class PlacesDatabase {
 		return returnedPlaces;
 	}
 	
-	public List<Place> selectAllPlacesFilterByName(String placeName) {
+	public List<Place> selectAllPlacesWherePlaceNameLike(String placeName) {
 		List<Place> returnedPlacesFilteredByName = new ArrayList<>();
 
 		for (Place place : placesDatabase.values()) {
