@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.places.manager.model.Place;
@@ -22,9 +23,10 @@ public class PlacesController {
 	@Autowired
 	PlacesService placesService;
 
-	@GetMapping
-	public ResponseEntity<List<Place>> listPlaces() {
-		List<Place> places = placesService.listPlaces();
+	@GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<Place>> listPlaces(
+			@RequestParam(value = "name", required = false) String placeName) {
+		List<Place> places = placesService.listPlaces(placeName);
 		return ResponseEntity.ok(places);
 	}
 	

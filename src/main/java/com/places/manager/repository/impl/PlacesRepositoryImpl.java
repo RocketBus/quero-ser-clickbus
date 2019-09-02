@@ -18,6 +18,11 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 	public List<Place> list() {
 		return db.selectAllPlaces();
 	}
+	
+	@Override
+	public List<Place> listByName(String placeName) {		
+		return db.selectAllPlacesFilterByName(placeName);
+	}
 
 	public Boolean create(Place place) {
 		return db.insertPlace(place);
@@ -27,5 +32,4 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 	public Boolean edit(Place placeToBeEdited) {
 		return db.updatePlace(placeToBeEdited);
 	}
-
 }

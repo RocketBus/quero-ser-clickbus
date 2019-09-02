@@ -17,8 +17,9 @@ public class PlacesServiceImpl implements PlacesService{
 	PlacesRepository placesRepository;
 	
 	@Override
-	public List<Place> listPlaces() {
-		List<Place> returnedPlaces = placesRepository.list();
+	public List<Place> listPlaces(String placeName) {
+		List<Place> returnedPlaces = (placeName == null || placeName.isEmpty()) ? 
+				placesRepository.list() : placesRepository.listByName(placeName) ;
 		return returnedPlaces;
 	}
 	

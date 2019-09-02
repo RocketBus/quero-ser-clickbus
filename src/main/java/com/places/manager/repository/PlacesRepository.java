@@ -7,8 +7,10 @@ import com.places.manager.model.Place;
 public interface PlacesRepository {
 
 	public List<Place> list();
-
-	public Boolean create(Place place);
 	
-	public Boolean edit(Place place);
+	public List<Place> listByName(String placeName);
+
+	public Boolean create(Place placeToBeCreated);
+	
+	public Boolean edit(Place placeToBeEdited);
 }

@@ -18,10 +18,10 @@ public class PlacesDatabase {
 	private static Integer id = 0;
 	
 	static {
-		System.out.println("Initializing places database...");
+		System.out.println("Initializing places simulated database...");
 		
 		Place festival = new Place();
-		festival.setName("Sobbat Festival");
+		festival.setName("Sarah's Festival");
 		festival.setSlug("California St 06");
 		festival.setState("Ohio");
 		festival.setCity("Columbus");
@@ -57,6 +57,18 @@ public class PlacesDatabase {
 		
 		return returnedPlaces;
 	}
+	
+	public List<Place> selectAllPlacesFilterByName(String placeName) {
+		List<Place> returnedPlacesFilteredByName = new ArrayList<>();
+
+		for (Place place : placesDatabase.values()) {
+			if (place.getName().toLowerCase().contains(placeName.toLowerCase())) {
+				returnedPlacesFilteredByName.add(place);
+			}
+		}
+		
+		return returnedPlacesFilteredByName;
+	}	
 	
 	public Boolean insertPlace(Place newPlace) {
 		int sizeBeforeInsert = placesDatabase.size();
