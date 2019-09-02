@@ -7,7 +7,7 @@ It's a api with some operations (list all, insert, update, search by id and sear
 ### Pre requisites:  
 To start the project you will need some programs, among them:  
   
-* JRE - Java Runtime 
+* Java 8 
 * Apache Maven
 * Postman to make the Http Request (Obs - on this project, a folder named useful_documents was included. On that folder a file named PlacesManager.postman_collection.json could be imported on Postman, with the requests alrealdy configured)
 
