@@ -2,7 +2,7 @@
 
 ### About this application:  
 This project was created with the purpose of manage a set of places by different ways.  
-It's a api with some operations (list all, insert, update, search by id and search by name).
+It's an api with some operations (list all, insert, update, search by id and search by name).
 
 ### Pre requisites:  
 To start the project you will need some programs, among them:  
