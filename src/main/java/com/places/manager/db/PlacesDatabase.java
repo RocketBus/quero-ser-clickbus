@@ -83,7 +83,7 @@ public class PlacesDatabase {
 		return false;
 	}
 	
-	public Place selectPlaceById(Integer id){
+	public Place selectPlaceWhereIdEquals(Integer id){
 		return placesDatabase.get(id);
 	}
 }

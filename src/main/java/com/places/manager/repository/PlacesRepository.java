@@ -13,4 +13,6 @@ public interface PlacesRepository {
 	public Boolean create(Place placeToBeCreated);
 	
 	public Boolean edit(Place placeToBeEdited);
+
+	public Place findById(Integer id);
 }

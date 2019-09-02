@@ -23,6 +23,11 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 	public List<Place> listByName(String placeName) {		
 		return db.selectAllPlacesWherePlaceNameLike(placeName);
 	}
+	
+	@Override
+	public Place findById(Integer id) {
+		return db.selectPlaceWhereIdEquals(id);
+	}
 
 	public Boolean create(Place place) {
 		return db.insertPlace(place);
@@ -30,6 +35,16 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 
 	@Override
 	public Boolean edit(Place placeToBeEdited) {
-		return db.updatePlace(placeToBeEdited);
+		Place placeToBeSaved = db.selectPlaceWhereIdEquals(placeToBeEdited.getId());
+		
+		if(placeToBeSaved != null) {
+			placeToBeSaved.setName(placeToBeEdited.getName());
+			placeToBeSaved.setSlug(placeToBeEdited.getSlug());
+			placeToBeSaved.setCity(placeToBeEdited.getCity());
+			placeToBeSaved.setState(placeToBeEdited.getState());
+		}
+		
+		return db.updatePlace(placeToBeSaved);
 	}
+
 }

@@ -14,4 +14,6 @@ public interface PlacesService {
 	Boolean createPlace(Place placeToBeCreated);
 	
 	Boolean editPlace(Place placeToBeEdited);
+
+	Place findPlaceById(Integer id);
 }

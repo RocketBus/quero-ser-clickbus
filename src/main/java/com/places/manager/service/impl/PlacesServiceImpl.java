@@ -24,6 +24,12 @@ public class PlacesServiceImpl implements PlacesService{
 	}
 	
 	@Override
+	public Place findPlaceById(Integer id) {
+		Place returnedPlace = placesRepository.findById(id);
+		return returnedPlace;
+	}	
+	
+	@Override
 	public Boolean createPlace(Place place) {
 		place.setCreatedAt(LocalDateTime.now());
 		Boolean saved = placesRepository.create(place);
