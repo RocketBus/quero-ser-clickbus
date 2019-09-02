@@ -71,10 +71,8 @@ public class PlacesDatabase {
 	}	
 	
 	public Boolean insertPlace(Place newPlace) {
-		int sizeBeforeInsert = placesDatabase.size();
 		placesDatabase.put(++id, newPlace);
-		int sizeAfterInsert = placesDatabase.size();
-		return sizeBeforeInsert < sizeAfterInsert ? true : false; 
+		return true;
 	}
 	
 	public Boolean updatePlace(Place placeToBeEdited) {
