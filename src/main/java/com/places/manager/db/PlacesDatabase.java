@@ -21,6 +21,7 @@ public class PlacesDatabase {
 		System.out.println("Initializing places simulated database...");
 		
 		Place festival = new Place();
+		festival.setId(++id);
 		festival.setName("Sarah's Festival");
 		festival.setSlug("California St 06");
 		festival.setState("Ohio");
@@ -28,6 +29,7 @@ public class PlacesDatabase {
 		festival.setCreatedAt(LocalDateTime.now());
 		
 		Place museum = new Place();
+		museum.setId(++id);
 		museum.setName("Robot Museum");
 		museum.setSlug("Tech St 25");
 		museum.setState("Arizona");
@@ -35,15 +37,16 @@ public class PlacesDatabase {
 		museum.setCreatedAt(LocalDateTime.now());
 		
 		Place hotel = new Place();
+		hotel.setId(++id);
 		hotel.setName("Bates Hotel");
 		hotel.setSlug("Trinity St 25");
 		hotel.setState("Texas");
 		hotel.setCity("Houston");
 		hotel.setCreatedAt(LocalDateTime.now());
 		
-		placesDatabase.put(++id, festival);
-		placesDatabase.put(++id, museum);
-		placesDatabase.put(++id, hotel);
+		placesDatabase.put(festival.getId(), festival);
+		placesDatabase.put(museum.getId() , museum);
+		placesDatabase.put(hotel.getId(), hotel);
 	}
 	
 	public List<Place> selectAll(){
@@ -74,7 +77,8 @@ public class PlacesDatabase {
 		Integer numberOfRowsInserted = 0;
 		
 		if(newPlace != null) {
-			placesDatabase.put(++id, newPlace);
+			newPlace.setId(++id);
+			placesDatabase.put(newPlace.getId(), newPlace);
 			numberOfRowsInserted = 1;
 		}
 		
