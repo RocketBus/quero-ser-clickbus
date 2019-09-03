@@ -18,6 +18,7 @@ import com.places.manager.service.impl.PlacesServiceImpl;
 public class PlacesServiceTest {
 	
 	private List<Place> placesList = new ArrayList<>();
+	private List<Place> placesListFiltered = new ArrayList<>();
 	private Integer id = 0;
 
 	@Before
@@ -39,16 +40,39 @@ public class PlacesServiceTest {
 		place2.setCity("Phoenix");
 		place2.setCreatedAt(LocalDateTime.now());
 		
+		Place place3 = new Place();
+		place3.setId(++id);
+		place3.setName("Sarah's Sallon");
+		place3.setSlug("Tech St 50");
+		place3.setState("Arizona");
+		place3.setCity("Phoenix");
+		place3.setCreatedAt(LocalDateTime.now());
+		
 		placesList.add(place1);
-		placesList.add(place2);
+		placesList.add(place3);
+		placesListFiltered.add(place1);
+		placesListFiltered.add(place3);
 	}
 	
 	@Test
-	public void searchPlacesWithoutNameReturnAllPlaces() {
+	public void testThatSearchPlacesWithoutNameReturnAllPlaces() {
 		PlacesRepository repository = mock(PlacesRepository.class);
 		when(repository.list()).thenReturn(placesList);
 		PlacesServiceImpl service = new PlacesServiceImpl(repository);
 		List<Place> returnedPlacesList = service.listPlaces(null);
 		assertThat(returnedPlacesList.size()).isEqualTo(placesList.size());
 	}
+	
+	@Test
+	public void testThatSearchPlacesFilteredByNameReturnAllPlacesWithTheNameInformed() {
+		String placeNameToBeInformed = "Sarah";
+		PlacesRepository repository = mock(PlacesRepository.class);
+		when(repository.listByName(placeNameToBeInformed)).thenReturn(placesListFiltered);
+		PlacesServiceImpl service = new PlacesServiceImpl(repository);
+		List<Place> returnedPlacesList = service.listPlaces(placeNameToBeInformed);
+		
+		for (Place place : returnedPlacesList) {
+			assertThat(place.getName()).contains(placeNameToBeInformed);
+		}
+	}	
 }
