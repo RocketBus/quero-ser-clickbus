@@ -83,7 +83,17 @@ public class PlacesServiceTest {
 		when(repository.findById(idInformed)).thenReturn(placesList.get(1));
 		PlacesServiceImpl service = new PlacesServiceImpl(repository);
 		Place returnedPlace = service.findPlaceById(idInformed);
-		
 		assertThat(returnedPlace.getId()).isEqualTo(idInformed);
+	}
+	
+	// should be refined
+	@Test
+	public void testThatInsertAPlaceReturnsTrue() {
+		Place placeToBeCreated = new Place();
+		PlacesRepository repository = mock(PlacesRepository.class);
+		when(repository.create(placeToBeCreated)).thenReturn(true);
+		PlacesServiceImpl service = new PlacesServiceImpl(repository);
+		Boolean isSaved = service.createPlace(placeToBeCreated);
+		assertThat(isSaved).isTrue();
 	}
 }
