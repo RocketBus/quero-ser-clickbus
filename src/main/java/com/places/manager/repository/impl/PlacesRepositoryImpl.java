@@ -47,8 +47,8 @@ public class PlacesRepositoryImpl implements PlacesRepository {
 			placeToBeSaved.setUpdatedAt(placeToBeEdited.getUpdatedAt());
 		}
 		
-		Integer rowsUpdated = db.updatePlace(placeToBeSaved);
-		Boolean result = rowsUpdated > 0 ? true : false;
+		Place updatedPlace = db.updatePlace(placeToBeSaved);
+		Boolean result = updatedPlace != null ? true : false;
 		return result;
 	}
 

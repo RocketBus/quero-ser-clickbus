@@ -94,7 +94,6 @@ public class PlacesServiceTest {
 		assertThat(isSaved).isTrue();
 	}
 	
-	// should be refined, because should return the Place altered instead of boolean
 	@Test
 	public void testThatEditAPlaceFillsTheUpdatedDate() {
 		Place placeToBeEdited = new Place();

@@ -85,15 +85,13 @@ public class PlacesDatabase {
 		return numberOfRowsInserted;
 	}
 	
-	public Integer updatePlace(Place placeToBeEdited) {
-		Integer numberOfRowsAltered = 0;
+	public Place updatePlace(Place placeToBeEdited) {
 		
 		if(placeToBeEdited != null) {
 			placesDatabase.put(placeToBeEdited.getId(), placeToBeEdited);
-			numberOfRowsAltered = 1;
 		}
 		
-		return numberOfRowsAltered;
+		return placesDatabase.get(placeToBeEdited.getId());
 	}
 	
 	public Place selectPlaceWhereIdEquals(Integer id){
