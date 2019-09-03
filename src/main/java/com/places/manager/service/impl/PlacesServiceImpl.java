@@ -16,6 +16,12 @@ public class PlacesServiceImpl implements PlacesService{
 	@Autowired
 	PlacesRepository placesRepository;
 	
+	public PlacesServiceImpl() {}
+	
+	public PlacesServiceImpl(PlacesRepository repository) {
+		this.placesRepository = repository;
+	}
+	
 	@Override
 	public List<Place> listPlaces(String placeName) {
 		List<Place> returnedPlaces = (placeName == null || placeName.isEmpty()) ? 
