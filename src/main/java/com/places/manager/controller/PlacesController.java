@@ -25,28 +25,40 @@ public class PlacesController {
 	PlacesService placesService;
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<Place>> listPlaces(
+	public ResponseEntity<PlacesResponse<Place>> listPlaces(
 			@RequestParam(value = "name", required = false) String placeName) {
 		List<Place> places = placesService.listPlaces(placeName);
-		return ResponseEntity.ok(places);
+		
+		PlacesResponse<Place> genericResponse = new PlacesResponse<>();
+		genericResponse.setPlaces(places);
+		return ResponseEntity.ok(genericResponse);
 	}
 	
 	@GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<Place> findPlaceById(@PathVariable("id") Integer id) {
+	public ResponseEntity<PlacesResponse<Place>> findPlaceById(@PathVariable("id") Integer id) {
 		Place place = placesService.findPlaceById(id);
-		return ResponseEntity.ok(place);
+		
+		PlacesResponse<Place> genericResponse = new PlacesResponse<>();
+		genericResponse.setPlace(place);
+		return ResponseEntity.ok(genericResponse);
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> createPlace(@RequestBody Place placeToBeCreated) {
+	public ResponseEntity<PlacesResponse<Place>> createPlace(@RequestBody Place placeToBeCreated) {
 		placesService.createPlace(placeToBeCreated);
-		return ResponseEntity.ok("Place Saved Successfully!");
+		
+		PlacesResponse<Place> genericResponse = new PlacesResponse<>();
+		genericResponse.setMessage("Place Saved Successfully!");
+		return ResponseEntity.ok(genericResponse);
 	}
 	
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<String> editPlace(@RequestBody Place placeToBeEdited) {
+	public ResponseEntity<PlacesResponse<Place>> editPlace(@RequestBody Place placeToBeEdited) {
 		placesService.editPlace(placeToBeEdited);
-		return ResponseEntity.ok("Place Edited Successfully!");
+		
+		PlacesResponse<Place> genericResponse = new PlacesResponse<>();
+		genericResponse.setMessage("Place Edited Successfully!");
+		return ResponseEntity.ok(genericResponse);
 	}
 	
 }
