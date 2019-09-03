@@ -86,7 +86,7 @@ public class PlacesServiceTest {
 		assertThat(returnedPlace.getId()).isEqualTo(idInformed);
 	}
 	
-	// should be refined
+	// should be refined, because allows empty places
 	@Test
 	public void testThatInsertAPlaceReturnsTrue() {
 		Place placeToBeCreated = new Place();
@@ -96,4 +96,15 @@ public class PlacesServiceTest {
 		Boolean isSaved = service.createPlace(placeToBeCreated);
 		assertThat(isSaved).isTrue();
 	}
+	
+	// should be refined, because should return the Place altered instead of boolean
+	@Test
+	public void testThatEditAPlaceFillsTheUpdatedDate() {
+		Place placeToBeEdited = new Place();
+		PlacesRepository repository = mock(PlacesRepository.class);
+		when(repository.edit(placeToBeEdited)).thenReturn(true);
+		PlacesServiceImpl service = new PlacesServiceImpl(repository);
+		service.editPlace(placeToBeEdited);
+		assertThat(placeToBeEdited.getUpdatedAt()).isNotNull();
+	}	
 }
