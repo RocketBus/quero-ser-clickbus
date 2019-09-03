@@ -20,9 +20,14 @@ public class PlacesServiceTest {
 	private List<Place> placesList = new ArrayList<>();
 	private List<Place> placesListFiltered = new ArrayList<>();
 	private Integer id = 0;
-
+	private PlacesRepository placesRepository;
+	private PlacesServiceImpl placesService;
+	
 	@Before
 	public void initialize() {
+		
+		placesRepository = mock(PlacesRepository.class);
+		placesService = new PlacesServiceImpl(placesRepository);
 		
 		Place place1 = new Place();
 		place1.setId(++id);
@@ -56,20 +61,16 @@ public class PlacesServiceTest {
 	
 	@Test
 	public void testThatSearchPlacesWithoutNameReturnAllPlaces() {
-		PlacesRepository repository = mock(PlacesRepository.class);
-		when(repository.list()).thenReturn(placesList);
-		PlacesServiceImpl service = new PlacesServiceImpl(repository);
-		List<Place> returnedPlacesList = service.listPlaces(null);
+		when(placesRepository.list()).thenReturn(placesList);
+		List<Place> returnedPlacesList = placesService.listPlaces(null);
 		assertThat(returnedPlacesList.size()).isEqualTo(placesList.size());
 	}
 	
 	@Test
 	public void testThatSearchPlacesFilteredByNameReturnAllPlacesWithTheNameInformed() {
 		String placeNameToBeInformed = "Sarah";
-		PlacesRepository repository = mock(PlacesRepository.class);
-		when(repository.listByName(placeNameToBeInformed)).thenReturn(placesListFiltered);
-		PlacesServiceImpl service = new PlacesServiceImpl(repository);
-		List<Place> returnedPlacesList = service.listPlaces(placeNameToBeInformed);
+		when(placesRepository.listByName(placeNameToBeInformed)).thenReturn(placesListFiltered);
+		List<Place> returnedPlacesList = placesService.listPlaces(placeNameToBeInformed);
 		
 		for (Place place : returnedPlacesList) {
 			assertThat(place.getName()).contains(placeNameToBeInformed);
@@ -79,10 +80,8 @@ public class PlacesServiceTest {
 	@Test
 	public void testThatSearchPlacesByIdReturnThePlaceWithTheIdInformed() {
 		Integer idInformed = 2;
-		PlacesRepository repository = mock(PlacesRepository.class);
-		when(repository.findById(idInformed)).thenReturn(placesList.get(1));
-		PlacesServiceImpl service = new PlacesServiceImpl(repository);
-		Place returnedPlace = service.findPlaceById(idInformed);
+		when(placesRepository.findById(idInformed)).thenReturn(placesList.get(1));
+		Place returnedPlace = placesService.findPlaceById(idInformed);
 		assertThat(returnedPlace.getId()).isEqualTo(idInformed);
 	}
 	
@@ -90,10 +89,8 @@ public class PlacesServiceTest {
 	@Test
 	public void testThatInsertAPlaceReturnsTrue() {
 		Place placeToBeCreated = new Place();
-		PlacesRepository repository = mock(PlacesRepository.class);
-		when(repository.create(placeToBeCreated)).thenReturn(true);
-		PlacesServiceImpl service = new PlacesServiceImpl(repository);
-		Boolean isSaved = service.createPlace(placeToBeCreated);
+		when(placesRepository.create(placeToBeCreated)).thenReturn(true);
+		Boolean isSaved = placesService.createPlace(placeToBeCreated);
 		assertThat(isSaved).isTrue();
 	}
 	
@@ -101,10 +98,8 @@ public class PlacesServiceTest {
 	@Test
 	public void testThatEditAPlaceFillsTheUpdatedDate() {
 		Place placeToBeEdited = new Place();
-		PlacesRepository repository = mock(PlacesRepository.class);
-		when(repository.edit(placeToBeEdited)).thenReturn(true);
-		PlacesServiceImpl service = new PlacesServiceImpl(repository);
-		service.editPlace(placeToBeEdited);
+		when(placesRepository.edit(placeToBeEdited)).thenReturn(true);
+		placesService.editPlace(placeToBeEdited);
 		assertThat(placeToBeEdited.getUpdatedAt()).isNotNull();
 	}	
 }
