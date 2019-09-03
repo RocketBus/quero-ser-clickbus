@@ -85,7 +85,6 @@ public class PlacesServiceTest {
 		assertThat(returnedPlace.getId()).isEqualTo(idInformed);
 	}
 	
-	// should be refined, because allows empty places
 	@Test
 	public void testThatCreateAPlaceWithValidFieldsReturnsTrue() {
 		Place placeToBeCreated = new Place();
