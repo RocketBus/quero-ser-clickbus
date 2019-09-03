@@ -45,19 +45,21 @@ public class PlacesController {
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<PlacesResponse<Place>> createPlace(@RequestBody Place placeToBeCreated) {
-		placesService.createPlace(placeToBeCreated);
+		Boolean isPlaceSaved = placesService.createPlace(placeToBeCreated);
+		String message = isPlaceSaved ? "Place Saved Successfully!" : "Error trying to create Place. Name, City and State are required fields";
 		
 		PlacesResponse<Place> genericResponse = new PlacesResponse<>();
-		genericResponse.setMessage("Place Saved Successfully!");
+		genericResponse.setMessage(message);
 		return ResponseEntity.ok(genericResponse);
 	}
 	
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<PlacesResponse<Place>> editPlace(@RequestBody Place placeToBeEdited) {
-		placesService.editPlace(placeToBeEdited);
+		Boolean isPlaceEdited = placesService.editPlace(placeToBeEdited);
 		
+		String message = isPlaceEdited ? "Place Edited Successfully!" : "Error trying edit Place: Name, City and State are required fields";
 		PlacesResponse<Place> genericResponse = new PlacesResponse<>();
-		genericResponse.setMessage("Place Edited Successfully!");
+		genericResponse.setMessage(message);
 		return ResponseEntity.ok(genericResponse);
 	}
 	
