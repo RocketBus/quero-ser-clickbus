@@ -49,7 +49,7 @@ public class PlacesServiceTest {
 		place3.setCreatedAt(LocalDateTime.now());
 		
 		placesList.add(place1);
-		placesList.add(place3);
+		placesList.add(place2);
 		placesListFiltered.add(place1);
 		placesListFiltered.add(place3);
 	}
@@ -75,4 +75,15 @@ public class PlacesServiceTest {
 			assertThat(place.getName()).contains(placeNameToBeInformed);
 		}
 	}	
+	
+	@Test
+	public void testThatSearchPlacesByIdReturnThePlaceWithTheIdInformed() {
+		Integer idInformed = 2;
+		PlacesRepository repository = mock(PlacesRepository.class);
+		when(repository.findById(idInformed)).thenReturn(placesList.get(1));
+		PlacesServiceImpl service = new PlacesServiceImpl(repository);
+		Place returnedPlace = service.findPlaceById(idInformed);
+		
+		assertThat(returnedPlace.getId()).isEqualTo(idInformed);
+	}
 }
