@@ -87,18 +87,46 @@ public class PlacesServiceTest {
 	
 	// should be refined, because allows empty places
 	@Test
-	public void testThatInsertAPlaceReturnsTrue() {
+	public void testThatCreateAPlaceWithValidFieldsReturnsTrue() {
 		Place placeToBeCreated = new Place();
+		placeToBeCreated.setName("Ibirapuera Park");
+		placeToBeCreated.setCity("Sao Paulo");
+		placeToBeCreated.setState("Sao Paulo");
 		when(placesRepository.create(placeToBeCreated)).thenReturn(true);
 		Boolean isSaved = placesService.createPlace(placeToBeCreated);
 		assertThat(isSaved).isTrue();
 	}
 	
 	@Test
-	public void testThatEditAPlaceFillsTheUpdatedDate() {
+	public void testThatEditAPlaceWithValidFieldsFillsTheUpdatedDate() {
 		Place placeToBeEdited = new Place();
+		placeToBeEdited.setName("Copacabana");
+		placeToBeEdited.setCity("Rio de Janeiro");
+		placeToBeEdited.setState("Rio de Janeiro");
 		when(placesRepository.edit(placeToBeEdited)).thenReturn(true);
 		placesService.editPlace(placeToBeEdited);
 		assertThat(placeToBeEdited.getUpdatedAt()).isNotNull();
+	}
+	
+	@Test
+	public void testThatInsertAPlaceWithInvalidFieldsReturnsFalse() {
+		Place placeToBeCreated = new Place();
+		placeToBeCreated.setName("");
+		placeToBeCreated.setCity("Sao Paulo");
+		placeToBeCreated.setState("Sao Paulo");
+		when(placesRepository.create(placeToBeCreated)).thenReturn(true);
+		Boolean isSaved = placesService.createPlace(placeToBeCreated);
+		assertThat(isSaved).isFalse();
+	}
+	
+	@Test
+	public void testThatEditAPlaceWithInvalidFieldsWillNotFillTheUpdatedDate() {
+		Place placeToBeEdited = new Place();
+		placeToBeEdited.setName("Copacabana");
+		placeToBeEdited.setCity(null);
+		placeToBeEdited.setState(null);
+		when(placesRepository.edit(placeToBeEdited)).thenReturn(true);
+		placesService.editPlace(placeToBeEdited);
+		assertThat(placeToBeEdited.getUpdatedAt()).isNull();
 	}	
 }
