@@ -17,7 +17,8 @@ public class PlacesServiceImpl implements PlacesService{
 	PlacesRepository placesRepository;
 	
 	public PlacesServiceImpl() {}
-	
+
+	// Included constructors to test purpose: The spring's context shared by the tests was not desired 
 	public PlacesServiceImpl(PlacesRepository repository) {
 		this.placesRepository = repository;
 	}
