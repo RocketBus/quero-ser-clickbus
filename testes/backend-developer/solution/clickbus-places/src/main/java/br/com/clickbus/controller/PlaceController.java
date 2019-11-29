@@ -16,7 +16,7 @@ public class PlaceController {
 	private PlaceRepository placeRepository;
 	
 	@GetMapping("/places")
-	private ResponseEntity<Iterable<Place>> findAllPlaces() {
+	public ResponseEntity<Iterable<Place>> findAllPlaces() {
 		return new ResponseEntity<Iterable<Place>>(placeRepository.findAll(), HttpStatus.OK);
 	}
 	
