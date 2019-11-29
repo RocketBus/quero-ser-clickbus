@@ -14,6 +14,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.clickbus.controller.PlaceController;
@@ -63,6 +65,10 @@ class ClickbusApplicationTests {
 		assertEquals(1, mockedPlaces.get(0).getId());
 		assertEquals("São Gonçalo", mockedPlaces.get(0).getCity());
 		assertEquals("Rio de Janeiro", mockedPlaces.get(0).getState());
+		
+		ResponseEntity<Iterable<Place>> findAllPlaces = placeController.findAllPlaces();
+		assertEquals(HttpStatus.OK, findAllPlaces.getStatusCode());
+		assertEquals("São Gonçalo", ((List<Place>) findAllPlaces.getBody()).get(0).getCity());
 		
 	}
 	
