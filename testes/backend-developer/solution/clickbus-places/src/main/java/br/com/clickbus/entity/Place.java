@@ -29,6 +29,8 @@ public class Place {
 	@NotNull
 	private String name;
 	@NotNull
+	private String city;
+	@NotNull
 	private String slug;
 	@NotNull
 	private String state;
