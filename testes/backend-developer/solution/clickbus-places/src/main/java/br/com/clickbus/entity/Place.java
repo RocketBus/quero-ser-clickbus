@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -25,6 +27,7 @@ public class Place {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(insertable = false, updatable = false)
 	private int id;
 	@NotNull
 	private String name;
@@ -36,8 +39,19 @@ public class Place {
 	private String state;
 	@ColumnDefault("NOW()")
 	@NotNull
-	@Column(insertable = false, updatable = false)
+	@Column(updatable = false)
 	private LocalDateTime createdAt;
+	@Column(insertable = false)
 	private LocalDateTime updatedAt;
+	
+    @PrePersist
+    protected void setCreated() {
+        this.createdAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void setUpdated() {
+        this.updatedAt = LocalDateTime.now();
+    }
 	
 }
