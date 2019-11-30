@@ -9,24 +9,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.clickbus.dto.CreatePlaceDto;
 import br.com.clickbus.entity.Place;
-import br.com.clickbus.repository.PlaceRepository;
+import br.com.clickbus.service.PlaceService;
 
 @RestController
 @RequestMapping("/places")
 public class PlaceController {
 
 	@Autowired
-	private PlaceRepository placeRepository;
+	private PlaceService placeService;
 	
 	@GetMapping
 	public ResponseEntity<Iterable<Place>> findAllPlaces() {
-		return new ResponseEntity<Iterable<Place>>(placeRepository.findAll(), HttpStatus.OK);
+		return new ResponseEntity<Iterable<Place>>(placeService.findAllPlaces(), HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public Place savePlace(@RequestBody Place place) {
-		return place;
+	public ResponseEntity<Place> savePlace(@RequestBody CreatePlaceDto placeDto) {
+		return new ResponseEntity<Place>(placeService.savePlace(placeDto), HttpStatus.CREATED);
 	}
 	
 }
