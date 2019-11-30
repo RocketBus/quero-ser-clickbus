@@ -13,8 +13,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.clickbus.controller.PlaceController;
@@ -49,10 +47,6 @@ class PlaceServiceTest {
 		List<Place> mockedPlaces = (List<Place>) placeService.findAllPlaces();
 		
 		assertEquals("Praça Chico Bento", mockedPlaces.get(0).getName());
-		
-		ResponseEntity<Iterable<Place>> findAllPlaces = placeController.findAllPlaces();
-		assertEquals(HttpStatus.OK, findAllPlaces.getStatusCode());
-		assertEquals("São Gonçalo", ((List<Place>) findAllPlaces.getBody()).get(0).getCity());
 		
 	}
 	

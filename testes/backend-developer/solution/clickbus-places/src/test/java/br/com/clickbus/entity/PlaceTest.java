@@ -24,10 +24,11 @@ public class PlaceTest {
 		place.setCreatedAt(now);
 		place.setUpdatedAt(null);
 		place.setName("Praça Chico Bento");
-		place.setCity("São Gonçalo");
+		City city = new City();
+		city.setCity("São Gonçalo");
+		place.setCity(city);
 		place.setSlug("Rio Alcântara");
 		place.setId(1);
-		place.setState("Rio de Janeiro");
 		List<Place> places = new ArrayList<>();
 		places.add(place);
 		return places;
@@ -46,8 +47,7 @@ public class PlaceTest {
 		assertEquals(null, places.get(0).getUpdatedAt());
 		assertEquals("Rio Alcântara", places.get(0).getSlug());
 		assertEquals(1, places.get(0).getId());
-		assertEquals("São Gonçalo", places.get(0).getCity());
-		assertEquals("Rio de Janeiro", places.get(0).getState());
+		assertEquals("São Gonçalo", places.get(0).getCity().getCity());
 	}
 
 }

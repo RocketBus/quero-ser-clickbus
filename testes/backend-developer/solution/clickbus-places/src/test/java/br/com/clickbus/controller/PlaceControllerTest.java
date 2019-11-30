@@ -1,6 +1,6 @@
 package br.com.clickbus.controller;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 
 import br.com.clickbus.entity.Place;
 import br.com.clickbus.entity.PlaceTest;
-import br.com.clickbus.repository.PlaceRepository;
+import br.com.clickbus.service.PlaceService;
 
 public class PlaceControllerTest {
 
@@ -24,7 +24,7 @@ public class PlaceControllerTest {
 	private PlaceController placeController;
 	
 	@Mock
-	private PlaceRepository placeRepository;
+	private PlaceService placeService;
 	
 	@BeforeEach
 	public void setUp() {
@@ -34,11 +34,11 @@ public class PlaceControllerTest {
 	@Test
 	void testFindAllPlaces() {
 		
-		when(placeRepository.findAll()).thenReturn(PlaceTest.placeInAList(LocalDateTime.now()));
+		when(placeService.findAllPlaces()).thenReturn(PlaceTest.placeInAList(LocalDateTime.now()));
 
 		ResponseEntity<Iterable<Place>> findAllPlaces = placeController.findAllPlaces();
 		assertEquals(HttpStatus.OK, findAllPlaces.getStatusCode());
-		assertEquals("São Gonçalo", ((List<Place>) findAllPlaces.getBody()).get(0).getCity());
+		assertEquals("São Gonçalo", ((List<Place>) findAllPlaces.getBody()).get(0).getCity().getCity());
 		
 	}
 	
