@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -29,14 +31,13 @@ public class Place {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(insertable = false, updatable = false)
 	private int id;
+	@OneToOne
+	@JoinColumn(name = "city_id")
+	private City city;
 	@NotNull
 	private String name;
 	@NotNull
-	private String city;
-	@NotNull
 	private String slug;
-	@NotNull
-	private String state;
 	@ColumnDefault("NOW()")
 	@NotNull
 	@Column(updatable = false)
