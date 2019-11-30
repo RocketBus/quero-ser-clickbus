@@ -27,7 +27,7 @@ public class PlaceController {
 	
 	@PostMapping
 	public ResponseEntity<Place> savePlace(@RequestBody CreatePlaceDto placeDto) {
-		return new ResponseEntity<Place>(placeService.savePlace(placeDto), HttpStatus.CREATED);
+		return new ResponseEntity<Place>(placeService.savePlace(placeDto.buildPlace()), HttpStatus.CREATED);
 	}
 	
 }
