@@ -46,11 +46,11 @@ public class PlaceController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<PlaceDTO> update(@RequestBody @Valid PlaceDTO placeDTO, @PathVariable Long id){
+    public ResponseEntity<PlaceDTO> update(@RequestBody @Valid PlaceDTO placeDTO, @PathVariable Long id) {
 
         Place place = service.findById(id).orElseThrow(null);
         place.edit(placeDTO);
-        
+
         return new ResponseEntity(service.save(place).convertToDTO(), HttpStatus.OK);
     }
 }

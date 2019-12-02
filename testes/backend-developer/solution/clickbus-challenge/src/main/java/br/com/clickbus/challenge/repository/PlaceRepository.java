@@ -1,4 +1,4 @@
-package br.com.clickbus.challenge.service;
+package br.com.clickbus.challenge.repository;
 
 import br.com.clickbus.challenge.entity.Place;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface PlaceRepository extends JpaRepository<Place, Long> {
-    List<Place> findOneByName(String name);
+    List<Place> findByName(String name);
 }

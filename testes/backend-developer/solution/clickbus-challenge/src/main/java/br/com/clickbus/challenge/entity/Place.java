@@ -50,11 +50,11 @@ public class Place {
         return PlaceDTO.builder(this.id, this.name, this.slug, this.city, this.state);
     }
 
-    public Place edit(PlaceDTO placeDTO) {
+    public void edit(PlaceDTO placeDTO) {
         this.name = placeDTO.getName();
         this.slug = placeDTO.getSlug();
         this.city = placeDTO.getCity();
         this.state = placeDTO.getState();
-        return this;
+        this.updatedAt = LocalDateTime.now();
     }
 }
