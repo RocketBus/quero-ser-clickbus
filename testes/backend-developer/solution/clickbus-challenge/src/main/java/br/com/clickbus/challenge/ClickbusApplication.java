@@ -1,13 +1,13 @@
-package br.com.clickbus.places;
+package br.com.clickbus.challenge;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PlacesApplication {
+public class ClickbusApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PlacesApplication.class, args);
+		SpringApplication.run(ClickbusApplication.class, args);
 	}
 
 }

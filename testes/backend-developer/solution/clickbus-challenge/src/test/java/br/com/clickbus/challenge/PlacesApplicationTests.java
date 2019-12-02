@@ -1,4 +1,4 @@
-package br.com.clickbus.places;
+package br.com.clickbus.challenge;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

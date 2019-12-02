@@ -8,10 +8,10 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.clickbus</groupId>
-	<artifactId>clickbus-challenge</artifactId>
+	<groupId>br.com.clickbus.challenge</groupId>
+	<artifactId>clickbus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>clickbus-challenge</name>
+	<name>clickbus</name>
 	<description>Project for clickbus backend challenge </description>
 
 	<properties>
@@ -23,9 +23,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
 		<dependency>
