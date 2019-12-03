@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Api("place")
@@ -35,24 +37,22 @@ public class PlaceController {
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity<Iterable<PlaceDTO>> findByName(@PathVariable String name) {
-        Iterable<PlaceDTO> placeDTO = service.findByName(name).stream().map(Place::convertToDTO).collect(Collectors.toList());
-        return ResponseEntity.ok(placeDTO);
+    public ResponseEntity findByName(@PathVariable String name) {
+        List<Place> places = service.findByName(name);
+        return !places.isEmpty() ? ResponseEntity.ok(places.stream().map(Place::convertToDTO).collect(Collectors.toList())) : ResponseEntity.notFound().build();
     }
 
     @GetMapping
-    public ResponseEntity<Iterable<PlaceDTO>> findAll() {
-        Iterable<PlaceDTO> places = service.findAll().stream().map(Place::convertToDTO).collect(Collectors.toList());
-        return new ResponseEntity<Iterable<PlaceDTO>>(places, HttpStatus.OK);
+    public ResponseEntity findAll() {
+        List<PlaceDTO> places = service.findAll().stream().map(Place::convertToDTO).collect(Collectors.toList());
+        return new ResponseEntity(places, HttpStatus.OK);
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<PlaceDTO> update(@RequestBody @Valid PlaceDTO placeDTO, @PathVariable Long id) {
-
+    public ResponseEntity<PlaceDTO> update(@PathVariable Long id, @RequestBody @Valid PlaceDTO placeDTO) {
         Place place = service.findById(id).orElseThrow(null);
         place.edit(placeDTO);
-
         return new ResponseEntity(service.save(place).convertToDTO(), HttpStatus.OK);
     }
 }
