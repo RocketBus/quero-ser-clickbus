@@ -9,6 +9,3 @@ spring:
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: false
-
-security:
-    ignored: /swagger-resources/**
