@@ -1,6 +1,7 @@
 package br.com.clickbus.challenge.service;
 
 
+import br.com.clickbus.challenge.dto.PlaceDTO;
 import br.com.clickbus.challenge.entity.Place;
 import br.com.clickbus.challenge.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,10 @@ public class PlaceService {
 
     public List<Place> findByName(String name) {
         return repository.findByName(name);
+    }
+
+    public Place alter(Place place, PlaceDTO placeDTO) {
+        place.edit(placeDTO);
+        return save(place);
     }
 }

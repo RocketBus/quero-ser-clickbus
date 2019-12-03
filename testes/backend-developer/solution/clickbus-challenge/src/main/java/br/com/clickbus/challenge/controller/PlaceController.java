@@ -45,14 +45,13 @@ public class PlaceController {
     @GetMapping
     public ResponseEntity findAll() {
         List<PlaceDTO> places = service.findAll().stream().map(Place::convertToDTO).collect(Collectors.toList());
-        return new ResponseEntity(places, HttpStatus.OK);
+        return ResponseEntity.ok(places);
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<PlaceDTO> update(@PathVariable Long id, @RequestBody @Valid PlaceDTO placeDTO) {
+    public ResponseEntity<PlaceDTO> alter(@PathVariable Long id, @RequestBody @Valid PlaceDTO placeDTO) {
         Place place = service.findById(id).orElseThrow(null);
-        place.edit(placeDTO);
-        return new ResponseEntity(service.save(place).convertToDTO(), HttpStatus.OK);
+        return new ResponseEntity(service.alter(place, placeDTO).convertToDTO(), HttpStatus.OK);
     }
 }
