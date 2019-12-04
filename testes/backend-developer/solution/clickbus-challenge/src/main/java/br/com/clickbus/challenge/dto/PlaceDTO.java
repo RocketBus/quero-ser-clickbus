@@ -36,7 +36,7 @@ public class PlaceDTO {
         return new PlaceDTO(id, name, slug, city, state);
     }
 
-    public static List<PlaceDTO> convertToList(List<Place> places) {
+    public static Iterable<PlaceDTO> convertToList(List<Place> places) {
         return places.stream().map(Place::convertToDTO).collect(Collectors.toList());
     }
 

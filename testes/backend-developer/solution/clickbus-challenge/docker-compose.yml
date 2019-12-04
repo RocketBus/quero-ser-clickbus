@@ -1,0 +1,27 @@
+version: '3'
+services:
+    mysql:
+        container_name: clickbus_challenge_mysql
+        image: mysql/mysql-server:5.7
+        environment:
+         MYSQL_DATABASE: places
+         MYSQL_ROOT_PASSWORD: admin123
+         MYSQL_ROOT_HOST: '%'
+        ports:
+        - "3306:3306"
+        restart: always
+    app:
+        container_name: clickbus_challenge_app
+        restart: always
+        image: maven:3.3-jdk-8
+        build: .
+        working_dir: /app
+        volumes:
+            - ./:/app
+            - ~/.m2:/root/.m2
+        ports:
+            - "8080:8080"
+        command: mvn clean spring-boot:run
+        depends_on:
+            - mysql
+

@@ -30,7 +30,7 @@ public class PlaceController {
 
 
     @GetMapping("{id}")
-    public ResponseEntity<PlaceDTO> findById(@PathVariable Long id) {
+    public ResponseEntity findById(@PathVariable Long id) {
         return service.findById(id).map(place -> {
             return ResponseEntity.ok(place.convertToDTO());
         }).orElseThrow(null);
@@ -44,13 +44,13 @@ public class PlaceController {
 
     @GetMapping
     public ResponseEntity findAll() {
-        List<PlaceDTO> places = PlaceDTO.convertToList(service.findAll());
+        Iterable<PlaceDTO> places = PlaceDTO.convertToList(service.findAll());
         return ResponseEntity.ok(places);
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<PlaceDTO> alter(@PathVariable Long id, @RequestBody @Valid PlaceDTO placeDTO) {
+    public ResponseEntity alter(@PathVariable Long id, @RequestBody @Valid PlaceDTO placeDTO) {
         Place place = service.findById(id).orElseThrow(null);
         return new ResponseEntity(service.alter(place, placeDTO).convertToDTO(), HttpStatus.OK);
     }
