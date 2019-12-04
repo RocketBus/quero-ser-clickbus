@@ -7,6 +7,7 @@ import br.com.clickbus.challenge.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,19 +21,19 @@ public class PlaceService {
         return repository.findAll();
     }
 
-    public Optional<Place> findById(Long id) {
+    public Optional<Place> findById(@NotNull Long id) {
         return repository.findById(id);
     }
 
-    public Place save(Place place) {
+    public Place save(@NotNull Place place) {
         return repository.save(place);
     }
 
-    public List<Place> findByName(String name) {
+    public List<Place> findByName(@NotNull String name) {
         return repository.findByName(name);
     }
 
-    public Place alter(Place place, PlaceDTO placeDTO) {
+    public Place alter(@NotNull Place place,@NotNull PlaceDTO placeDTO) {
         place.edit(placeDTO);
         return save(place);
     }

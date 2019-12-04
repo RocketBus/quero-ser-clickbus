@@ -4,6 +4,8 @@ import br.com.clickbus.challenge.entity.Place;
 import lombok.Getter;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 public class PlaceDTO {
@@ -32,6 +34,10 @@ public class PlaceDTO {
 
     public static PlaceDTO builder(Long id, String name, String slug, String city, String state) {
         return new PlaceDTO(id, name, slug, city, state);
+    }
+
+    public static List<PlaceDTO> convertToList(List<Place> places) {
+        return places.stream().map(Place::convertToDTO).collect(Collectors.toList());
     }
 
     public Place buildPlace() {

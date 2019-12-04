@@ -36,15 +36,15 @@ public class PlaceController {
         }).orElseThrow(null);
     }
 
-    @GetMapping("/name/{name}")
-    public ResponseEntity findByName(@PathVariable String name) {
+    @GetMapping("/")
+    public ResponseEntity findByName(@RequestParam(value = "name") String name) {
         List<Place> places = service.findByName(name);
-        return !places.isEmpty() ? ResponseEntity.ok(places.stream().map(Place::convertToDTO).collect(Collectors.toList())) : ResponseEntity.notFound().build();
+        return !places.isEmpty() ? ResponseEntity.ok(PlaceDTO.convertToList(places)) : ResponseEntity.notFound().build();
     }
 
     @GetMapping
     public ResponseEntity findAll() {
-        List<PlaceDTO> places = service.findAll().stream().map(Place::convertToDTO).collect(Collectors.toList());
+        List<PlaceDTO> places = PlaceDTO.convertToList(service.findAll());
         return ResponseEntity.ok(places);
     }
 
