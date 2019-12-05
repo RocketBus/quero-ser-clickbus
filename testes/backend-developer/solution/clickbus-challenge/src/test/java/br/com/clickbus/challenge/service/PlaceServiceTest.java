@@ -115,7 +115,7 @@ public class PlaceServiceTest {
     @Test
     public void whenAlterPlaceOk() {
         String editedName = "Lorem Ipsum";
-        PlaceDTO placeDTO = PlaceDTO.builder(1L, editedName, place.getSlug(), place.getCity(), place.getState());
+        PlaceDTO placeDTO = PlaceDTO.builder(editedName, place.getSlug(), place.getCity(), place.getState());
         when(repository.save(any(Place.class))).thenReturn(place);
 
         Place edited = service.alter(place, placeDTO);

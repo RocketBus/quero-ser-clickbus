@@ -10,8 +10,6 @@ import java.util.stream.Collectors;
 @Getter
 public class PlaceDTO {
 
-    private Long id;
-
     @NotNull
     private String name;
 
@@ -24,16 +22,15 @@ public class PlaceDTO {
     @NotNull
     private String state;
 
-    public PlaceDTO(Long id, String name, String slug, String city, String state) {
-        this.id = id;
+    public PlaceDTO(String name, String slug, String city, String state) {
         this.name = name;
         this.slug = slug;
         this.city = city;
         this.state = state;
     }
 
-    public static PlaceDTO builder(Long id, String name, String slug, String city, String state) {
-        return new PlaceDTO(id, name, slug, city, state);
+    public static PlaceDTO builder(String name, String slug, String city, String state) {
+        return new PlaceDTO(name, slug, city, state);
     }
 
     public static Iterable<PlaceDTO> convertToList(List<Place> places) {

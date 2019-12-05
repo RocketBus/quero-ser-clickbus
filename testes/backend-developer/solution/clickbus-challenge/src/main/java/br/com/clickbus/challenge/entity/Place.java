@@ -52,7 +52,7 @@ public class Place {
     }
 
     public PlaceDTO convertToDTO() {
-        return PlaceDTO.builder(this.id, this.name, this.slug, this.city, this.state);
+        return PlaceDTO.builder(this.name, this.slug, this.city, this.state);
     }
 
     public void edit(PlaceDTO placeDTO) {
