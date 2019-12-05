@@ -3,6 +3,7 @@ package br.com.clickbus.challenge.controller;
 
 import br.com.clickbus.challenge.dto.PlaceDTO;
 import br.com.clickbus.challenge.entity.Place;
+import br.com.clickbus.challenge.exception.PlaceNotFoundException;
 import br.com.clickbus.challenge.service.PlaceService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class PlaceController {
     public ResponseEntity findById(@PathVariable Long id) {
         return service.findById(id).map(place -> {
             return ResponseEntity.ok(place.convertToDTO());
-        }).orElseThrow(null);
+        }).orElseThrow(() -> new PlaceNotFoundException(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/")

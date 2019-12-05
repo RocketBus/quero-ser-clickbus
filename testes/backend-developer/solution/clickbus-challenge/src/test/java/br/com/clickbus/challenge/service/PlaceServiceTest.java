@@ -1,20 +1,16 @@
 package br.com.clickbus.challenge.service;
 
 
+import br.com.clickbus.challenge.dto.PlaceDTO;
 import br.com.clickbus.challenge.entity.Place;
 import br.com.clickbus.challenge.repository.PlaceRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,7 +25,6 @@ public class PlaceServiceTest {
 
     public static final String NAME_PLACE = "Butanta";
 
-
     @Mock
     private PlaceRepository repository;
 
@@ -39,7 +34,7 @@ public class PlaceServiceTest {
     private Place place;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         place = Place.builder(NAME_PLACE, "bt", "Sao Paulo", "SP");
     }
 
@@ -49,13 +44,13 @@ public class PlaceServiceTest {
 
         List<Place> placesFound = service.findAll();
 
-        assertEquals(1 , placesFound.size());
+        assertEquals(1, placesFound.size());
         assertEquals(NAME_PLACE, placesFound.get(0).getName());
         verify(repository, atLeastOnce()).findAll();
     }
 
     @Test
-    void whenFindAllReturnListEmpty(){
+    void whenFindAllReturnListEmpty() {
         when(repository.findAll()).thenReturn(new ArrayList<>());
 
         List<Place> places = service.findAll();
@@ -66,7 +61,7 @@ public class PlaceServiceTest {
     }
 
     @Test
-    void whenFindByIdOk(){
+    void whenFindByIdOk() {
         when(repository.findById(1L)).thenReturn(Optional.of(place));
 
         Place actual = service.findById(1L).get();
@@ -82,7 +77,7 @@ public class PlaceServiceTest {
 
 
     @Test
-    void whenFindByIdThenReturnEmpty(){
+    void whenFindByIdThenReturnEmpty() {
         when(repository.findById(1L)).thenReturn(Optional.empty());
 
         assertFalse(service.findById(1L).isPresent());
@@ -90,30 +85,46 @@ public class PlaceServiceTest {
     }
 
     @Test
-   void whenFindByNameOk(){
+    void whenFindByNameOk() {
         when(repository.findByName(NAME_PLACE)).thenReturn(Arrays.asList(place));
 
         List<Place> actual = service.findByName(NAME_PLACE);
 
         assertEquals(1, actual.size());
         verify(repository, atLeastOnce()).findByName(NAME_PLACE);
-   }
+    }
 
-   @Test
-   void whenFindByNameNotFound(){
-       when(repository.findByName(NAME_PLACE)).thenReturn(null);
+    @Test
+    void whenFindByNameNotFound() {
+        when(repository.findByName(NAME_PLACE)).thenReturn(null);
 
-       assertNull(service.findByName(NAME_PLACE));
-       verify(repository, atLeastOnce()).findByName(NAME_PLACE);
-   }
+        assertNull(service.findByName(NAME_PLACE));
+        verify(repository, atLeastOnce()).findByName(NAME_PLACE);
+    }
 
-   @Test
-   void whenSaveOk(){
-       when(repository.save(any(Place.class))).thenReturn(place);
+    @Test
+    void whenSaveOk() {
+        when(repository.save(any(Place.class))).thenReturn(place);
 
-       Place actual = service.save(place);
+        Place actual = service.save(place);
 
-       assertEquals(place, actual);
-       verify(repository, atLeastOnce()).save(any(Place.class));
-   }
+        assertEquals(place, actual);
+        verify(repository, atLeastOnce()).save(any(Place.class));
+    }
+
+    @Test
+    public void whenAlterPlaceOk() {
+        String editedName = "Lorem Ipsum";
+        PlaceDTO placeDTO = PlaceDTO.builder(1L, editedName, place.getSlug(), place.getCity(), place.getState());
+        when(repository.save(any(Place.class))).thenReturn(place);
+
+        Place edited = service.alter(place, placeDTO);
+
+        assertNotNull(edited);
+        assertEquals(editedName, edited.getName());
+        assertEquals(place.getSlug(), edited.getSlug());
+        assertEquals(place.getCity(), edited.getCity());
+        assertEquals(place.getCreatedAt(), edited.getCreatedAt());
+        assertNotNull(edited.getUpdatedAt());
+    }
 }
