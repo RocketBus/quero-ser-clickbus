@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.clickbus.entity.Place;
 import br.com.clickbus.repository.PlaceRepository;
+import static br.com.clickbus.utils.SlugGenerator.toSlug;;
 
 @Service
 public class PlaceService {
@@ -17,6 +18,9 @@ public class PlaceService {
 	}
 	
 	public Place savePlace(Place place) {
+		if (place.getSlug() == null) {
+			place.setSlug(toSlug(place.getName()));
+		}
 		return placeRepository.save(place);
 	}
 	

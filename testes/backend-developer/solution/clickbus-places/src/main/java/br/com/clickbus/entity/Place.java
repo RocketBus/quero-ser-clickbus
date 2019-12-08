@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -31,8 +31,8 @@ public class Place {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(insertable = false, updatable = false)
 	private int id;
-	@OneToOne
-	@JoinColumn(name = "city_id")
+	@ManyToOne
+	@JoinColumn(name = "cityId", updatable = false, insertable = false)
 	private City city;
 	@NotNull
 	private String name;
