@@ -32,7 +32,7 @@ public class Place {
 	@Column(insertable = false, updatable = false)
 	private int id;
 	@ManyToOne
-	@JoinColumn(name = "cityId", updatable = false, insertable = false)
+	@JoinColumn(name = "cityId")
 	private City city;
 	@NotNull
 	private String name;

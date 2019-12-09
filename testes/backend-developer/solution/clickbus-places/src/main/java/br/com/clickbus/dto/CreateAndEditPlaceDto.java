@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CreatePlaceDto {
+public class CreateAndEditPlaceDto {
 
 	private String name;
 	private String slug;

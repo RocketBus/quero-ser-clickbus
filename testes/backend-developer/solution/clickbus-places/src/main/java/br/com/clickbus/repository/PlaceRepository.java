@@ -8,4 +8,6 @@ import br.com.clickbus.entity.Place;
 @Repository
 public interface PlaceRepository extends CrudRepository<Place, Integer> {
 
+	public Place findBySlug(String slug);
+	
 }

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.clickbus.dto.CreateCityDto;
-import br.com.clickbus.dto.ReturnCityDto;
 import br.com.clickbus.service.CityService;
 
 @RestController
@@ -29,7 +28,7 @@ public class CityController {
 	}
 	
 	@GetMapping
-	public List<ReturnCityDto> findAllCities() {
+	public List<String> findAllCities() {
 		return cityService.findAllCities();
 	}
 	

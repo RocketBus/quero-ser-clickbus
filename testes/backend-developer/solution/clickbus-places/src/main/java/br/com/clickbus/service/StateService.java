@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.clickbus.entity.State;
 import br.com.clickbus.repository.StateRepository;
-import br.com.clickbus.simply.SimplyStateName;
 
 @Service
 public class StateService {
@@ -17,7 +16,7 @@ public class StateService {
 	private StateRepository stateRepository;
 
 	public List<String> findAllStatesNames() {
-		return stateRepository.findSimplyBy().stream().map(SimplyStateName::getState).collect(Collectors.toList());
+		return stateRepository.findAll().stream().map(State::getState).collect(Collectors.toList());
 	}
 
 	public State saveState(State state) {

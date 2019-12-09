@@ -1,7 +1,6 @@
 package br.com.clickbus.dto;
 
 import br.com.clickbus.entity.City;
-import br.com.clickbus.entity.State;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,10 +15,7 @@ public class CreateCityDto {
 		City city = new City();
 		city.setCity(this.city);
 		
-		State state = new State();
-		state.setId(this.stateId);
-		
-		city.setState(state);
+		city.setStateId(this.stateId);
 		
 		return city;
 	}
