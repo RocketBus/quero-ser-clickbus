@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "0d0b4c6d-3d0e-43f5-a85c-eca1d389f626",
+		"name": "PlacesManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createPlace",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\" : \"Fremont Hotel & Casino \",\r\n  \"slug\" : \"200 Fremont St\",\r\n  \"city\" : \"Las Vegas\",\r\n  \"state\" : \"Nevada\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/placesmanager/places",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"placesmanager",
+						"places"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editPlace",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"id\": 1,\r\n        \"name\": \"Julian's Festival\",\r\n        \"slug\": \"California St 07\",\r\n        \"city\": \"Columbus\",\r\n        \"state\": \"Ohio\"\r\n    }"
+				},
+				"url": {
+					"raw": "localhost:8080/placesmanager/places",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"placesmanager",
+						"places"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSpecificPlace",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/placesmanager/places/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"placesmanager",
+						"places",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listPlaces",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/placesmanager/places",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"placesmanager",
+						"places"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listPlacesByName",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "content",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8080/placesmanager/places?name=Robot",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"placesmanager",
+						"places"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Robot"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

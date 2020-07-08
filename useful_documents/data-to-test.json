@@ -1,0 +1,22 @@
+/* To edit the data, insert the id field */
+
+{
+  "name" : "Central Park",
+  "slug" : "Red Wing, MN 55066",
+  "city" : "New York",
+  "state" : "New York"
+}
+
+{
+  "name" : "Central Park",
+  "slug" : "Red Wing, MN 55066",
+  "city" : "New York",
+  "state" : "New York"
+}
+
+{
+  "name" : "Niagara Falls",
+  "slug" : "322 prospect St",
+  "city" : "New York",
+  "state" : "New York"
+}
