@@ -15,7 +15,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField 'String', "API_KEY", "\"sua chave da API vai aqui\""
+        buildConfigField 'String', "API_KEY", "\"1344b681980279d58ab10550b5009cfc\""
     }
 
     android {
@@ -35,6 +35,7 @@ android {
 
 dependencies {
 
+    implementation 'com.android.support:appcompat-v7:28.0.0'
     def nav_version = "2.3.0"
   //classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
 
