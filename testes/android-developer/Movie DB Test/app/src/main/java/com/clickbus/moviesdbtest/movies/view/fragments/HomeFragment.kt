@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.clickbus.moviesdbtest.R
 import com.clickbus.moviesdbtest.movies.state.State
 import com.clickbus.moviesdbtest.movies.viewmodel.BaseViewModel
@@ -16,6 +17,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        txvHome.setOnClickListener {findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment)}
+
 
         //Dono do ViewModel
         val viewModel: BaseViewModel = ViewModelProvider(this).get(BaseViewModel::class.java)

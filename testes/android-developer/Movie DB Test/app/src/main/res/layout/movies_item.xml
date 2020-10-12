@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:text="original_title"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/txtTitle"
             app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
@@ -39,6 +40,7 @@
             android:layout_marginStart="27dp"
             android:layout_marginTop="16dp"
             android:text="title"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/imgMovie"
             app:layout_constraintTop_toTopOf="parent" />
