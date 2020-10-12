@@ -3,5 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/bungee</item>
         <item>@font/contrail_one</item>
+        <item>@font/roboto_medium</item>
+        <item>@font/squada_one</item>
     </array>
 </resources>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
-    app:cardCornerRadius="10dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="2dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -16,34 +17,72 @@
             android:layout_height="150dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:src="@drawable/ic_movie"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txtOriginal"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtTitle"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="original_title"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Titile"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgMovie"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <TextView
+            android:id="@+id/txtTitleOriginal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Titile Original"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
             app:layout_constraintStart_toStartOf="@+id/txtTitle"
             app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
 
         <TextView
-            android:id="@+id/txtTitle"
+            android:id="@+id/txtPopularity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="16dp"
-            android:text="title"
+            android:text="Popularity"
             android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintStart_toEndOf="@+id/imgMovie"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="11sp"
+            tools:layout_editor_absoluteX="244dp"
+            tools:layout_editor_absoluteY="83dp" />
+
+        <TextView
+            android:id="@+id/txtVoteAverage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vote Average"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            tools:layout_editor_absoluteX="174dp"
+            tools:layout_editor_absoluteY="127dp" />
+
+        <TextView
+            android:id="@+id/txtVoteCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vote Count"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            tools:layout_editor_absoluteX="294dp"
+            tools:layout_editor_absoluteY="127dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            tools:layout_editor_absoluteX="177dp"
+            tools:layout_editor_absoluteY="74dp"
+             android:src="@drawable/ic_camera" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
