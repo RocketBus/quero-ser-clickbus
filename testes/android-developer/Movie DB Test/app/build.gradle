@@ -40,24 +40,14 @@ repositories {
 }
 
 dependencies {
+    def lifecycle_version = "2.2.0"
 
-
-    def nav_version = "2.3.0"
-  //classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
-
-    // Java language implementation
-    implementation "androidx.navigation:navigation-fragment:$nav_version"
-    implementation "androidx.navigation:navigation-ui:$nav_version"
-
-    // Kotlin
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-    // Feature module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
-
-    // Testing Navigation
-    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // Lifecycles
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'

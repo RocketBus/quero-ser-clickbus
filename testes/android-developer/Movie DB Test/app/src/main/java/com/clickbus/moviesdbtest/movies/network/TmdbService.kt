@@ -2,6 +2,7 @@ package com.clickbus.moviesdbtest.movies.network
 
 import com.clickbus.moviesdbtest.movies.models.GenreListContainer
 import com.clickbus.moviesdbtest.movies.models.MovieDetail
+import com.clickbus.moviesdbtest.movies.models.MovieDetailContainer
 import com.clickbus.moviesdbtest.movies.models.MovieListPageResult
 import retrofit2.Call
 import retrofit2.http.GET
@@ -30,7 +31,7 @@ interface TmdbService {
         @Path("id") id: Int,
         @Query("api_key") apiKey: String,
         @Query("language") language: String
-    ): Call<MovieDetail>
+    ): Call<MovieDetailContainer>
 
     @GET("search/movie")
     fun searchMovies(

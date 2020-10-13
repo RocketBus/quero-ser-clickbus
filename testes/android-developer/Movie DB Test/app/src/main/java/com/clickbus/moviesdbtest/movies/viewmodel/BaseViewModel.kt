@@ -3,10 +3,7 @@ package com.clickbus.moviesdbtest.movies.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.clickbus.moviesdbtest.BuildConfig
-import com.clickbus.moviesdbtest.movies.models.GenreListContainer
-import com.clickbus.moviesdbtest.movies.models.MovieDetail
-import com.clickbus.moviesdbtest.movies.models.MovieDetailContainer
-import com.clickbus.moviesdbtest.movies.models.MovieListPageResult
+import com.clickbus.moviesdbtest.movies.models.*
 import com.clickbus.moviesdbtest.movies.network.ApiCommunicationSingleton
 import com.clickbus.moviesdbtest.movies.state.State
 import retrofit2.Call
@@ -37,9 +34,7 @@ class BaseViewModel : ViewModel(){
                         state.value = t.message?.let { State.Failure(it) }
                     }
                 })
-        
     }
-    
 
     fun genre(){
        
@@ -60,21 +55,29 @@ class BaseViewModel : ViewModel(){
             }
         })
     }
- /*
+
     fun MovieDetail(){
-        repository.tmdbService.movieDetail(18,BuildConfig.API_KEY,"en-US").enqueue(object : Callback<MovieDetailContainer> {
-            override fun onResponse(call: Call<MovieDetailContainer>, response: Response<MovieDetailContainer>) {
-                TODO("Not yet implemented")
+
+        repository.tmdbService.movieDetail(0,BuildConfig.API_KEY,"en-US").enqueue(object : Callback<MovieDetailContainer> {
+            override fun onResponse
+                        (call: Call<MovieDetailContainer>,
+                         response: Response<MovieDetailContainer>
+            ) {
+                response.body()?.movieDetail?.let {
+                    state.value = State.MovieDetail(it)
+                    return
+                }
+                state.value = State.Failure("")
             }
 
             override fun onFailure(call: Call<MovieDetailContainer>, t: Throwable) {
-                TODO("Not yet implemented")
+                state.value = t.message?.let { State.Failure(it) }
             }
 
-
-        }
-
-  */
+        })
 
 
+
+
+}
 }
