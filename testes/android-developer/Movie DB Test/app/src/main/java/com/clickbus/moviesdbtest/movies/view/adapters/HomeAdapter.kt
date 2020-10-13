@@ -9,8 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.clickbus.moviesdbtest.R
 import com.clickbus.moviesdbtest.movies.models.Movie
+import com.clickbus.moviesdbtest.movies.view.OnClick
 
 class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAdapter.ViewHolderMovies> (){
+
+
+    private lateinit var onClick:OnClick
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderMovies {
         val view = LayoutInflater.
@@ -25,9 +29,12 @@ class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAd
     override fun getItemCount() = movies.size
 
     class ViewHolderMovies(view: View):RecyclerView.ViewHolder(view){
-       val title:TextView = itemView.findViewById(R.id.txtTitle)
-       val original:TextView = itemView.findViewById(R.id.txtTitleOriginal)
+        val title:TextView = itemView.findViewById(R.id.txtTitle)
+        val original:TextView = itemView.findViewById(R.id.txtTitleOriginal)
         val image:ImageView = itemView.findViewById(R.id.imgMovie)
+        var popularity:TextView = itemView.findViewById(R.id.txtPopularity)
+        val voteCount:TextView = itemView.findViewById(R.id.txtVoteCount)
+        val voteAverage:TextView = itemView.findViewById(R.id.txtVoteAverage)
     }
 
 
@@ -41,11 +48,13 @@ class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAd
                 .placeholder(R.drawable.ic_movie)
                 .into(holder.image)
 
-       holder.title.text = movies[position].title
+
+        holder.title.text = movies[position].title
         holder.original.text = movies[position].originalTitle
-
-
-
+        holder.popularity.text = movies[position].popularity.toString()
+        holder.voteCount.text = movies[position].voteCount.toString()
+        holder.voteAverage.text = movies[position].voteAverage.toString()
 
     }
+
 }

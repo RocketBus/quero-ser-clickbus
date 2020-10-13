@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.clickbus.moviesdbtest.BuildConfig
 import com.clickbus.moviesdbtest.movies.models.GenreListContainer
+import com.clickbus.moviesdbtest.movies.models.MovieDetail
+import com.clickbus.moviesdbtest.movies.models.MovieDetailContainer
 import com.clickbus.moviesdbtest.movies.models.MovieListPageResult
 import com.clickbus.moviesdbtest.movies.network.ApiCommunicationSingleton
 import com.clickbus.moviesdbtest.movies.state.State
@@ -58,6 +60,21 @@ class BaseViewModel : ViewModel(){
             }
         })
     }
+ /*
+    fun MovieDetail(){
+        repository.tmdbService.movieDetail(18,BuildConfig.API_KEY,"en-US").enqueue(object : Callback<MovieDetailContainer> {
+            override fun onResponse(call: Call<MovieDetailContainer>, response: Response<MovieDetailContainer>) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onFailure(call: Call<MovieDetailContainer>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+
+        }
+
+  */
 
 
 }

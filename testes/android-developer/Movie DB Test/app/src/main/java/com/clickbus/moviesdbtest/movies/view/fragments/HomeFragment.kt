@@ -14,6 +14,7 @@ import com.clickbus.moviesdbtest.movies.state.State
 import com.clickbus.moviesdbtest.movies.view.adapters.HomeAdapter
 import com.clickbus.moviesdbtest.movies.viewmodel.BaseViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.movies_item.*
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -21,17 +22,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //txvHome.setOnClickListener {findNavController().navigate(R.id.action_homeFragment_to_movieDetailsFragment)}
-
 
         //Dono do ViewModel
         val viewModel: BaseViewModel = ViewModelProvider(this).get(BaseViewModel::class.java)
         viewModel.popularMovies()
-        activity?.let { cxt ->
+        activity?.let { fragment ->
 
-            viewModel.state.observe(cxt, Observer {
+            viewModel.state.observe(fragment, Observer {
 
                 Log.d("HomeFragment", "teste$it")
+                Log.d("Filmes", "teste$it")
                 handleState(it)
 
             })
@@ -51,11 +51,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                                 false)
                         adapter = HomeAdapter(state.listMovies)
                     }
+
+
                 }
+
 
             }
             is State.GenreList -> {
-                //filtros de generes
             }
             is State.Failure -> {
                 "Erro aqui"
