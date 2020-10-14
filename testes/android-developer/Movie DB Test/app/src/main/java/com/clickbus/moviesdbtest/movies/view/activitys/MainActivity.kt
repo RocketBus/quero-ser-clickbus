@@ -1,55 +1,62 @@
 package com.clickbus.moviesdbtest.movies.view.activitys
 
-import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.*
 import android.os.Bundle
-import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.clickbus.moviesdbtest.R
+import com.clickbus.moviesdbtest.movies.models.Movie
 import com.clickbus.moviesdbtest.movies.state.State
 import com.clickbus.moviesdbtest.movies.view.OnClick
 import com.clickbus.moviesdbtest.movies.view.adapters.HomeAdapter
 import com.clickbus.moviesdbtest.movies.viewmodel.BaseViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import com.clickbus.moviesdbtest.R
 
-class MainActivity : AppCompatActivity(), OnClick {
+class MainActivity : AppCompatActivity(R.layout.activity_main), OnClick {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val viewModel:BaseViewModel = ViewModelProvider(this).get(BaseViewModel::class.java)
-        viewModel.popularMovies()
+    private lateinit var viewModel: BaseViewModel
+    private val adapter = HomeAdapter()
 
-        viewModel.state.observe(this, Observer {
-            Log.d("HomeActivity", "teste$it")
-            handleState(it)
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
 
-        })
+        viewModel = ViewModelProvider(this,BaseViewModel.BaseViewModelFactory()).get(BaseViewModel::class.java)
 
+        rclHome.adapter = adapter.also {
+            it.onClickListener(this)
         }
-    private fun handleState(state: State) {
-        when (state) {
-            is State.MovieList -> {
-                        rclHome.layoutManager = LinearLayoutManager(this@MainActivity,
-                            LinearLayoutManager.VERTICAL,
-                            false)
-                        rclHome.adapter = HomeAdapter(state.listMovies).also{
-                            it.onClickListener(this)
-                        }
-                }
-            is State.GenreList -> {
-                "Erro aqui"
+
+        viewModel.movies.observe(this, Observer { handleState(it) })
+
+        viewModel.upMovies()
+    }
+
+    private fun handleState(message: State.Message<List<Movie>>) {
+        when (message.status) {
+            State.Status.START -> {
+                view_flipper.displayedChild = 0
             }
-            is State.Failure -> {
-                "Erro aqui"
+
+            State.Status.COMPLETE -> {
+                view_flipper.displayedChild = 1
+
+                adapter.movies.clear()
+                adapter.movies.addAll(message.data!!)
+                adapter.notifyDataSetChanged()
             }
+
+            State.Status.ERROR -> {
+                view_flipper.displayedChild = 2
+            }
+
         }
 
     }
-    override fun onCellClickListener() {
-        startActivity(Intent(this@MainActivity, MovieDetailsActivity::class.java))
+
+    override fun onCellClickListener(movie: Movie) {
+        startActivity(MovieDetailsActivity.callMovieDetails(this@MainActivity, movie))
     }
+
 
 }

@@ -13,7 +13,7 @@ import com.clickbus.moviesdbtest.movies.models.Movie
 import com.clickbus.moviesdbtest.movies.view.OnClick
 
 
-class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAdapter.ViewHolderMovies> (){
+class HomeAdapter(val movies: ArrayList<Movie> = arrayListOf()) : RecyclerView.Adapter<HomeAdapter.ViewHolderMovies> (){
 
     private lateinit var onClick: OnClick
 
@@ -44,25 +44,29 @@ class HomeAdapter(private val movies: List<Movie>) : RecyclerView.Adapter<HomeAd
 
 
     override fun onBindViewHolder(holder: HomeAdapter.ViewHolderMovies, position: Int) {
+        val movie = movies[position]
+
         val baseUrl = "http://image.tmdb.org/t/p/"
-        val size = "w300/"
+        val size = "original"
         val imageMovies = movies[position].posterPath
         val poster = "$baseUrl$size$imageMovies"
         Glide.with(holder.itemView)
                 .load(poster)
+                .centerCrop()
                 .placeholder(R.drawable.ic_movie)
                 .into(holder.image)
 
-        holder.title.text = movies[position].title
-        holder.original.text = movies[position].originalTitle
-        holder.popularity.text = movies[position].popularity.toString()
-        holder.voteCount.text = movies[position].voteCount.toString()
-        holder.voteAverage.text = movies[position].voteAverage.toString()
+        holder.title.text = movie.title
+        holder.original.text = movie.originalTitle
+        holder.popularity.text = movie.popularity.toString()
+        holder.voteCount.text = movie.voteCount.toString()
+        holder.voteAverage.text = movie.voteAverage.toString()
 
         val item = holder.itemView
         item.setOnClickListener{
             if(::onClick.isInitialized){
-                onClick.onCellClickListener()
+                onClick.onCellClickListener(movie)
+
             }
         }
 
