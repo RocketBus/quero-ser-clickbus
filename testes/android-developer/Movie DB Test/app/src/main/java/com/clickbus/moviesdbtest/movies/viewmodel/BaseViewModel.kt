@@ -11,7 +11,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class BaseViewModel(val repository: Repository) : ViewModel(){
+class BaseViewModel( val repository: Repository) : ViewModel(){
 
     class BaseViewModelFactory():ViewModelProvider.Factory{
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -26,18 +26,22 @@ class BaseViewModel(val repository: Repository) : ViewModel(){
     val movies: LiveData<State.Message<List<Movie>>>
         get() = _movies
 
-    private val _movie = MutableLiveData<State.Message<MovieDetail>>()
+    private val _movieDetail = MutableLiveData<State.Message<MovieDetail>>()
     val movie: LiveData<State.Message<MovieDetail>>
-        get() = _movie
+        get() = _movieDetail
+
+    private val _genders = MutableLiveData<State.Message<List<Genre>>>()
+    val genders: LiveData<State.Message<List<Genre>>>
+        get() = _genders
 
 
 
-    fun upMovies() {
+    fun upMovies(genres: Array<Int> = emptyArray(), page: Int) {
         _movies.value = State.Message(State.Status.START)
 
         viewModelScope.launch {
             try {
-                val movies = repository.Movies()
+                val movies = repository.Movies(genres,page)
                 _movies.value = State.Message(State.Status.COMPLETE, movies)
 
             } catch(e: Exception) {
@@ -47,15 +51,29 @@ class BaseViewModel(val repository: Repository) : ViewModel(){
     }
 
     fun uphMovieDetails(id: Int) {
-        _movie.value = State.Message(State.Status.START)
+        _movieDetail.value = State.Message(State.Status.START)
 
         viewModelScope.launch {
             try {
                 val movie = repository.MoviesDetails(id)
-                _movie.value = State.Message(State.Status.COMPLETE, movie)
+                _movieDetail.value = State.Message(State.Status.COMPLETE, movie)
 
             } catch(e: Exception) {
-                _movie.value = State.Message(State.Status.ERROR, error=e)
+                _movieDetail.value = State.Message(State.Status.ERROR, error=e)
+            }
+        }
+    }
+
+    fun upGenders() {
+        _genders.value = State.Message(State.Status.START)
+
+        viewModelScope.launch {
+            try {
+                val genders = repository.Genders()
+                _genders.value = State.Message(State.Status.COMPLETE, genders)
+
+            } catch(e: Exception) {
+                _genders.value = State.Message(State.Status.ERROR, error=e)
             }
         }
     }

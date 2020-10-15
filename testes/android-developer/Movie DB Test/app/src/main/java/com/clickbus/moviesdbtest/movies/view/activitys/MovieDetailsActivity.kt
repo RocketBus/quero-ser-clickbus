@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.clickbus.moviesdbtest.R
+import com.clickbus.moviesdbtest.movies.models.Genre
 import com.clickbus.moviesdbtest.movies.models.Movie
 import com.clickbus.moviesdbtest.movies.models.MovieDetail
 import com.clickbus.moviesdbtest.movies.state.State
@@ -69,10 +70,14 @@ class MovieDetailsActivity : AppCompatActivity() {
         }
     }
 
+
+
     fun interfaceUI(details: State.Message<MovieDetail>){
         txvTitle.text = details.data?.title
         txvOriginalTitle.text = details.data?.originalTitle
         txvdateMovie.text = details.data?.releaseDate
+        txvOverview.text = details.data?.overview
+        txvGenre.text = details.data?.genreList?.get(1)?.name.toString()
 
         val baseUrl = "http://image.tmdb.org/t/p/original/"
 
@@ -93,6 +98,9 @@ class MovieDetailsActivity : AppCompatActivity() {
 
 
     }
+
+
+
 
 
 }

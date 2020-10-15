@@ -16,9 +16,9 @@ class Repository {
 
     private val service = ApiCommunicationSingleton.tmdbService
 
-    suspend fun Movies(): List<Movie> = withContext(Dispatchers.IO){
+    suspend fun Movies(genres: Array<Int> = emptyArray(), page: Int): List<Movie> = withContext(Dispatchers.IO){
         val response = service.popularMovies(
-            BuildConfig.API_KEY, language,1).execute()
+            BuildConfig.API_KEY, language,genres.joinToString(separator=","){"$it"}, page).execute()
 
         if(response.isSuccessful){
             response.body()?.movieList!!
@@ -33,6 +33,15 @@ class Repository {
             response.body() as MovieDetail
         }else throw Exception("$msg os Detalhes do Filme")
     }
+
+    suspend fun Genders() = withContext(Dispatchers.IO) {
+        val response = service.genres(BuildConfig.API_KEY,language).execute()
+
+        if (response.isSuccessful) {
+            response.body()?.genres
+        } else throw Exception("$msg a lista de Gêneros")
+    }
+
 
 
 
