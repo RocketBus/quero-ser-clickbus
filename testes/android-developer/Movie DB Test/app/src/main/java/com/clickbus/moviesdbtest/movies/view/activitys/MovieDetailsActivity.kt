@@ -85,7 +85,6 @@ class MovieDetailsActivity : AppCompatActivity() {
         val poster = "$baseUrl$background"
         Glide.with(this)
             .load(poster)
-            //.fitCenter()
             .centerCrop()
             .into(imgBackground)
 

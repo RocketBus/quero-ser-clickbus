@@ -30,21 +30,11 @@
 
     </RelativeLayout>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".movies.view.activitys.MovieDetailsActivity">
-
-        <TextView
-            android:id="@+id/txvLabelTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:text="Time:"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toStartOf="@+id/txtTime"
-            app:layout_constraintTop_toBottomOf="@+id/txvOriginalTitle" />
 
         <TextView
             android:id="@+id/txvGenre"
@@ -107,10 +97,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
             android:text="@string/title"
             android:textColor="#FFFFFF"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardMovie"
             app:layout_constraintTop_toBottomOf="@+id/imgBackground" />
@@ -119,7 +110,7 @@
             android:id="@+id/txvOriginalTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="32dp"
             android:text="@string/original_title"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="@+id/txvTitle"
@@ -128,37 +119,15 @@
             app:layout_constraintTop_toBottomOf="@+id/txvTitle" />
 
         <TextView
-            android:id="@+id/txtTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:text="@string/_00min"
-            android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txvOriginalTitle" />
-
-        <TextView
-            android:id="@+id/txtDirector"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="80dp"
-            android:text="Tarantino"
-            android:textColor="#FFFFFF"
-            app:layout_constraintStart_toStartOf="@+id/cardMovie"
-            app:layout_constraintTop_toBottomOf="@+id/cardMovie" />
-
-        <TextView
             android:id="@+id/txvdateMovie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="32dp"
             android:text="20/06/2019"
             android:textColor="#FFFFFF"
-            app:layout_constraintEnd_toEndOf="@+id/txtDirector"
-            app:layout_constraintStart_toStartOf="@+id/txtDirector"
-            app:layout_constraintTop_toBottomOf="@+id/txtDirector" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardMovie" />
 
         <TextView
             android:id="@+id/txtBudget"

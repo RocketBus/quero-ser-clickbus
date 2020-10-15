@@ -16,4 +16,9 @@
 
     </style>
 
+    <style name="MyAlertDialogTheme">
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+
 </resources>
