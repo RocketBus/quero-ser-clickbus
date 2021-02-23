@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="assets/img/favicon.ico" />
+    <link href="../../assets/third-party/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="../../assets/third-party/hamburger/hamburgers.css" rel="stylesheet">
+    <link href="../../assets/css/main.css" rel="stylesheet">
+</head>
+<body class="back-image">
+    
+    <div class="menu-controller">
+        <nav class="navbar navbar-static-top custom-nav">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="hamburger hamburger--spring-r" data-toggle="collapse" data-target="#navbar3">
+                        <div class="hamburger-box">
+                            <div class="hamburger-inner"></div>
+                        </div>
+                    </button>
+                    <a class="navbar-brand">
+                        ClickBus
+                    </a>
+                </div>
+                <div id="navbar3" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" class="btn btn-reflex-login" id="loginIndex">Login</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </nav>
+    </div>
+    <div class="controle-meio">
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+    <footer>
+        <div class="rodape text-center">Copyright ©</div>
+    </footer>
+        
+    <script type="text/javascript" src="../../assets/js/jquery.js"></script>
+    <script type="text/javascript" src="../../assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../assets/js/main.js"></script>
+    <script type="text/javascript" src="../../assets/js/mainLogin.js"></script>
+    <script type="text/javascript" src="../../assets/js/cookie.js"></script>
+</body>
+</html>

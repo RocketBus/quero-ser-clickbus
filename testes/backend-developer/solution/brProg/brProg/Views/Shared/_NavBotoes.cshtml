@@ -1,0 +1,7 @@
+﻿<li><a href="/Painel/ListarTodosEventos" class="btn btn-reflex-login">Agenda</a></li>
+<li><a href="/RegistroDia/Index" class="btn btn-reflex-login">Registro de Vendas</a></li>
+<li><a href="/RegistroDia/Relatorio" class="btn btn-reflex-login">Relatórios</a></li>
+@if (Session["tipoUsu"].ToString() == "A")
+{
+<li><a href="/Painel/CadUsu" class="btn btn-reflex-login">Novo Usuario</a></li>
+}

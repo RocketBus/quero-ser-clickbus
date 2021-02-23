@@ -1,0 +1,60 @@
+﻿@model brProg.Models.AgendaViewModel
+@{
+    ViewBag.Title = "Agendamentos";
+    Layout = "~/Views/Shared/_LayoutAll.cshtml";
+}
+
+<a href="/Painel/CadastrarEvento" class="btn btn-reflex-azul btn-block">Cadastrar Agendamento</a><br />
+
+@using (Html.BeginForm("ListarTodosEventos", "Painel", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <form role="form">
+        <div class="titulo">Pesquisar agendamento:</div>
+        <div class="form-group control-prod">
+            @Html.TextBoxFor(m => Model.NomeCliente, new { id = "controle-pesq", @class = "form-control ajust", placeholder = "Pesquisar por Nome do Cliente" })
+            <button type="submit" class="btn btn-reflex-azul btn-block" id="pesquisar">Pesquisar Por Nome</button>
+            <p class="erro-form" id="errojq1"></p>
+        </div>
+
+        <div class="form-group control-prod">
+            @Html.TextBoxFor(m => Model.DataIni, new { id = "controle-pesq2", @class = "form-control ajust2", placeholder = "Pesquisar por Data" })
+            <button type="submit" class="btn btn-reflex-azul btn-block" id="pesquisar2">Pesquisar Por Data</button>
+            <p class="erro-form" id="errojq2"></p>
+        </div>
+
+        <p class="erro-form">@ViewBag.Erro</p>
+    </form>
+
+
+}
+
+<div class="titulo">@ViewBag.parametro</div>
+
+<div class="nada-encontrado">@ViewBag.nada</div>
+
+
+
+<div class="Container">
+    @foreach (var item in Model.Agenda)
+    {
+        <div class="col-xs-12 col-sm-4 box-produto">
+            <div class="prod-uni">
+                <div class="dados-produto">
+                    <p>Nome do Cliente: @Html.DisplayFor(modelItem => item.NomeCliente)</p>
+                    <p>Data do Agendamento: @Html.DisplayFor(modelItem => item.DataIni)</p>
+                    <p>Telefone: @Html.DisplayFor(modelItem => item.Telefone)</p>                 
+                    <p>Descrição: @Html.DisplayFor(modelItem => item.Descricao)</p>
+                    @if (Session["tipoUsu"].ToString() == "A")
+                    {
+                    <div class="dados-produto-controle">
+                        <p>
+                            @Html.ActionLink("Deletar", "Deletar", new { id = item.id }, new { id = "deletar", onclick = "return confirm('Deseja realmente excluir?')" })
+                        </p>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

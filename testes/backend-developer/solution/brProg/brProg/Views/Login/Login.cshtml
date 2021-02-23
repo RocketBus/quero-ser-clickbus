@@ -1,0 +1,29 @@
+﻿@model brProg.Models.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    ViewBag.Title = "Login";
+}
+<div class="titulo">Tela de Login</div>
+            <div class="modal-body" style="padding:40px 50px;">
+                @using (Html.BeginForm(new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="usrname"><span class="glyphicon glyphicon-user"></span> Usuario</label>
+                            @Html.TextBoxFor(m => Model.Usuario, new { @class = "form-control" })
+                            <p class="erro-form"> @Html.ValidationMessageFor(a => Model.Usuario)</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="psw"><span class="glyphicon glyphicon-warning-sign"></span> Senha</label>
+                            @Html.PasswordFor(m => Model.Senha, new { @class = "form-control" })
+                            <p class="erro-form"> @Html.ValidationMessageFor(m => Model.Senha) </p>
+                        </div>
+                        <button type="submit" class="btn btn-reflex-azul btn-block">Entrar</button>
+                        <button type="submit" class="btn btn-reflex-vermelho btn-block" data-dismiss="modal">Cancelar</button>
+
+                        <p class="erro-form">@ViewBag.mensagem</p>
+                    </form>
+                }
+            </div>

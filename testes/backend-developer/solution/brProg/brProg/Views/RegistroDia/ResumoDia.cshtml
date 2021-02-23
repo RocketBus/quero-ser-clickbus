@@ -1,0 +1,109 @@
+﻿@model brProg.Models.ResumoDiarioViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAll.cshtml";
+    ViewBag.Title = "Resumo do Dia";
+}
+<script type="text/javascript">
+    window.onload = function () {
+        $(function () {
+            $('#datetimepicker1').datetimepicker() 
+        });
+    }
+</script>
+
+
+@if (Session["tipoUsu"].ToString() == "A")
+{
+using (Html.BeginForm("RegistrarDiaAcao", "RegistroDia", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <form role="form">
+        <div class="titulo">Cadastrar nova Ação</div>
+        <div class="form-group">
+            
+                @Html.HiddenFor(m => Model.id_data, new { @class = "form-control" })
+                <div class="form-group">
+                    <label for="usrname"><span class="glyphicon glyphicon-user"></span> Nome do Cliente</label>
+                    @Html.TextBoxFor(m => Model.NomeCliente, new { @class = "form-control" })
+                    <p class="erro-form"> @Html.ValidationMessageFor(a => Model.NomeCliente)</p>
+                </div>
+                <div class="form-group">
+                    <label for="usrname"><span class="glyphicon glyphicon-user"></span> Procedimento</label>
+                    @Html.TextBoxFor(m => Model.Procedimento, new { @class = "form-control" })
+                    <p class="erro-form"> @Html.ValidationMessageFor(a => Model.Procedimento)</p>
+                </div>
+                <div class="form-group">
+                    <label for="usrname"><span class="glyphicon glyphicon-user"></span> Funcionario Responsavel</label>
+                    <div class="form-group">
+                        @{
+                            List<SelectListItem> listItems = new List<SelectListItem>();
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "Selecione o Funcionario",
+                                Value = "default",
+                                Selected = true
+                            });
+
+                            foreach (var item in Model.Logins)
+                            {
+
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = @item.Nome,
+                                    Value = @item.Nome + ""
+                                });
+                            }
+                        }
+                        @Html.DropDownListFor(model => model.FuncionarioResponsavel, new SelectList(listItems, "Value", "Text"))
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="usrname"><span class="glyphicon glyphicon-user"></span> Valor</label>
+                    @Html.TextBoxFor(m => Model.Valor, new { @class = "form-control" })
+                    <p class="erro-form"> @Html.ValidationMessageFor(a => Model.Valor)</p>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-reflex-azul btn-block">Cadastrar Ação</button>
+        
+        <p class="erro-form">@TempData["Mensagem"]</p>
+
+</form>
+                            }
+                            }
+<br /><br />
+<div class="Container">
+    <div class="titulo">Ações do Dia!</div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome Cliente</th>
+                <th>Procedimento</th>
+                <th>Funcionario Responsavel</th>
+                <th>Valor</th>
+                @if (Session["tipoUsu"].ToString() == "A")
+                {
+                <th>Deletar</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+               
+            @foreach (var item in Model.ResumosDiario)
+            {
+                <tr>
+                    <td>@item.NomeCliente</td>
+                    <td>@item.Procedimento</td>
+                    <td>@item.FuncionarioResponsavel</td>
+                    <td>@item.Valor</td>
+                    @if (Session["tipoUsu"].ToString() == "A")
+                    {
+                    <td>@Html.ActionLink("X", "DeletarResumoDia", new { id = item.id }, new { id = "deletar", onclick = "return confirm('Deseja realmente excluir?')" })</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

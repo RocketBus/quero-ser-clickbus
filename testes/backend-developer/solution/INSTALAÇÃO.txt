@@ -1,0 +1,13 @@
+Obs **Este projeto foi criado para controlar o caixa de um salão de cabeleleiro, porem esta é a versão beta do sistema. Projeto desenvolvido com SASS(Grunt), js, c#, mvc, entity framework. Projeto final foi realizado com Kubernetes, docker, grafana e elasticsearch**
+
+1 - Abrir o projeto no visual studio ou via tfs
+2 - Executar os migrations(Não esquecer a connectionstring -> Abrir o NuGet Package Manager -> Rodar "Update database")
+3 - Inserir dois usuarios via script(Tabela "LOGIN")--
+NOME	SENHA						USUARIO	UNKNOWN			Permissoes
+Todos	951dfd2e67ce3b7d51616f1d377405e56cde56c8	Todos	N1L3iDl9myOxDQ==	F
+clickbus	5fd482dd3c82c7c78dcba1e881c895d06d1da4ba	clickbus	98Abd9l+ToljNw==	A
+
+Obs** Senha foi criptografada com sha1+salto(UNKNOWN)
+
+Conversado com a Suellen que poderia ser um projeto diferente!
+Obrigado!

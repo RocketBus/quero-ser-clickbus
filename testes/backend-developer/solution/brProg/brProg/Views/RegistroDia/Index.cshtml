@@ -1,0 +1,72 @@
+﻿@model brProg.Models.DiaViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutAll.cshtml";
+    ViewBag.Title = "Resumo/Cadastro de Dia";
+}
+<script type="text/javascript">
+    window.onload = function () {
+        $(function () {
+            $('#datetimepicker1').datetimepicker()
+            
+        });
+    }
+</script>
+@if (Session["tipoUsu"].ToString() == "A")
+{
+    using (Html.BeginForm("Index", "RegistroDia", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <form role="form">
+            <div class="titulo">Cadastro de novo Dia</div>
+            <div class="form-group control-prod">
+
+                <div class="form-group">
+                    <div class='input-group date cadastrar-venda' id='datetimepicker1'>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        @Html.TextBoxFor(m => Model.RegistrarDia, new { id = "cadastrar-venda", @class = "form-control cadastrar-venda", placeholder = "Cadastrar novo dia" })
+                    </div>
+                    <button type="submit" class="btn btn-reflex-azul btn-block">Cadastrar Dia</button>
+                    <p class="erro-form" id="dataValidao"> @Html.ValidationMessageFor(m => m.RegistrarDia)</p>
+                </div>
+            </div>
+            @ViewBag.Message
+        </form>
+    }
+}
+
+
+<div class="Container">
+    <div class="titulo">Resumo diário</div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Dia</th>
+                <th>Valor Total Diário</th>
+                @if (Session["tipoUsu"].ToString() == "A")
+                {
+                <th>Deletar</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+               
+            @foreach (var item in Model.Dias)
+            {
+                <tr>
+                    <td>@Html.ActionLink(@item.RegistrarDia.ToString(), "ResumoDia", new { id = item.id }, new { id = "resumoDia" })</td>
+                    <td>@item.valorDia</td>
+                    @if (Session["tipoUsu"].ToString() == "A")
+                    {
+                    <td>@Html.ActionLink("X", "Deletar", new { id = item.id }, new { id = "deletar", onclick = "return confirm('Deseja realmente excluir? Se sim, esta ação irá excluir todas as ações deste dia também!')" })</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="valorTotal">Valor total: @Model.valorTotal.ToString()</div>
+</div>
+
