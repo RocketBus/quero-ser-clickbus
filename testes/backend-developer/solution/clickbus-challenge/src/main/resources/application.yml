@@ -1,0 +1,13 @@
+spring:
+  main:
+    banner-mode: off
+  application:
+    name: 'places'
+  datasource:
+    url: jdbc:mysql://mysql:3306/places?useSSL=false
+    username: root
+    password: admin123
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: false
