@@ -22,7 +22,8 @@ interface TmdbService {
     fun popularMovies(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
-        @Query("page") page: Int
+        @Query("with_genres") genres: String = "",
+        @Query("page") page: Int,
     ): Call<MovieListPageResult>
 
     @GET("movie/{id}")
@@ -48,7 +49,8 @@ interface TmdbService {
 
     @GET("genre/movie/list")
     fun genres(
-        @Query("api_key") apiKey: String
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String
     ): Call<GenreListContainer>
 
     @GET("genre/movie/list")
@@ -56,4 +58,6 @@ interface TmdbService {
         @Query("api_key") apiKey: String,
         @Query("language") language: String
     ): Call<GenreListContainer>
+
+
 }
