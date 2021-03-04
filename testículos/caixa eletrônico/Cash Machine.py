@@ -7,9 +7,17 @@ totalced = 0
 
 
 while True:
-    if total >=ced:
+
+    if valor == 0:
+        print(f'Null')
+        break
+    elif valor < 0:
+        print(f'Valor invalido')
+        break
+    elif total >= ced:
         total -= ced
         totalced += 1
+
     else:
         if totalced > 0:
             print(f'Total de {totalced} cédulas de R${ced}')
@@ -26,4 +34,3 @@ while True:
             totalced == 0
             if total == 0:
                 break
-
