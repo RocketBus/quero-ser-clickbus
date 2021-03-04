@@ -13,6 +13,11 @@ public class Cash {
 		int[] notes =  {100, 50, 20, 10};
 		
 		if(withdraw > 0 && withdraw % 10 == 0) {
+			for(int note : notes) {
+				amountNotes = withdraw / note;
+				withdraw = withdraw % note;
+				
+			}
 			
 		} else {
 			
