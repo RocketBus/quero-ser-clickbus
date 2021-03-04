@@ -8,6 +8,9 @@ public class Cash {
 		
 		System.out.println("Digite o valor a ser sacado");
 		withdraw = toRead.nextInt();
+		
+		int amountNotes = 0;
+		int[] notes =  {100, 50, 20, 10};
 	}
 }
 	
