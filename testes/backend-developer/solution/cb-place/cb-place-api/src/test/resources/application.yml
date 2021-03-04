@@ -1,0 +1,8 @@
+spring:
+    main:
+        allow-bean-definition-overriding: true
+    data:
+        mongodb:
+            uri: mongodb://mongo:27017/cbplace
+  
+            

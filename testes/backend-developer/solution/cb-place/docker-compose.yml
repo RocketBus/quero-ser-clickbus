@@ -1,0 +1,23 @@
+version: '3'
+services:
+  cb-place-api:
+    image: clickbus/cb-place-api
+    build:
+      context: .
+      dockerfile: cb-place-api/Dockerfile
+      args:
+#        This works but the hard coded name sucks a bit (why does the maven plugin not work here?)
+        JAR_FILE: /cb-place-api-0.0.1-SNAPSHOT.jar
+    depends_on: 
+      - mongo
+    ports:
+      - 8080:8080
+  mongo:
+    image: mongo
+    ports:
+        - 27017
+    volumes:
+        - mongo_d:/data/db
+    
+volumes:
+    mongo_d:
