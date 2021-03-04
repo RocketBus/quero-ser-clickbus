@@ -17,6 +17,9 @@ public class Cash {
 				amountNotes = withdraw / note;
 				withdraw = withdraw % note;
 				
+				if(amountNotes > 0) {
+					System.out.println("Total de " + amountNotes + " cedulas de R$" + note);
+				}
 			}
 			
 		} else {
