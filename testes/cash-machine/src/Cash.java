@@ -22,10 +22,8 @@ public class Cash {
 					System.out.println("Total de " + amountNotes + " cedula de R$" + note);
 				}
 			}
-		
 		} else {
 			System.out.println("Valor incorreto! Insira um valor válido.");
 		}
 	}
 }
-	
