@@ -6,8 +6,7 @@ public class Cash {
 		Scanner toRead = new Scanner(System.in);
 		int withdraw;
 		
-		
-		System.out.println("Digite o valor a ser sacado");
+		System.out.println("Digite o valor a ser sacado:");
 		withdraw = toRead.nextInt();
 		
 		int amountNotes = 0;
@@ -19,7 +18,7 @@ public class Cash {
 				withdraw = withdraw % note;
 				
 				if(amountNotes > 0) {
-					System.out.println("Total de " + amountNotes + " cedula de R$" + note);
+					System.out.println("Total de " + amountNotes + " cédula de R$" + note);
 				}
 			}
 		} else {
