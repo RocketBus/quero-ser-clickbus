@@ -34,3 +34,20 @@ Exemplos:
 
 **Entrada:** NULL  
 **Resultado:** [Empty Set]
+
+
+# Cash Machine ClickCa$h  by Greicy (Clickbus)
+
+Teste em java para clickbus onde simula a utilização do caixa eletrônico.
+
+Primeiro acesso pela tela de login validando numero da conta e senha, depois é direcionado para a tela de saque, onde as notas dsponíveis são R$100,00 / R$50,00 / R$20,00 / R$10,00.
+
+O limite de saque e a quantidade de notas é infinito, o cliente não pode sacar valores inferiores a 10,00 e nem valores quebrados.
+
+## Layout 
+![Mobile 1](https://github.com/greicyitakura/quero-ser-clickbus/blob/master/testes/cash-machine/Clickbus/telaLogin.png)
+![Mobile 3](https://github.com/greicyitakura/quero-ser-clickbus/blob/master/testes/cash-machine/Clickbus/telaSaque.png)
+
+# Tecnologias utilizadas
+- Java
+
