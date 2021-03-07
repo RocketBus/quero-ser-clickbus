@@ -50,4 +50,5 @@ O limite de saque e a quantidade de notas é infinito, o cliente não pode sacar
 
 # Tecnologias utilizadas
 - Java
+- Foi utilizado GUI (Graphical User Interface) no Eclipse.
 
