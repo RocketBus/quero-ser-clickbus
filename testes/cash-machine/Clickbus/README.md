@@ -39,7 +39,7 @@ Exemplos:
 # Cash Machine ClickCa$h  by Greicy (Clickbus)
 
 Teste em java para clickbus onde simula a utilização do caixa eletrônico.
- - Para acessa digite o numero da conta: 123456 e senha: 123456 -
+ - Para acessar o sistema digite o numero da conta: 123456 e senha: 123456 
 
 Primeiro acesso pela tela de login validando numero da conta e senha, depois é direcionado para a tela de saque, onde as notas dsponíveis são R$100,00 / R$50,00 / R$20,00 / R$10,00.
 
