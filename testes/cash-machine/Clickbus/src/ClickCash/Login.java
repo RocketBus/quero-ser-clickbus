@@ -132,8 +132,7 @@ public class Login extends JDialog {
 					JButton btncancel = new JButton("CANCELAR");
 					btncancel.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							System.exit(0);
-						}
+							System.exit(0);	}
 					});
 					btncancel.setBounds(221, 5, 117, 31);
 					btncancel.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
@@ -142,8 +141,6 @@ public class Login extends JDialog {
 					btnok.add(btncancel);
 				}
 			}
-			
-			
 		}	
 	 protected static void setExtendedState(int disposeOnClose) {
 			// TODO Auto-generated method stub
