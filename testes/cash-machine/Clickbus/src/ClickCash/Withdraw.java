@@ -140,8 +140,8 @@ public class Withdraw extends JFrame {
 				
 				
 								
-				if ((Total < 10) && (Total %10 > 0) && (valor == null))  {
-					JOptionPane.showMessageDialog(null, "Valor inv·lido.","Digite novamente", JOptionPane.WARNING_MESSAGE, null);
+				if ((Total < 10) || (Total %10 > 0) || (valor == null))  {
+					JOptionPane.showMessageDialog(null, "Valor inv√°lido.","Digite novamente", JOptionPane.WARNING_MESSAGE, null);
 					txt100.setVisible(false);
 					txt50.setVisible(false);
 					txt20.setVisible(false);
