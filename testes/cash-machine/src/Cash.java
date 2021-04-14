@@ -18,11 +18,11 @@ public class Cash {
 				withdraw = withdraw % note;
 				
 				if(amountNotes > 0) {
-					System.out.println("Total de " + amountNotes + " cédula de R$" + note);
+					System.out.println("Total de " + amountNotes + " cedula de R$" + note);
 				}
 			}
 		} else {
-			System.out.println("Valor incorreto! Insira um valor válido.");
+			System.out.println("Valor incorreto! Insira um valor vÃ¡lido.");
 		}
 	}
 }
