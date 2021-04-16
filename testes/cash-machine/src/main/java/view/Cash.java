@@ -2,7 +2,7 @@ package view;
 
 import model.WithdrawResponse;
 import service.CashService;
-
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,14 +21,19 @@ public class Cash {
             for (WithdrawResponse withdrawResponse : withdrawResponses) {
                 System.out.println("Total da " + withdrawResponse.getAmountNotes() + " cedula de R$" + withdrawResponse.getNote());
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             throw new Exception(e.getMessage());
         }
     }
 
-    private static int readValue() {
-        Scanner toRead = new Scanner(System.in);
-        System.out.println("Digite o valor a ser sacado:");
-        return toRead.nextInt();
+    private static int readValue() throws InputMismatchException{
+       try  {
+            Scanner toRead = new Scanner(System.in);
+            System.out.println("Digite o valor a ser sacado:");
+            return toRead.nextInt();
+        }
+        catch (InputMismatchException e){
+            throw new InputMismatchException("Erro!, insira uma valor númerico");
+        }
     }
 }

@@ -1,7 +1,6 @@
 package service;
 
 import model.WithdrawResponse;
-
 import java.util.ArrayList;
 import java.util.List;
 
