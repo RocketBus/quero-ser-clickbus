@@ -1,4 +1,4 @@
-Cash Machine 
+view.Cash Machine 
 ----------
  *	Simulando a entrega de notas de um caixa eletrônico.
  *	Linguagem: Java.
