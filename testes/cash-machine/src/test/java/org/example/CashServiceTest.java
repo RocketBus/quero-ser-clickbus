@@ -1,9 +1,10 @@
-import model.WithdrawResponse;
+package org.example;
+
+import org.example.model.WithdrawResponse;
 import org.junit.Assert;
 import org.junit.Test;
-import service.CashService;
+import org.example.service.CashService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CashServiceTest {

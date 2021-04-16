@@ -1,4 +1,4 @@
-package model;
+package org.example.model;
 
 public class WithdrawResponse {
     private int amountNotes;

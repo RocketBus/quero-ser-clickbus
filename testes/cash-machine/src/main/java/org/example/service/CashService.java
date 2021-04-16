@@ -1,6 +1,6 @@
-package service;
+package org.example.service;
 
-import model.WithdrawResponse;
+import org.example.model.WithdrawResponse;
 import java.util.ArrayList;
 import java.util.List;
 

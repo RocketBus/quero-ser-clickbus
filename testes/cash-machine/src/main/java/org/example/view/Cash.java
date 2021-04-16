@@ -1,7 +1,7 @@
-package view;
+package org.example.view;
 
-import model.WithdrawResponse;
-import service.CashService;
+import org.example.model.WithdrawResponse;
+import org.example.service.CashService;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
