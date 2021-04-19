@@ -1,13 +1,12 @@
 package org.example.service;
 
-
 import org.example.model.WithdrawResponse;
-
+import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CashService {
-
     public List<WithdrawResponse> processWithdraw(int withdraw) throws Exception {
         List<Integer> notes = createNotes();
 
@@ -18,7 +17,7 @@ public class CashService {
         }
     }
 
-    private List<Integer> createNotes() {
+    private static List<Integer> createNotes() {
         List<Integer> notes = new ArrayList<>();
         notes.add(100);
         notes.add(50);
@@ -40,5 +39,6 @@ public class CashService {
             }
         }
         return withdrawResponses;
+
     }
 }

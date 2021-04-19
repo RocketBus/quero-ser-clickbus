@@ -1,6 +1,6 @@
 package org.example.model;
 
-public class WithdrawResponse {
+public class  WithdrawResponse{
     private int amountNotes;
     private int note;
 
