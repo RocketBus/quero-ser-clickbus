@@ -1,0 +1,9 @@
+/home/adriane/Documentos/pessoal/quero-ser-clickbus/testes/group-by-interval/src/main/java/br/com/queroserclickbus/groupbyinterval/challenge/domain/service/GroupByIntervalService.java
+/home/adriane/Documentos/pessoal/quero-ser-clickbus/testes/group-by-interval/src/main/java/br/com/queroserclickbus/groupbyinterval/challenge/GroupByIntervalApplication.java
+/home/adriane/Documentos/pessoal/quero-ser-clickbus/testes/group-by-interval/src/main/java/br/com/queroserclickbus/groupbyinterval/challenge/api/controller/GroupByIntervalController.java
+/home/adriane/Documentos/pessoal/quero-ser-clickbus/testes/group-by-interval/src/main/java/br/com/queroserclickbus/groupbyinterval/challenge/dto/CollectionNumberOutput.java
+/home/adriane/Documentos/pessoal/quero-ser-clickbus/testes/group-by-interval/src/main/java/br/com/queroserclickbus/groupbyinterval/challenge/dto/CollectionNumberInput.java
+/home/adriane/Documentos/pessoal/quero-ser-clickbus/testes/group-by-interval/src/main/java/br/com/queroserclickbus/groupbyinterval/challenge/domain/exception/InvalidArgumentException.java
+/home/adriane/Documentos/pessoal/quero-ser-clickbus/testes/group-by-interval/src/main/java/br/com/queroserclickbus/groupbyinterval/challenge/api/exceptionhandler/ErrorUtils.java
+/home/adriane/Documentos/pessoal/quero-ser-clickbus/testes/group-by-interval/src/main/java/br/com/queroserclickbus/groupbyinterval/challenge/api/exceptionhandler/ApiExceptionHandler.java
+/home/adriane/Documentos/pessoal/quero-ser-clickbus/testes/group-by-interval/src/main/java/br/com/queroserclickbus/groupbyinterval/challenge/api/exceptionhandler/Problem.java

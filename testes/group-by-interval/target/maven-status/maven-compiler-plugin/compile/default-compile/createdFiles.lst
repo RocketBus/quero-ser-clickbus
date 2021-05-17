@@ -1,0 +1,15 @@
+br/com/queroserclickbus/groupbyinterval/challenge/api/controller/GroupByIntervalController.class
+br/com/queroserclickbus/groupbyinterval/challenge/domain/service/GroupByIntervalService$1.class
+br/com/queroserclickbus/groupbyinterval/challenge/api/exceptionhandler/Problem.class
+br/com/queroserclickbus/groupbyinterval/challenge/api/exceptionhandler/Problem$Field.class
+br/com/queroserclickbus/groupbyinterval/challenge/api/exceptionhandler/ApiExceptionHandler.class
+br/com/queroserclickbus/groupbyinterval/challenge/dto/CollectionNumberOutput$CollectionNumberOutputBuilder.class
+br/com/queroserclickbus/groupbyinterval/challenge/domain/exception/InvalidArgumentException.class
+br/com/queroserclickbus/groupbyinterval/challenge/dto/CollectionNumberOutput.class
+br/com/queroserclickbus/groupbyinterval/challenge/api/exceptionhandler/ErrorUtils.class
+br/com/queroserclickbus/groupbyinterval/challenge/domain/service/GroupByIntervalService.class
+br/com/queroserclickbus/groupbyinterval/challenge/api/exceptionhandler/Problem$Field$FieldBuilder.class
+br/com/queroserclickbus/groupbyinterval/challenge/dto/CollectionNumberInput.class
+br/com/queroserclickbus/groupbyinterval/challenge/dto/CollectionNumberInput$CollectionNumberInputBuilder.class
+br/com/queroserclickbus/groupbyinterval/challenge/GroupByIntervalApplication.class
+br/com/queroserclickbus/groupbyinterval/challenge/api/exceptionhandler/Problem$ProblemBuilder.class
