@@ -1,0 +1,14 @@
+version: '3'
+volumes:
+  data:
+networks:
+  web:
+services:
+  group-by-interval-api:
+    build: ./
+    networks:
+      - web
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
